@@ -1,0 +1,47 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter&family=Poppins&display=swap');
+
+:root{
+    --color-green : #119C5e ;
+    --color-shadow : #00000040 ;
+}
+
+.Button{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 15px ;
+    font-family: 'Poppins' sans-serif;
+    font-weight: bolder;
+    cursor: pointer;
+    border: solid 2px var(--color-green);
+    background-color: transparent;
+    color: var(--color-green);
+    font-size: 1.125rem ;
+}
+
+.smallButton {
+    width: 10rem ;
+    height : 3rem ;
+}
+
+.RxEnvelopeClosed{
+    margin-right: 2px ;
+}
+
+.Button:hover{
+    background-color: var(--color-green);
+    color: white; 
+    box-shadow: 5px 5px 4px 0px var(--color-shadow);
+}
+
+.bigButton {
+    width : 12rem ;
+    height: 4rem ;   
+}
+
+@media screen and (max-width : 400px) {
+    .bigButton{
+        width: 8rem;
+        height: 2.5rem;
+    }
+}

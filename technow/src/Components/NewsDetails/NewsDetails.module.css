@@ -1,0 +1,88 @@
+:root{
+    --color-green2 : #119C59;
+    --color-H1 : #263238 ;
+    --color-background : #EBEBEB ;
+    --color-p : #25282B;
+    --color-li : #A0A4A8 ;
+    --color-dark : #000000 ;
+}
+
+.Container {
+    display: flex;
+    flex-direction: column;
+    padding: 2% 10%; 
+    row-gap: 40px;
+    position: relative;
+}
+
+.Title{
+    display: flex;
+    flex-direction: column;
+}
+
+.H1{
+    font-size: 2.5rem;
+    color: var(--color-dark);
+    width: fit-content ;
+    font-size: 3rem;
+    letter-spacing: 0.03rem;
+    margin: 0;
+}
+
+.H2{
+    line-height: 2rem;
+    letter-spacing: 0.05rem;
+    color: var(--color-dark);
+    font-size: 2rem;
+    margin: 0;
+    width: fit-content;
+}
+
+.Img{
+    width: 100%;
+}
+
+.Title > .P {
+    margin: 0;
+}
+
+.Links{
+    width: 100%;
+}
+
+.P {
+    width: fit-content;
+    font-size: 1.2rem;
+    color:var(--color-p);
+}
+
+@media (max-width: 600px) {
+    .Container {
+        padding: 2% 3%;
+    }
+
+    .H1 {
+        font-size: 2rem;
+    }
+
+    .H2 {
+        font-size: 1.75rem;
+    }
+    .Caption{
+        font-size: 0.8rem;
+    }
+}
+
+@media screen and (max-width : 400px) {
+    .H1{
+        font-size: 1.5rem;
+    }
+
+    .H2{
+        font-size: 1.25rem;
+        line-height: 1.1;
+    }
+    .P{
+        font-size: 1rem;
+    }
+}
