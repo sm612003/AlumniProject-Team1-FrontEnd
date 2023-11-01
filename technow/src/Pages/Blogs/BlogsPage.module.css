@@ -1,0 +1,28 @@
+:root{
+    --color-grayblack: #25282B;
+    --color-black: #000;
+    --color-green: #119C59;
+}
+.main{
+    padding: 2% 10%;
+}
+.h1{
+    font-size: 3rem;
+    width: fit-content;
+    color: var(--color-green);
+    position: relative;
+    margin-bottom: 0;
+}
+
+.h1::before{
+    content: "";
+    position: absolute;
+    width: 50%;
+    height: 5px;
+    bottom: 3px;
+    left: 0;
+    background-color: var(--color-green);
+}
+.pheader{
+    margin-top: 10px;
+}
