@@ -1,0 +1,136 @@
+  @import url('https://fonts.googleapis.com/css2?family=Inter&family=Poppins&display=swap');
+
+  :root{
+    --color-green : #119C59;
+  }
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+.footer {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  background: var(--color-green);
+}
+
+.footer .footerRow {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 3.5rem;
+  padding: 60px;
+}
+
+.footerCol{
+  display: flex;
+  flex-direction: column;
+}
+
+.footerRow .footerCol {
+  font-size: 1.2rem;
+  font-weight: 400;
+}
+
+.footerRow .footerCol h3{
+  color: white;
+}
+
+h3::after{
+  content: "";
+  position: absolute;
+  width: 50%;
+  height: 5px;
+  top: 35px;
+  left: 0;
+  background-color: white;
+}
+
+.footerCol .links {
+  margin-top: 20px;
+}
+
+.footerCol .links li {
+  list-style: none;
+  margin-bottom: 10px;
+}
+
+.footerCol .links li a {
+  text-decoration: none;
+  color: #bfbfbf;
+}
+
+.footerCol .links li a:hover {
+  color: #fff;
+}
+
+.footerCol p {
+  margin: 20px 0;
+  max-width: 300px;
+}
+
+.footerCol .icons {
+  cursor: pointer;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  row-gap: 30px;
+  margin-top: 3%;
+}
+
+.icon{
+  width: 25px ;
+  height: 25px;
+  margin-right: 4px;
+}
+
+.li{
+  display: flex;
+}
+
+.h3{
+  color: white;
+  position: relative;
+  width: fit-content;
+}
+
+.copyright{
+  display: flex;
+  font-size: 1.2rem;
+  justify-content: center;
+  padding-bottom: 2%;
+}
+
+.technow{
+  color: white;
+}
+
+
+@media (max-width: 768px) {
+  .footer {
+    position: relative;
+    bottom: 0;
+    left: 0;
+    transform: none;
+    width: 100%;
+    border-radius: 0;
+  }
+
+  .footer .footerRow {
+    padding: 20px;
+    gap: 1rem;
+  }
+  .copyright{
+    font-size: 0.9rem;
+  }
+
+  .icons .li{
+    font-size: 1.2rem;
+  }
+}
