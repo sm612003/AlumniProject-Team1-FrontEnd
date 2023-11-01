@@ -1,30 +1,28 @@
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=Poppins&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Inter&family=Poppins&display=swap');
 
 :root{
     --color-green2 : #119C59;
-    --color-p : #52575C;
+    --color-H1 : #263238 ;
+    --color-p : #25282B;
     --color-background : #EBEBEB ;
     --color-h2 : #25282B;
+    --color-li : #A0A4A8 ;
 }
 
-.Container{
-    display: flex ;
-    flex-direction: column;
-    padding: 2% 10%;  
-    background-color: var(--color-background) ;
-}
 
 .Content{
     display: flex;
-    column-gap: 15%;
+    column-gap: 10%;
     align-items: center;
+    padding: 2% 10%;  
+    height: 100vh;
+    justify-content: center;
 }
 
 .Left {
     display: flex;
     flex-direction: column;
-    width: 40% ;
-    row-gap: 6rem;
+    width: 50% ;
 }
 
 .Right{
@@ -36,34 +34,37 @@
 
 .H1{
     font-size: 2.5rem;
+    color: var(--color-H1);
     width: fit-content ;
-    color: var(--color-green2);
     font-size: 3rem;
     letter-spacing: 0.03rem;
-    margin-bottom: 0;
+    margin-bottom: 30px;
     position: relative;
 }
 
-.H1::before{
-    content: "";
-    position: absolute;
-    bottom: 0;
-    right: 50%;
-    width: 50%;
-    border-bottom: 2px solid var(--color-green2);
-}
-
-.H2{
-    line-height: 2.625rem;
-    letter-spacing: 0.150rem;
-    color: var(--color-h2);
-    font-size: 2rem;
-}
-
-.P {
+.Li {
     color: var(--color-p);
     font-size: 1.125rem;
     letter-spacing: 0.05rem;
+    list-style: none;
+    margin-top: 1rem;
+    position: relative;
+}
+
+.Li::before{
+    position: absolute;
+    content: "\2713";
+    color: var(--color-li);
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    border: 2px solid var(--color-li);
+    display: inline-block;
+    left: -30px ;
+    top : 3px; 
+    line-height: 1;
+    font-weight: bold;
+    font-size: 1.2rem;
 }
 
 .Input{
@@ -117,7 +118,7 @@
 
 .Label{
     position: absolute;
-    top: 20px ;
+    top: 8px ;
     left: 0;
     color: var(--color-p);
     pointer-events: none;
@@ -127,14 +128,15 @@
 }
 
 .Button {
-    margin-top: 8rem ;
+    margin-top: 3rem ;
     display: flex;
     justify-content: center;
 }
 
-.Image {
+.Video {
     width: 120%;
 }
+
 
 @media screen and (max-width : 700px) {
     .Content{
@@ -148,17 +150,15 @@
         width: 100%;
         margin-top: 2%;
     }
-    .Image{
+    .Video {
         display: none;
     }
 }
 
+
 @media screen and (max-width: 1024px) {
     .H1{
         font-size: 2rem;
-    }
-    .H2{
-        font-size: 1.5rem;
     }
 }
 
@@ -166,21 +166,7 @@
     .H1{
         font-size: 1.4rem;
     }
-    .H2{
-        font-size: 1.1rem;
-        letter-spacing: 0;
-    }
-    .P{
-        font-size: 0.95rem;
-    }
-    .Label{
-        font-size: 0.8rem;
-        top: 35% ;
-    }
-    .Email {
-        height: 40px;
-    }
-    .Button{
-        margin-top: 4rem;
+    .Left{
+        row-gap: 0;
     }
 }
