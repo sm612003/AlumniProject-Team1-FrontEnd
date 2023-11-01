@@ -1,0 +1,44 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=Poppins&display=swap");
+
+:root{
+    --color-green2 : #119C59;
+    --color-H1 : #263238 ;
+    --color-background : #EBEBEB ;
+    --color-p : #25282B;
+    --color-li : #A0A4A8 ;
+    --color-dark : #000000 ;
+}
+
+.Progress{
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    cursor: pointer;
+    position: fixed;
+    right: 20px;
+    bottom:  20px ;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.Progress::before{
+    content: "\2191";
+    color: var(--color-green2);
+    font-size: 3rem;
+    font-family: "Poppins" , sans-serif;
+    font-weight: bolder;
+    line-height: 60px;
+    text-align: center; 
+    position: absolute;
+    bottom: 0;
+    left: 30% ;
+}
+.Progress::after{
+    content: "";
+    border-radius: 50%; 
+    background-color: white;
+    width: 45px;
+    height: 45px;
+
+}

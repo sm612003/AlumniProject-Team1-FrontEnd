@@ -1,0 +1,31 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=Manrope&family=Offside&family=Poppins&display=swap');
+
+:root{
+    --color-green2 : #119C59;
+    --color-red: #E32751;
+}
+
+.Logo{
+    font-family: 'Offside', sans-serif;
+    font-size: 2.5rem;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 0;
+    padding:0;
+}
+
+.Span{
+    font-family: 'Manrope' , sans-serif;
+    color: var(--color-red);
+    font-size: 1.25rem;
+    margin-top: 0;
+    padding: 0 ;
+}
+
+.LogoGreen{
+    color: var(--color-green2);
+}
+
+.LogoWhite{
+    color: white;
+}

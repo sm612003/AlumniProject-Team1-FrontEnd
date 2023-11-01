@@ -1,0 +1,172 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter&family=Poppins&display=swap');
+
+:root{
+    --color-green2 : #119C59;
+    --color-H1 : #263238 ;
+    --color-p : #25282B;
+    --color-background : #EBEBEB ;
+    --color-h2 : #25282B;
+    --color-li : #A0A4A8 ;
+}
+
+
+.Content{
+    display: flex;
+    column-gap: 10%;
+    align-items: center;
+    padding: 2% 10%;  
+    height: 100vh;
+    justify-content: center;
+}
+
+.Left {
+    display: flex;
+    flex-direction: column;
+    width: 50% ;
+}
+
+.Right{
+    width: 40%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.H1{
+    font-size: 2.5rem;
+    color: var(--color-H1);
+    width: fit-content ;
+    font-size: 3rem;
+    letter-spacing: 0.03rem;
+    margin-bottom: 30px;
+    position: relative;
+}
+
+.Li {
+    color: var(--color-p);
+    font-size: 1.125rem;
+    letter-spacing: 0.05rem;
+    list-style: none;
+    margin-top: 1rem;
+    position: relative;
+}
+
+.Li::before{
+    position: absolute;
+    content: "\2713";
+    color: var(--color-li);
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    border: 2px solid var(--color-li);
+    display: inline-block;
+    left: -30px ;
+    top : 3px; 
+    line-height: 1;
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+.Input{
+    position: relative;
+}
+
+.Email{
+    background-color: transparent;
+    font-size: 1.5rem;
+    font-family: 'Poppins' , sans-serif;
+    height: 50px;
+    width: 100%;
+    border: none;
+    border-bottom: 1px solid var(--color-p);
+    padding: 1% 0;
+    margin-top: 5%;
+    transition: border-color 500ms;
+}
+
+.Email:focus{
+    outline: none;
+    border-bottom: 2px solid var(--color-green2);
+}
+
+.Email::placeholder{
+    color: transparent;
+}
+
+.Email:focus::placeholder{
+    color: transparent;
+}
+
+.Email:focus::-webkit-contacts-auto-fill-button {
+    visibility: hidden;
+    pointer-events: none;
+    position: absolute;
+  }
+
+.Email:focus + .Label ,
+.Email:not(:placeholder-shown) + .Label {
+    transform: translateY(-100%) scale(0.9);
+    top: 10px;
+    color: var(--color-green2);
+}
+
+.Email::placeholder-shown + .Label {
+    transform: none;
+    top: 8px;
+    display: none;
+}
+
+.Label{
+    position: absolute;
+    top: 8px ;
+    left: 0;
+    color: var(--color-p);
+    pointer-events: none;
+    transform-origin: left center;
+    transform: translateY(100%) scale(1.5);
+    transition: transform 250ms ;
+}
+
+.Button {
+    margin-top: 3rem ;
+    display: flex;
+    justify-content: center;
+}
+
+.Video {
+    width: 120%;
+}
+
+
+@media screen and (max-width : 700px) {
+    .Content{
+        flex-direction: column;
+    }
+    .Left{
+        width: 100%;
+        row-gap: 2rem;
+    }
+    .Right{
+        width: 100%;
+        margin-top: 2%;
+    }
+    .Video {
+        display: none;
+    }
+}
+
+
+@media screen and (max-width: 1024px) {
+    .H1{
+        font-size: 2rem;
+    }
+}
+
+@media screen and (min-width: 0px) and (max-width: 400px) {
+    .H1{
+        font-size: 1.4rem;
+    }
+    .Left{
+        row-gap: 0;
+    }
+}

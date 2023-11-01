@@ -1,0 +1,46 @@
+:root{
+    --color-P : #252B2B ;
+}
+
+
+.Container{
+    display: inline-flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+    width: 100%;
+    row-gap: 5px;
+    position: relative;
+} 
+
+.Container::before{
+    content: "|";
+    font-size: 3rem;
+    position: absolute;
+    top : -7px ;
+    left : -20px ;
+    color: #E32751;
+}
+
+.H3 , .P {
+    margin: 0;
+    padding: 0;
+}
+
+.H3{
+    letter-spacing: 0.02rem;
+}
+
+.P {
+    color: var(--color-P);
+    letter-spacing: 0.01rem;
+}
+
+@media screen and (min-width: 0px) and (max-width: 400px) {
+    .H3{
+        font-size: 1.1rem;
+    }
+    .P{
+        font-size: 0.9rem;
+    }
+}

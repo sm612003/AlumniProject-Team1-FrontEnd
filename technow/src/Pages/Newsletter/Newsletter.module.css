@@ -1,0 +1,42 @@
+:root{
+    --color-green2 : #119C59
+}
+
+.Container{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 0 10% 3% 10%;
+}
+
+.btn{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.Newsletter {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin: 0 0 5% 0;
+}
+
+
+.H1{
+    font-size: 3rem;
+    width: fit-content;
+    color: var(--color-green2);
+    border-bottom: solid ;
+    margin-left: 2%;
+}
+    
+
+@media screen and (max-width: 600px) {
+    .Newsletter{
+        flex-direction: column;
+    }
+    .H1{
+        font-size: 2.5rem;
+    }
+}

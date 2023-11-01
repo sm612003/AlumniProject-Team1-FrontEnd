@@ -1,0 +1,186 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=Poppins&display=swap");
+
+:root{
+    --color-green2 : #119C59;
+    --color-p : #52575C;
+    --color-background : #EBEBEB ;
+    --color-h2 : #25282B;
+}
+
+.Container{
+    display: flex ;
+    flex-direction: column;
+    padding: 2% 10%;  
+    background-color: var(--color-background) ;
+}
+
+.Content{
+    display: flex;
+    column-gap: 15%;
+    align-items: center;
+}
+
+.Left {
+    display: flex;
+    flex-direction: column;
+    width: 40% ;
+    row-gap: 6rem;
+}
+
+.Right{
+    width: 40%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.H1{
+    font-size: 2.5rem;
+    width: fit-content ;
+    color: var(--color-green2);
+    font-size: 3rem;
+    letter-spacing: 0.03rem;
+    margin-bottom: 0;
+    position: relative;
+}
+
+.H1::before{
+    content: "";
+    position: absolute;
+    bottom: 0;
+    right: 50%;
+    width: 50%;
+    border-bottom: 2px solid var(--color-green2);
+}
+
+.H2{
+    line-height: 2.625rem;
+    letter-spacing: 0.150rem;
+    color: var(--color-h2);
+    font-size: 2rem;
+}
+
+.P {
+    color: var(--color-p);
+    font-size: 1.125rem;
+    letter-spacing: 0.05rem;
+}
+
+.Input{
+    position: relative;
+}
+
+.Email{
+    background-color: transparent;
+    font-size: 1.5rem;
+    font-family: 'Poppins' , sans-serif;
+    height: 50px;
+    width: 100%;
+    border: none;
+    border-bottom: 1px solid var(--color-p);
+    padding: 1% 0;
+    margin-top: 5%;
+    transition: border-color 500ms;
+}
+
+.Email:focus{
+    outline: none;
+    border-bottom: 2px solid var(--color-green2);
+}
+
+.Email::placeholder{
+    color: transparent;
+}
+
+.Email:focus::placeholder{
+    color: transparent;
+}
+
+.Email:focus::-webkit-contacts-auto-fill-button {
+    visibility: hidden;
+    pointer-events: none;
+    position: absolute;
+  }
+
+.Email:focus + .Label ,
+.Email:not(:placeholder-shown) + .Label {
+    transform: translateY(-100%) scale(0.9);
+    top: 10px;
+    color: var(--color-green2);
+}
+
+.Email::placeholder-shown + .Label {
+    transform: none;
+    top: 8px;
+    display: none;
+}
+
+.Label{
+    position: absolute;
+    top: 20px ;
+    left: 0;
+    color: var(--color-p);
+    pointer-events: none;
+    transform-origin: left center;
+    transform: translateY(100%) scale(1.5);
+    transition: transform 250ms ;
+}
+
+.Button {
+    margin-top: 8rem ;
+    display: flex;
+    justify-content: center;
+}
+
+.Image {
+    width: 120%;
+}
+
+@media screen and (max-width : 700px) {
+    .Content{
+        flex-direction: column;
+    }
+    .Left{
+        width: 100%;
+        row-gap: 2rem;
+    }
+    .Right{
+        width: 100%;
+        margin-top: 2%;
+    }
+    .Image{
+        display: none;
+    }
+}
+
+@media screen and (max-width: 1024px) {
+    .H1{
+        font-size: 2rem;
+    }
+    .H2{
+        font-size: 1.5rem;
+    }
+}
+
+@media screen and (min-width: 0px) and (max-width: 400px) {
+    .H1{
+        font-size: 1.4rem;
+    }
+    .H2{
+        font-size: 1.1rem;
+        letter-spacing: 0;
+    }
+    .P{
+        font-size: 0.95rem;
+    }
+    .Label{
+        font-size: 0.8rem;
+        top: 35% ;
+    }
+    .Email {
+        height: 40px;
+    }
+    .Button{
+        margin-top: 4rem;
+    }
+}
