@@ -9,8 +9,6 @@
     width : 40% ;
     align-items: center;
     margin: 2% 2%;
-    border: 2px solid var(--color-green);
-    border-radius: 30px;
     padding: 2% ;
 }
 
@@ -26,7 +24,7 @@
     width: 100%;
     align-items: center;
     column-gap: 5%;
-    margin : 0 2% 3% 2% ;
+    margin : 0 3% 3% 3% ;
 }
 
 .SectionFirst:hover {
@@ -35,7 +33,7 @@
 
 .SectionFirst .Figure{
     margin: 0;
-    width: 100%;
+    width: 50%;
 }
 
 .SectionFirst .Desc , .SectionFirst .Caption {
@@ -75,16 +73,24 @@
     justify-content: flex-end;
 }
 
+.Desc{
+    width: 100%;
+}
+
 @media screen and (max-width: 600px) {
     .Section{
         width: 90%;
     }
     .SectionFirst{
         flex-direction: column;
-        
+        margin: 0;
+    }
+    .SectionFirst .Figure{
+        width: 100%;
     }
     .SectionFirst .H2  {
         font-size: 1.5rem;
+        margin-bottom: 1rem;
     }
     .Section .H2  {
         font-size: 1.25rem;
