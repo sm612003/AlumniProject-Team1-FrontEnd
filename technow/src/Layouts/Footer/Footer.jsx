@@ -2,15 +2,18 @@ import styles from"./Footer.module.css"
 import React from "react"
 import {FaFacebookSquare , FaInstagramSquare, FaLinkedin, FaWhatsappSquare} from 'react-icons/fa'
 import {BsFacebook , BsInstagram , BsLinkedin , BsWhatsapp} from 'react-icons/bs'
+import { Logo } from "../../Components/Logo/Logo"
 
-export const Footer =()=>{
+const Footer =()=>{
     return (
         <>
         <footer className={styles.footer}>
             <div className={styles.top}></div>
 
             <div className={styles.footerRow}>
-
+                <div className={styles.footerCol}>
+                    <Logo/>
+                </div>
                 <div className={styles.footerCol}>
                     <h3 className={styles.h3}>About Us</h3>
                     <p className={styles.p}>Welcome to Technow! We're here to make tech updates easy. 
@@ -37,16 +40,15 @@ export const Footer =()=>{
                         <li className={styles.li}>AI</li>
                     </ul>
                 </div>
-                <div className={`${styles.footerCol} ${styles.socials}`}>
+            </div>
+            <div className={`${styles.footerCol} ${styles.socials}`}>
                     <ul className={styles.icons}>
-                        <li className={styles.li}><BsFacebook className={styles.icon}/>Technow Newsletter</li>
-                        <li className={styles.li}><BsWhatsapp className={styles.icon}/>+961****</li>
-                        <li className={styles.li}><BsInstagram className={styles.icon}/>Technow_Newsletter</li>
-                        <li className={styles.li}><BsLinkedin className={styles.icon}/>Technow Newsletter</li>
+                        <li className={styles.li}><BsFacebook className={styles.icon}/></li>
+                        <li className={styles.li}><BsWhatsapp className={styles.icon}/></li>
+                        <li className={styles.li}><BsInstagram className={styles.icon}/></li>
+                        <li className={styles.li}><BsLinkedin className={styles.icon}/></li>
                     </ul>
                 </div>
-
-            </div>
 
             <div className={styles.copyright}>
                 <p className={styles.pcopyright}> &copy; 2023 <span className={styles.technow} > technow</span>. All Rights Reserved </p>
@@ -55,3 +57,4 @@ export const Footer =()=>{
     </> 
     );
 }
+export default Footer;

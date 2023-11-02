@@ -2,7 +2,7 @@ import React from "react";
 import styles from "./BlogDetails.module.css"
 import photo from "../../images/pic.jpg"
 
-export const BlogDetails = () =>{
+const BlogDetails = () =>{
     return(
         <div className={styles.blogdetails}>
             <div className={styles.top}>
@@ -82,3 +82,4 @@ export const BlogDetails = () =>{
         </div>
     );
 }
+export default BlogDetails;

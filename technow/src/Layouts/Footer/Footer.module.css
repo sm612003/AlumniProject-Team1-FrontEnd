@@ -12,12 +12,9 @@
 }
 
 .footer {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
   width: 100%;
   background: var(--color-green);
+  margin-top: 30px;
 }
 
 .footer .footerRow {
@@ -25,7 +22,7 @@
   flex-wrap: wrap;
   justify-content: space-between;
   gap: 3.5rem;
-  padding: 60px;
+  padding: 30px 20px ;
 }
 
 .footerCol{
@@ -70,7 +67,7 @@ h3::after{
   color: #fff;
 }
 
-.footerCol p {
+.footerCol .p {
   margin: 20px 0;
   max-width: 300px;
 }
@@ -79,9 +76,10 @@ h3::after{
   cursor: pointer;
   list-style: none;
   display: flex;
-  flex-direction: column;
-  row-gap: 30px;
+  flex-direction: row;
+  column-gap: 30px;
   margin-top: 3%;
+  justify-content: center;
 }
 
 .icon{
@@ -104,7 +102,7 @@ h3::after{
   display: flex;
   font-size: 1.2rem;
   justify-content: center;
-  padding-bottom: 2%;
+  margin: 10px 0 5px 0 ;
 }
 
 .technow{
