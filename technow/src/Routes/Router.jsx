@@ -2,8 +2,8 @@ import Newsletter from '../Pages/Newsletter/Newsletter';
 // import BlogDetails from "./Components/BlogDetails/BlogDetailsComponent"
 import Header from "../Layouts/Header/Header"
 import Footer from "../Layouts/Footer/Footer"
-import {HomePage} from "../Pages/Home/Home"
-import Blogs from "../Pages/Blogs/Blogs"
+import HomePage from "../Pages/Home/Home"
+import Blogs from "../Pages/Blogs/BlogsPage"
 import {BlogDetails} from '../Pages/BlogsDetails/BlogsDetails';
 import BlogForm from "../Pages/BlogsForm/BlogsForm"
 import BlogUpdate from '../Pages/BlogsUpdate/BlogsUpdateForm'
