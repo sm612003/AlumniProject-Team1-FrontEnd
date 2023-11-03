@@ -1,5 +1,6 @@
 import navStyle from "./Navbar.module.css"
 import { Weather } from "../Weather/Weather";
+import { Link } from "react-router-dom";
 // import Logo 
 
 const Navbar = () => {
@@ -13,9 +14,9 @@ const Navbar = () => {
 
         <div className={navStyle.Middle}>
       <ul className={navStyle.navMenu}>
-      <li><a className={navStyle.navLinks} href='#'>Newsletter</a></li>
+      <Link to="./newsletter"><li><a className={navStyle.navLinks} href='#'>Newsletter</a></li></Link>
         <li><a className={navStyle.navLinks} href='#'>Blog</a></li>
-        <li ><a className={navStyle.navLinks} href='#'>Contact us</a></li>
+        <Link to="./contact"><li ><a className={navStyle.navLinks} href='#'>Contact us</a></li></Link>
         <li ><a className={navStyle.navLinks} href='#'></a><Weather/></li>
       </ul>
       </div>

@@ -7,7 +7,7 @@ import photo from "../../assets/Mail.png"
 const BlogUpdate = () => {
   return (
     <div>
-      <Header />
+      
    
     <div className={styles.Container}>
        
