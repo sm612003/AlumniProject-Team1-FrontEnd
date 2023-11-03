@@ -7,7 +7,6 @@ const Contact = () => {
     return (
 
         <section >
-             <Header /> 
             <div className={styles.Container}>
                 
                 <h1 className={styles.h1}>Contact Us</h1>
