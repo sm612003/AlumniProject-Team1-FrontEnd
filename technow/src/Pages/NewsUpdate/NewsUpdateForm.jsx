@@ -1,7 +1,7 @@
 import React from "react";
 import Header from "../../Layouts/Header/Header";
 import styles from "./NewsUpdate.module.css"; 
-import photo from "../../assets/Mail.png"
+import photo from "../../Assets/Images/Mail.png"
 import { Button } from "../../Components/Buttons/Buttons";
 
 

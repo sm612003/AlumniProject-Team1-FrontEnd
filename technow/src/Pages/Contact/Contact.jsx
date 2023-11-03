@@ -1,13 +1,12 @@
 import React from 'react'
 import styles from "./Contact.module.css"
 import Header from '../../Layouts/Header/Header'
-import image from "../../assets/mobile.png"
+import image from "../../Assets/Images/mobile.png"
 
 const Contact = () => {
     return (
 
         <section >
-             <Header /> 
             <div className={styles.Container}>
                 
                 <h1 className={styles.h1}>Contact Us</h1>

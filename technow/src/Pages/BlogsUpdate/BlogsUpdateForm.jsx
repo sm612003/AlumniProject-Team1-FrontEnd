@@ -1,13 +1,13 @@
 import React from "react";
 import Header from "../../Layouts/Header/Header";
 import styles from "./BlogsUpdate.module.css"; // Import the CSS module
-import photo from "../../assets/Mail.png"
+import photo from "../../Assets/Images/Mail.png"
 
 
 const BlogUpdate = () => {
   return (
     <div>
-      <Header />
+      
    
     <div className={styles.Container}>
        
