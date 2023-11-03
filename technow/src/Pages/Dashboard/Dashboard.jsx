@@ -1,6 +1,7 @@
 import React from 'react'
 import styles from "./Dashboard.module.css"
 import DashboardCard from '../../Components/Dashboard Card/DashboardCard'
+import { ScrollButton } from '../../Components/ScrollButton/ScrollButton'
 
  const Dashboard = () => {
   return (
@@ -20,7 +21,7 @@ import DashboardCard from '../../Components/Dashboard Card/DashboardCard'
       </div>
         <div className={styles.cont}><DashboardCard /></div>
       </div>
-
+      <ScrollButton/>
     </div>
   )
 }

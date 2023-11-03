@@ -1,14 +1,11 @@
 import React from "react";
-import Header from "../../Layouts/Header/Header";
-import styles from "./BlogsUpdate.module.css"; // Import the CSS module
+import styles from "./BlogsUpdate.module.css";
 import photo from "../../Assets/Images/Mail.png"
+import { ScrollButton } from "../../Components/ScrollButton/ScrollButton";
 
 
 const BlogUpdate = () => {
   return (
-    <div>
-      
-   
     <div className={styles.Container}>
        
 
@@ -40,13 +37,10 @@ const BlogUpdate = () => {
         <div className={styles.Bottom}>
           <div className={styles.textarea}>
             <label  className={styles.name} htmlFor="content">Content</label>
-            <textarea  id="content" name="content"></textarea>
+            <textarea className={styles.area} id="content" name="content"></textarea>
           </div>
-
-          <button className={styles.submitFile} type="submit">Upload photo</button>
-          <button className={styles.submitButton} type="submit">Post Now</button>
         </div>
-    </div>
+        <ScrollButton/>
     </div>
   );
 }

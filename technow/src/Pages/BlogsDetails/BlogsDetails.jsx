@@ -2,7 +2,6 @@ import styles from "./BlogsDetails.module.css"
 import {Button} from "../../Components/Buttons/Buttons"
 import React, {useEffect, useState} from "react";
 import BlogDetailsComponent from "../../Components/BlogDetails/BlogDetailsComponent"
-import Footer from "../../Layouts/Footer/Footer"
 import { ScrollButton } from "../../Components/ScrollButton/ScrollButton";
 
 export const BlogDetails = () => {
@@ -26,7 +25,6 @@ export const BlogDetails = () => {
         <div className={styles.container}>
         <BlogDetailsComponent/>
         <Button text="Update" subscribed={false} size={width} color="green" className={styles.button}/>       
-        <Footer/>
         <ScrollButton/>
         </div>
         

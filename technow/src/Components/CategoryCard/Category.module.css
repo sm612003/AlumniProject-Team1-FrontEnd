@@ -1,29 +1,30 @@
-.categ{
-    background-color: #ffffff;
-    height: 84px;
-    display: flex;
+.container{
+    display: flex ;
     justify-content: center;
     align-items: center;
+}
+
+.categ{
+    background-color: #ffffff;
+    height: 90px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     border-bottom: 1px solid #000;
-    padding-bottom: 1rem;
-    border-left: 10px ;
-    width: 78%;
-    margin: 0 auto;
+    width: 50%;
+    margin: 0;
+    padding: 0;
 }
 .categMenu{
     display: flex; 
     list-style: none;
-    width: 10vw;
     justify-content: center; 
-    margin-right: 2rem;
-    margin-top: 3rem;
     gap: 2rem;
 }
 
 .categLinks{
     color: black;
     text-decoration: none;
-    /* padding: 0.5rem 1rem; */
 }
 .categLinks:hover {
     color: rgb(34, 142, 50);
@@ -33,20 +34,12 @@
    }
 
    @media (max-width: 768px) {
-
-        
         .categMenu{
-            margin-top: 1rem;
             text-decoration: none;
             display: flex;
             text-align: center;
             color: black;
-            /* padding: 1px; */
             width: 20%;
-            /* justify-content: space-between; */
-            margin-top: 3rem;
-            
-         
         }
     
 }

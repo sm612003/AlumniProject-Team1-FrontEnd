@@ -1,7 +1,7 @@
 import React from 'react'
 import styles from "./Contact.module.css"
-import Header from '../../Layouts/Header/Header'
 import image from "../../Assets/Images/mobile.png"
+import { ScrollButton } from '../../Components/ScrollButton/ScrollButton'
 
 const Contact = () => {
     return (
@@ -28,10 +28,11 @@ const Contact = () => {
                         </form>                    
                     </div>
                         <div className={styles.Right} >
-                                    <img src={image} className={styles.Img}></img>
+                                    <img src={image} alt=""className={styles.Img}></img>
                         </div>
                 </div>
             </div>
+            <ScrollButton/>
         </section>
     )
 }

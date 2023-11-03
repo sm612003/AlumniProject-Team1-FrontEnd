@@ -2,6 +2,7 @@ import styles from './Hero.module.css'
 import { Button } from '../../Components/Buttons/Buttons'
 import {useState , useEffect} from 'react'
 import video from '../../Assets/Images/Newsletter.mp4'
+import { Link } from 'react-router-dom'
 
 export const HeroSection = () => {
     const [screenWidth, setScreenWidth] = useState(window.innerWidth);
@@ -33,7 +34,7 @@ export const HeroSection = () => {
                         </ul>                
                     </span>
                             <span className={styles.Button}>
-                                <Button text="Subscribe" subscribed={true} size={width} />
+                                <Link to='/subscribe' ><Button color={"green"} text="Subscribe" subscribed={true} size={width} /></Link>
                             </span>  
                 </div>
                 <div className={styles.Right}>

@@ -31,6 +31,7 @@
 .red:hover{
     background-color: var(--color-red);
     color: white;
+    box-shadow: 5px 5px 4px 0px var(--color-shadow);
 }
 
 .smallButton {

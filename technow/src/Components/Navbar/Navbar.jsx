@@ -1,7 +1,8 @@
 import navStyle from "./Navbar.module.css"
 import { Weather } from "../Weather/Weather";
 import { Link } from "react-router-dom";
-// import Logo 
+import { Logo } from "../Logo/Logo";
+import { Button } from "../Buttons/Buttons";
 
 const Navbar = () => {
   
@@ -9,18 +10,34 @@ const Navbar = () => {
   return (
     <nav className={navStyle.NavbarItems}>
       <div className={navStyle.Left}>
-      <h1 className={navStyle.navbarlogo}>TechNow</h1>
+        <Logo color={"green"}/>
       </div>
 
         <div className={navStyle.Middle}>
       <ul className={navStyle.navMenu}>
-      <Link to="./newsletter"><li><a className={navStyle.navLinks} href='#'>Newsletter</a></li></Link>
-        <li><a className={navStyle.navLinks} href='#'>Blog</a></li>
-        <Link to="./contact"><li ><a className={navStyle.navLinks} href='#'>Contact us</a></li></Link>
-        <li ><a className={navStyle.navLinks} href='#'></a><Weather/></li>
+      <Link to="./newsletter">
+        <li>
+          <p className={navStyle.navLinks}>Newsletter</p>
+        </li>
+      </Link>
+      <Link to='/blog'>
+        <li>
+          <p className={navStyle.navLinks}>Blog</p>
+        </li>
+      </Link>
+      <Link to="./contact">
+        <li>
+          <p className={navStyle.navLinks}>Contact us</p>
+        </li>
+      </Link>
+        <li>
+        <Weather/>
+        </li>
       </ul>
       </div>
-      <button>Subscribe</button>
+      <Link to='/subscribe'>
+        <Button color={"green"} size={"small"} text={"Subscribe"} subscribed={true}/>
+      </Link>
     </nav>
   );
 }

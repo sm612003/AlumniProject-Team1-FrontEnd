@@ -3,7 +3,7 @@ import { Button } from '../../Components/Buttons/Buttons'
 import img from '../../Assets/Images/Envelope-amico.png'
 import {useState , useEffect} from 'react'
 
-export const Subscribe = () => {
+export const Subscribe = ({page}) => {
     const [screenWidth, setScreenWidth] = useState(window.innerWidth);
     const [width, setWidth] = useState(screenWidth < 1024 ? 'small' : 'big');
 
@@ -19,11 +19,13 @@ export const Subscribe = () => {
         };
     }, []);
 
+    const background = page === false ? styles.Gray : styles.White ;
+
     const handleSubmit = (event) => {
         event.preventDefault();
     }
     return(
-        <div className={styles.Container}>
+        <div className={`${styles.Container} ${background}`}>
             <h1 className={styles.H1}> 
                 Subscribe to Mail Newsletter
             </h1>

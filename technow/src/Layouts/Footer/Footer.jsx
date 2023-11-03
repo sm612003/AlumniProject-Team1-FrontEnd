@@ -1,8 +1,8 @@
 import styles from"./Footer.module.css"
 import React from "react"
-import {FaFacebookSquare , FaInstagramSquare, FaLinkedin, FaWhatsappSquare} from 'react-icons/fa'
 import {BsFacebook , BsInstagram , BsLinkedin , BsWhatsapp} from 'react-icons/bs'
 import { Logo } from "../../Components/Logo/Logo"
+import { Link } from "react-router-dom"
 
 const Footer =()=>{
     return (
@@ -24,20 +24,37 @@ const Footer =()=>{
                 <div className={styles.footerCol}>
                     <h3 className={styles.h3}>Our Pages</h3>
                     <ul className={styles.links}>
+                    <Link to='newsletter'>
                         <li className={styles.li}>NewsLetters</li>
+                    </Link>
+                    <Link to='/blog'>
                         <li className={styles.li}>Blogs</li>
+                    </Link>
+                    <Link to='/contact'>
                         <li className={styles.li}>Contact Us </li>
+                    </Link>
+                        
                     </ul>
                 </div>
             
                 <div className={styles.footerCol}>
                     <h3 className={styles.h3}>Category</h3>
                     <ul className={styles.links}>
-                        <li className={styles.li}>Engineering</li>
-                        <li className={styles.li}>Cloud</li>
-                        <li className={styles.li}>Web</li>
-                        <li className={styles.li}>App</li>
-                        <li className={styles.li}>AI</li>
+                        <Link to='/newsletter'>
+                            <li className={styles.li}>Engineering</li>
+                        </Link>
+                        <Link to='/newsletter'>
+                            <li className={styles.li}>Cloud</li>
+                        </Link>
+                        <Link to='/newsletter'>
+                            <li className={styles.li}>Web</li>
+                        </Link>
+                        <Link to='/newsletter'>
+                            <li className={styles.li}>App</li>                            
+                        </Link>     
+                        <Link to='/newsletter'>
+                            <li className={styles.li}>AI</li>                            
+                        </Link>                    
                     </ul>
                 </div>
             </div>

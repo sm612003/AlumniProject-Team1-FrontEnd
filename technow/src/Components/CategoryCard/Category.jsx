@@ -2,13 +2,13 @@ import category from "./Category.module.css"
 
 const Category = () => {
   return (
-    <div>
+    <div className={category.container}>
       <ul className={category.categ}>
-        <li className={category.categMenu}><a className={category.categLinks} href="#">Ai</a></li>
-        <li className={category.categMenu}><a className={category.categLinks} href="#"> Cloud</a></li>
-        <li className={category.categMenu}><a className={category.categLinks} href="#"> Engineering</a></li>
-        <li className={category.categMenu}><a className={category.categLinks} href="#">Web</a></li>
-        <li className={category.categMenu}><a className={category.categLinks} href="#">Application</a></li>
+        <li className={category.categMenu}><a className={category.categLinks} href="#">Engineering</a></li>
+        <li className={category.categMenu}><a className={category.categLinks} href="#">Cloud</a></li>
+        <li className={category.categMenu}><a className={category.categLinks} href="#">Websites </a></li>
+        <li className={category.categMenu}><a className={category.categLinks} href="#">Applications</a></li>
+        <li className={category.categMenu}><a className={category.categLinks} href="#">AI</a></li>
       </ul>
     </div>
   )

@@ -1,22 +1,12 @@
-  @import url('https://fonts.googleapis.com/css2?family=Inter&family=Poppins&display=swap');
-
   :root{
     --color-green : #119C59;
     --color-white : #FAF9F7;
 
   }
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: 'Poppins', sans-serif;
-}
-
 .footer {
   width: 100%;
   background: var(--color-green);
-  margin-top: 30px;
 }
 
 .footer .footerRow {
@@ -30,6 +20,7 @@
 .footerCol{
   display: flex;
   flex-direction: column;
+  margin: 0;
 }
 
 .footerRow .footerCol {
@@ -41,7 +32,7 @@
   color: white;
 }
 
-h3::after{
+.h3::after{
   content: "";
   position: absolute;
   width: 50%;
@@ -53,6 +44,7 @@ h3::after{
 
 .footerCol .links {
   margin-top: 20px;
+  padding: 0 ;
 }
 
 .footerCol .links li {
@@ -82,35 +74,50 @@ h3::after{
   column-gap: 30px;
   color: var(--color-white);
   justify-content: center;
+  margin: 0;
 }
 
 .icon{
   width: 25px ;
   height: 25px;
-  margin-right: 4px;
+}
+
+.icon:hover{
+  color: black;
 }
 
 .li{
   display: flex;
+  color: black;
+}
+
+li:hover{
+  text-decoration: underline;
+  cursor: pointer;
+  color: black;
 }
 
 .h3{
   color: white;
   position: relative;
   width: fit-content;
+  margin: 0;
 }
 
 .copyright{
   display: flex;
   font-size: 1.2rem;
   justify-content: center;
-  margin: 10px 0 5px 0 ;
 }
 
 .technow{
   color: white;
 }
 
+.pcopyright{
+  margin: 0;
+  margin: 10px 0 5px 0 ;
+}
 
 @media (max-width: 768px) {
   .footer {

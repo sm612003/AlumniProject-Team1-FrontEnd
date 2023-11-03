@@ -27,8 +27,20 @@
     font-style: normal;
     font-weight: 700;
     line-height: normal;
-    text-decoration-line: underline;
+    position: relative;
+    width: fit-content;
   }
+
+  .h1::after{
+    content: "";
+    position: absolute;
+    bottom: -5px;
+    right: 50%;
+    width: 50%;
+    height: 5px;
+    background-color: #14B86E;
+  }
+
   .form {
     display: flex;
     flex-direction: column;
@@ -56,41 +68,22 @@
     display: flex;
     width: 100% ;
     height: 100px;
-    margin-left: 1rem;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    flex-shrink: 0;
-    
-    
-  }
-  .submitFile{
-    color: white;
-    display: flex;
-    width: 200px;
-    
-    padding: 15px;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
-    flex-shrink: 0;
-    border-radius: 10px;
-    background: #E32751;
-    box-shadow: 0px 0px 8px 0px #BA68C8;
+    flex-shrink: 0;  
   }
   
-  input {
+  .input {
     display: flex;
     flex-shrink: 0;
     width: 100%;
     padding: 10px;
-    border: 1px solid #ccc;
     border-radius: 5px;
     cursor: pointer;
   }
   
-  label {
-    display: block;
+  .label {
     font-weight: bold;
     margin-bottom: 5px;
   }
@@ -109,7 +102,7 @@
   }
   
 
-  textarea {
+  .area {
     display: flex;
     width: 100% ;
     height: 15rem;
@@ -120,12 +113,18 @@
     margin-left: 0;
     border-radius: 10px;
     margin-top: 1rem;
-    
+    padding: 1rem;
   }
   .img{
-    width: 75%;
+    width: 75%;  
+  }
 
-  
+  .area , .input{
+    border: 1px solid #ccc;
+  }
+
+  .area:focus , .input:focus {
+    outline: none;
   }
 
   @media (max-width: 768px) {
@@ -140,10 +139,8 @@
       padding: 0;  
       width: 170% ;
     }
-    label {
-      display: block;
+    .name {
       font-weight: bold;
-      margin-bottom: 5px;
       margin-top: 2rem;
     }
   
@@ -158,12 +155,12 @@
       margin-top: 70px;
 
     }
-    textarea {
+    .area {
       margin-top: 1rem;
       width: 100%; /* Adjust the width for smaller screens */
       height: 10rem; /* Adjust the height for smaller screens */
     }
-    input {
+    .input {
       width: 100%;
       
      

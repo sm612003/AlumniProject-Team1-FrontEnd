@@ -1,13 +1,27 @@
 import styles from "./BlogsPage.module.css"
 import BlogCard from '../../Components/BlogCard/BlogCard'
-//import Header from '../../Layouts/Header/Header'
-import Footer from '../../Layouts/Footer/Footer'
-//import Button from '../../Components/Buttons/Buttons'
-
 import { useState , useEffect } from "react"
 import axios from 'axios'
+import { ScrollButton } from "../../Components/ScrollButton/ScrollButton"
+import { Button } from "../../Components/Buttons/Buttons"
 
 const BlogCardLayout =() => {
+    const [screenWidth, setScreenWidth] = useState(window.innerWidth);
+    const [width, setWidth] = useState(screenWidth < 1024 ? 'small' : 'big');
+
+    useEffect(() => {
+        const handleResize = () => {
+            const newWidth = window.innerWidth;
+            setScreenWidth(newWidth);
+            setWidth(newWidth < 1024 ? 'small' : 'big');
+        };
+        window.addEventListener('resize', handleResize);
+        return () => {
+            window.removeEventListener('resize', handleResize);
+        };
+    }, []);
+
+
     const [blogData , setBlogData] = useState([]);
 
     useEffect(()=>{
@@ -21,16 +35,14 @@ const BlogCardLayout =() => {
             }
         }
         fetchData();
-    }, [])
+    }, [blogData])
 
     return(
         <>
             <div className={styles.main}>
-                {/* <Header/> */}
                 <header className={styles.header}>
                     <h1 className={styles.h1}>Blogs</h1>
                     <p className={styles.pheader}>Blog your news</p>
-                    {/* <Button/> */}
                         {blogData.map((key , index) => (
                             <BlogCard 
                             key={key._id}
@@ -38,12 +50,13 @@ const BlogCardLayout =() => {
                             author={key.author}
                             image={key.image}
                             createdAt={key.createdAt}
-                            reversed={(index % 2 == 0)}
+                            reversed={(index % 2 === 0)}
                             />
                         ))}
                 </header>
+                <Button color={"green"} text={"Load more"} size={width} subscribed={false}/>
             </div>
-            <Footer/>            
+            <ScrollButton/>          
         </>
     );
 }
