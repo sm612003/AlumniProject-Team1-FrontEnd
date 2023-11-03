@@ -2,6 +2,8 @@
 
   :root{
     --color-green : #119C59;
+    --color-white : #FAF9F7;
+
   }
 
 * {
@@ -78,7 +80,7 @@ h3::after{
   display: flex;
   flex-direction: row;
   column-gap: 30px;
-  margin-top: 3%;
+  color: var(--color-white);
   justify-content: center;
 }
 

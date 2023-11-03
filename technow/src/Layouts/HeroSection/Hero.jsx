@@ -1,7 +1,7 @@
 import styles from './Hero.module.css'
 import { Button } from '../../Components/Buttons/Buttons'
 import {useState , useEffect} from 'react'
-import video from '../../Assets/Newsletter.mp4'
+import video from '../../Assets/Images/Newsletter.mp4'
 
 export const HeroSection = () => {
     const [screenWidth, setScreenWidth] = useState(window.innerWidth);

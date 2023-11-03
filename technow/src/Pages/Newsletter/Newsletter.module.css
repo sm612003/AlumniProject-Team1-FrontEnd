@@ -3,6 +3,7 @@
 }
 
 .Container{
+    margin-top: 3rem;
     display: flex;
     flex-direction: column;
     padding: 0 10% 3% 10%;
@@ -26,7 +27,7 @@
     font-size: 3rem;
     width: fit-content;
     color: var(--color-green2);
-    margin-left: 2%;
+    margin: 0 0 2% 2% ;
     position: relative;
 }
     

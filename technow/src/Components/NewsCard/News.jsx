@@ -1,6 +1,6 @@
 import styles from "./News.module.css"
 
-export const NewsCard = ({title , image , caption ,alt , desc , first}) => {
+const NewsCard = ({title , image , caption ,alt , first}) => {
     const firstt = first === true ? styles.SectionFirst : styles.Section ;  
     return(
         <section className={firstt}>
@@ -9,7 +9,7 @@ export const NewsCard = ({title , image , caption ,alt , desc , first}) => {
                 <img src={image} alt={alt} className={styles.Img}/>
                 <caption className={styles.Caption}>{caption}</caption>
             </figure>                
-            <p className={styles.Desc}>{desc}</p>
         </section>
     )
 }
+export default NewsCard ;

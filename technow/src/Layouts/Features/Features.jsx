@@ -1,6 +1,6 @@
 import styles from './Features.module.css'
 import { FeatureCard } from '../../Components/FeaturesCard/FeaturesCard'
-import img from '../../Assets/Email-amico.png'
+import img from '../../Assets/Images/Email-amico.png'
 
 export const FeaturesSection = () => {
     return(
