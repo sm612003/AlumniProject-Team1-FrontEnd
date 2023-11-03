@@ -1,6 +1,6 @@
 import styles from './Subscribe.module.css'
 import { Button } from '../../Components/Buttons/Buttons'
-import img from '../../Assets/Envelope-amico.png'
+import img from '../../Assets/Images/Envelope-amico.png'
 import {useState , useEffect} from 'react'
 
 export const Subscribe = () => {
@@ -44,7 +44,7 @@ export const Subscribe = () => {
                                 <label className={styles.Label} htmlFor="email">Email</label>
                             </div>
                             <span className={styles.Button}>
-                                <Button text="Subscribe" subscribed={true} size={width} />
+                                <Button text="Subscribe" subscribed={true} size={width} color={"green"}/>
                             </span>  
                         </form>                      
                     </span>

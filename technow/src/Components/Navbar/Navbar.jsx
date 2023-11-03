@@ -1,5 +1,6 @@
 import navStyle from "./Navbar.module.css"
-
+import { Weather } from "../Weather/Weather";
+// import Logo 
 
 const Navbar = () => {
   
@@ -15,7 +16,7 @@ const Navbar = () => {
       <li><a className={navStyle.navLinks} href='#'>Newsletter</a></li>
         <li><a className={navStyle.navLinks} href='#'>Blog</a></li>
         <li ><a className={navStyle.navLinks} href='#'>Contact us</a></li>
-        <li ><a className={navStyle.navLinks} href='#'>weather</a></li>
+        <li ><a className={navStyle.navLinks} href='#'></a><Weather/></li>
       </ul>
       </div>
       <button>Subscribe</button>

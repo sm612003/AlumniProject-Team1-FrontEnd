@@ -1,7 +1,8 @@
 import React from "react";
-import Header from "../../Layout/Header/Header";
+import Header from "../../Layouts/Header/Header";
 import styles from "./NewsUpdate.module.css"; 
 import photo from "../../assets/Mail.png"
+import { Button } from "../../Components/Buttons/Buttons";
 
 
 const UpdateNews = () => {
@@ -43,8 +44,8 @@ const UpdateNews = () => {
             <textarea  id="content" name="content"></textarea>
           </div>
 
-          <button className={styles.submitFile} type="submit">Upload photo</button>
-          <button className={styles.submitButton} type="submit">Post Now</button>
+          <Button text="Upload photo" size="big" icon={false} color="red"/>
+          <Button text="Post Now" size="big" icon={false} color="green"/>
         </div>
     </div>
     </div>

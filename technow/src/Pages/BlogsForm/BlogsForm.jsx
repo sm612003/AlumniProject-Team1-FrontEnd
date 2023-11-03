@@ -1,5 +1,5 @@
 import React from "react";
-import Header from "../../Layout/Header/Header";
+import Header from "../../Layouts/Header/Header";
 import styles from "./BlogsForm.module.css"; // Import the CSS module
 import photo from "../../assets/Mail.png"
 
@@ -33,7 +33,7 @@ const BlogForm = () => {
         </div>
 
         <div className={styles.photo}>
-          <img src={photo} alt="Mail Rafiki" />
+          <img className={styles.img} src={photo} alt="Mail Rafiki" />
         </div>
       </div >
 

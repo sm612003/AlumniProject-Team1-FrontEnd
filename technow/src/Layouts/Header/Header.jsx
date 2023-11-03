@@ -1,5 +1,5 @@
-import Navbar from '../../components/Navbar/Navbar'
-import Category from '../../components/CategoryCard/Category'
+import Navbar from '../../Components/Navbar/Navbar'
+import Category from '../../Components/CategoryCard/Category'
 import React from 'react'
 
 const Header = () => {

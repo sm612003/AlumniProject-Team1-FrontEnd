@@ -1,11 +1,12 @@
 import styles from './Buttons.module.css'
 import { RxEnvelopeClosed } from 'react-icons/rx'
 
-export const Button = ({size , subscribed , text }) => {
+export const Button = ({size , subscribed , text , color}) => {
     const icon = subscribed === true ? <RxEnvelopeClosed className={styles.RxEnvelopeClosed}/> : '' ;
-    const class2 = size === "small" ? styles.smallButton : styles.bigButton ;
+    const Size = size === "small" ? styles.smallButton : styles.bigButton ;
+    const Color = color === "green" ? styles.green : styles.red ;
     return (
-        <button className={`${styles.Button} ${class2}`}>
+        <button className={`${styles.Button} ${Size} ${Color}`}>
             {icon} {text}
         </button>
     )

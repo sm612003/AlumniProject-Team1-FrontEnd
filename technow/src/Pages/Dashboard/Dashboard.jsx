@@ -1,6 +1,6 @@
 import React from 'react'
 import styles from "./Dashboard.module.css"
-import DashboardCard from '../../components/Dashboard Card/DashboardCard'
+import DashboardCard from '../../Components/Dashboard Card/DashboardCard'
 
  const Dashboard = () => {
   return (
@@ -15,7 +15,7 @@ import DashboardCard from '../../components/Dashboard Card/DashboardCard'
       </nav>
       <div className={styles.Bottom}>
       <div className={styles.Manage}>
-        <h1>Manage News</h1>
+        <h1 className={styles.h1}>Manage News</h1>
         <button className={styles.button}>AddNews</button>
       </div>
         <div className={styles.cont}><DashboardCard /></div>

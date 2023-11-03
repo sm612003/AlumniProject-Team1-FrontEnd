@@ -1,9 +1,11 @@
 import './App.css';
-import BlogCardLayout from './Pages/Blogs/BlogsPage';
+import { NewsCard } from './Components/NewsCard/News';
+import Newsletter from './Pages/Newsletter/Newsletter';
+
 function App() {
   return (
     <div className="App">
-      <BlogCardLayout/>
+      <Newsletter/>
     </div>
   );
 }

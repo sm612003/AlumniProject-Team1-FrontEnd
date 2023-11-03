@@ -116,13 +116,13 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    flex-shrink: 0;
+    flex-shrink: 0; 
     margin-left: 0;
     border-radius: 10px;
     margin-top: 1rem;
     
   }
-  img{
+  .img{
     width: 75%;
 
   
