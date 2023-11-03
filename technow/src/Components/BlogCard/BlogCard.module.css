@@ -13,18 +13,18 @@
 .h2{
     font-family: 'poppins';
     font-size: 1.5rem;
-    color: var(--colorblack);
+    /* color: var(--colorblack); */
 }
 
 .pheader{
     margin-top: 10px;
     font-size: 2rem;
     font-family: 'poppins';
-    color: var(--colorblack);
+    /* color: var(--colorblack); */
 }
 .pcontent{
     font-family: 'poppins';
-    color: var(--colorblack);
+    /* color: var(--colorblack); */
     
 
 }
@@ -49,20 +49,37 @@ h1::before{
     display: flex;
     margin-top: 2%;
     gap :2rem;
+
     
+}
+.blogcontent:hover{
+    cursor: pointer;
+    transform: scale(1.025);
+    box-shadow: 0 0 6px 2px #00000004;
+    
+    
+}
+.blogcontent:hover .h2{
+    color: var(--colorgreen);
 }
 
 .mainimage{
-    flex: 1;
+    width: 50%;
+    display: flex;
 }
 
 .maincontent{
-    flex: 1;
+    
+    width: 50%;
 }
 .image{
    width: 100%;
-   height: 100%;
 
+
+}
+
+.pclass{
+    font-size: 0.8rem;
 }
 
 @media screen and (max-width: 768px) {
@@ -70,7 +87,7 @@ h1::before{
         padding: 2% 5%;     }
 
     .h2 {
-        font-size: 1.2rem; /* Adjust font size for smaller screens */
+        font-size: 1.2rem; 
     }
 
     .pheader {

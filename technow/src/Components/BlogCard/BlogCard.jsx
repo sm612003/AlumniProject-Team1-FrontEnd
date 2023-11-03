@@ -6,7 +6,7 @@ import photo from "../../images/pic.jpg"
  const BlogCard = (porps)=>{
     //const {image, authorDate, header, text } = props
     return(
-        <div className={styles.blogtitle}>
+        
            
             <div className={styles.blogcontent}>
                 <div className={styles.mainimage}>
@@ -21,7 +21,7 @@ import photo from "../../images/pic.jpg"
                 </div>
             </div>
             
-        </div>
+    
     
     );
 }

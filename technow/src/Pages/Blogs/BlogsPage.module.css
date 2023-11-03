@@ -19,10 +19,25 @@
     position: absolute;
     width: 50%;
     height: 5px;
-    bottom: 3px;
+    bottom: 1px;
     left: 0;
     background-color: var(--color-green);
 }
 .pheader{
     margin-top: 10px;
+}
+
+@media screen and (max-width: 450px) {
+
+    .h1{
+        font-size: 1.8rem;
+    }
+   
+    .h1::before{
+        width: 30%;
+        height: 3px;
+        bottom: 1px;
+    }    
+
+
 }
