@@ -4,6 +4,7 @@ import NewsCard from '../../Components/NewsCard/News'
 import styles from './Newsletter.module.css'
 import Header from '../../Layouts/Header/Header'
 import Footer from '../../Layouts/Footer/Footer'
+import axios from 'axios'
 
 const Newsletter = () => {
     const [screenWidth, setScreenWidth] = useState(window.innerWidth);
@@ -20,10 +21,21 @@ const Newsletter = () => {
             window.removeEventListener('resize', handleResize);
         };
     }, []);
+        
+    const [newsData , setNewsData] = useState([]);
 
-    const title = "Trezor launches two new devices to help onboard crypto newbies"
-    const image = "https://techcrunch.com/wp-content/uploads/2023/08/threads-desktop-GettyImages-1524135861.jpg?w=730&crop=1"
-    const caption = "wouorud" ;
+    useEffect(() => {
+        const fetchData = async () => {
+            try{
+                const response = await axios.get('http://localhost:5000/read/news') ;
+                setNewsData(response.data);
+                console.log(newsData)
+            } catch(error){
+                console.error('Error fetching data: ', error)
+            }
+        };
+    fetchData();
+    }, []) ;
 
     return (
         <>
@@ -33,55 +45,16 @@ const Newsletter = () => {
                     Latest News
                 </h1>
                 <article className={styles.Newsletter}>
-                <NewsCard
-                    first={true}
-                    title={title}
-                    image={image}
-                    alt={"s,dnksdkk"}
-                    caption={"admjkjsa"}
-                />
-                <NewsCard
-                    className={styles.NewsCard}
-                    title={title}
-                    image={image}
-                    alt={"blbshdds"}
-                    caption={caption}
-                />
-                <NewsCard
-                    className={styles.NewsCard}
-                    title={title}
-                    image={image}
-                    alt={"blbshdds"}
-                    caption={caption}
-                />
-                <NewsCard
-                    className={styles.NewsCard}
-                    title={title}
-                    image={image}
-                    alt={"blbshdds"}
-                    caption={caption}
-                />
-                <NewsCard
-                    className={styles.NewsCard}
-                    title={title}
-                    image={image}
-                    alt={"blbshdds"}
-                    caption={caption}
-                />
-                <NewsCard
-                    className={styles.NewsCard}
-                    title={title}
-                    image={image}
-                    alt={"blbshdds"}
-                    caption={caption}
-                />
-                <NewsCard
-                    className={styles.NewsCard}
-                    title={title}
-                    image={image}
-                    alt={"blbshdds"}
-                    caption={caption}
-                />
+                {newsData.map((key , index) => (
+                    <NewsCard 
+                    key={key._id}
+                    first={index === 0} 
+                    title={key.title}
+                    image={key.image}   
+                    author={key.author}
+                    date = {key.date}
+                    />
+                ))}
                 </article>
                 <div className={styles.btn}>
                     <Button text="Load more" size={width} color={"green"} subscribed={false}/>                
