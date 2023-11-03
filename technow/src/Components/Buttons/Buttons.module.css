@@ -3,6 +3,7 @@
 :root{
     --color-green : #119C5e ;
     --color-shadow : #00000040 ;
+    --color-red : #E32751 ;
 }
 
 .Button{
@@ -13,10 +14,23 @@
     font-family: 'Poppins' sans-serif;
     font-weight: bolder;
     cursor: pointer;
-    border: solid 2px var(--color-green);
     background-color: transparent;
-    color: var(--color-green);
     font-size: 1.125rem ;
+}
+
+.green{
+    color: var(--color-green);
+    border: solid 2px var(--color-green);
+}
+
+.red{
+    color: var(--color-red);
+    border: solid 2px var(--color-red);
+}
+
+.red:hover{
+    background-color: var(--color-red);
+    color: white;
 }
 
 .smallButton {
@@ -28,7 +42,7 @@
     margin-right: 2px ;
 }
 
-.Button:hover{
+.Button.green:hover{
     background-color: var(--color-green);
     color: white; 
     box-shadow: 5px 5px 4px 0px var(--color-shadow);
