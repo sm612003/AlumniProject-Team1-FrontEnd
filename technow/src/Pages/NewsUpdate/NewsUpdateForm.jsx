@@ -35,7 +35,7 @@ const NewsForm = () => {
               <input className={styles.input} type="text" id="title" name="title" />
 
               <label className={styles.name} htmlFor="date">Date</label>
-              <input className={styles.input}  type="text" id="date" name="date" />
+              <input className={styles.input}  type="date" id="date" name="date" />
 
               <label className={styles.name} htmlFor="subtitle">Subtitle</label>
               <input className={styles.input}  type="text" id="subtitle" name="subtitle" />
