@@ -1,10 +1,26 @@
-import React from "react";
+import {useEffect , useState} from "react";
 import styles from "./BlogsForm.module.css"; // Import the CSS module
 import photo from "../../Assets/Images/Mail.png"
 import { ScrollButton } from "../../Components/ScrollButton/ScrollButton";
+import { Button } from "../../Components/Buttons/Buttons";
 
 
 const BlogForm = () => {
+  const [screenWidth, setScreenWidth] = useState(window.innerWidth);
+  const [width, setWidth] = useState(screenWidth < 900 ? 'small' : 'big');
+
+  useEffect(() => {
+      const handleResize = () => {
+          const newWidth = window.innerWidth;
+          setScreenWidth(newWidth);
+          setWidth(newWidth < 1024 ? 'small' : 'big');
+      };
+      window.addEventListener('resize', handleResize);
+      return () => {
+          window.removeEventListener('resize', handleResize);
+      };
+  }, []);
+
   return (
     <div>
      
@@ -17,18 +33,17 @@ const BlogForm = () => {
         <div className={styles.Left}>
           <form className={styles.form} action="">
 
-            <div className={styles.inputs}>
               <label className={styles.name} htmlFor="fullname">Full Name</label>
               <input className={styles.input}  type="text" id="fullname" name="fullname" />
-            </div>
-            <div className={styles.inputs}>
+
+
               <label className={styles.name} htmlFor="title">Title</label>
               <input className={styles.input} type="text" id="title" name="title" />
-            </div>
-            <div className={styles.inputs}>
+
+
               <label className={styles.name} htmlFor="date">Date</label>
               <input className={styles.input}  type="text" id="date" name="date" />
-            </div>
+
             </form>
         </div>
 
@@ -43,8 +58,8 @@ const BlogForm = () => {
             <textarea className={styles.area} id="content" name="content"></textarea>
           </div>
 
-          <button className={styles.submitFile} type="submit">Upload photo</button>
-          <button className={styles.submitButton} type="submit">Post Now</button>
+        <Button color={"green"} size={width} text={"Upload Photo"} />
+        <Button color={"red"} size={width} text={"Post Now"}/>
         </div>
     </div>
       <ScrollButton/>

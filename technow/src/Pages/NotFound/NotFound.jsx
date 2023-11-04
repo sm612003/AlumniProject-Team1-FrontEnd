@@ -31,7 +31,7 @@ const NotFound = () => {
                     <p className={styles.P2}>Page NOT FOUND</p>
                     <p className={styles.P}>Something went wrong</p>
                 </div>
-                <Link to='/home'><Button text={"Go Back Home"} color={"green"} size={width} subscribed={false}/></Link>
+                <Link to='/'><Button text={"Go Back Home"} color={"green"} size={width} subscribed={false}/></Link>
             </div>
             <div className={styles.Right}>
                 <video id="vid" className={styles.Video} autoPlay loop muted> <source src={video} type='video/mp4'/>Your Browser does not support this video tag.</video>

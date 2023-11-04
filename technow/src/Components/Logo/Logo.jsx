@@ -5,7 +5,7 @@ export const Logo = ({color}) =>{
     const logoColor = color === "green" ? styles.LogoGreen : styles.LogoWhite
 
     return(
-        <Link to='/home'>
+        <Link to='/'>
             <div>
                 <p className={`${styles.Logo} ${logoColor}`}>TechNow</p>
                 <span className={styles.Span}>News</span>

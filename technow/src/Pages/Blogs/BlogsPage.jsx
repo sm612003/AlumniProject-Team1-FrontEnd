@@ -54,7 +54,9 @@ const BlogCardLayout =() => {
                             />
                         ))}
                 </header>
-                <Button color={"green"} text={"Load more"} size={width} subscribed={false}/>
+                <div className={styles.btn}>
+                    <Button color={"green"} text={"Load more"} size={width} subscribed={false}/>
+                </div>
             </div>
             <ScrollButton/>          
         </>

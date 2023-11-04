@@ -2,9 +2,8 @@ import { useState , useEffect} from 'react'
 import { Button } from '../../Components/Buttons/Buttons'
 import NewsCard from '../../Components/NewsCard/News'
 import styles from './Newsletter.module.css'
-import Header from '../../Layouts/Header/Header'
-import Footer from '../../Layouts/Footer/Footer'
 import axios from 'axios'
+import { ScrollButton } from '../../Components/ScrollButton/ScrollButton'
 
 const Newsletter = () => {
     const [screenWidth, setScreenWidth] = useState(window.innerWidth);
@@ -35,11 +34,10 @@ const Newsletter = () => {
             }
         };
     fetchData();
-    }, []) ;
+    }, [newsData]) ;
 
     return (
         <>
-            <Header/>
             <div className={styles.Container}>
                 <h1 className={styles.H1}>
                     Latest News
@@ -59,8 +57,8 @@ const Newsletter = () => {
                 <div className={styles.btn}>
                     <Button text="Load more" size={width} color={"green"} subscribed={false}/>                
                 </div>
+                <ScrollButton/>
             </div>
-            <Footer/>
         </>
     )
 }

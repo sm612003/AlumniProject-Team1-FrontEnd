@@ -1,7 +1,10 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
 
-
+:root{
+    --green1 : #14B86E ;
+    --green2 : #119C59 ;
+}
 .Dashboard{
     display: flex;
     margin: 0 3%;
@@ -20,38 +23,44 @@
   width: 80%;
   margin: 0 auto;
 }
-/* .Hero{
-    border: 4px solid rgb(41, 187, 124);
-    border-radius: 10px;
-    padding: 10px;
-    border-left-width: 2rem;
-} */
+
 .h1{
-    color: #14B86E;
-font-family: "Poppins", sans-serif;
-font-size: 48px;
-font-style: normal;
-font-weight: 700;
-line-height: normal;
-text-decoration-line: underline;
+    color: var(--green1);
+    font-family: "Poppins", sans-serif;
+    font-size: 48px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    position: relative;
 }
+
+.h1::before{
+    content: "";
+    position: absolute;
+    width: 50%;
+    height: 5px;
+    bottom: 1px;
+    left: 0;
+    background-color: var(--green1);
+}
+
 .Logo{
-    color: var(--green, #119C59);
-font-family: Offside;
-font-size: 36px;
-font-style: normal;
-font-weight: 400;
-line-height: normal;
+    color: var(--green2);
+    font-family: Offside;
+    font-size: 36px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
 }
 
 .Name{
-    color: var(--green, #119C59);
-font-family: Poppins;
-font-size: 36px;
-font-style: normal;
-font-weight: 800;
-line-height: normal;
-letter-spacing: 0.1px;
+    color: var(--green2);
+    font-family: Poppins;
+    font-size: 36px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    letter-spacing: 0.1px;
 }
 .Buttons{
     gap:1rem;

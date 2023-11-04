@@ -8,7 +8,7 @@
   border-left: 10px ;
   width: 95% ;
   margin: 0 auto;
-
+  font-size: 1.1rem;
 }
 
 .Middle{
@@ -21,51 +21,30 @@
 .navMenu{
   display: flex;
   align-items: center;
- 
   flex-direction: row;
   list-style: none;
-  gap:3rem;
+  column-gap: 5rem;
 }
+
 .navLinks{
   text-decoration: none;
   color: black;
   padding: 0.5rem 1rem;
 }
+
 .navbarlogo{
   color: var(--green, #119C59);
   align-self: start;
-  /* margin-top: 3rem; */
   font-family: Offside;
   font-size: 36px;
   font-style: normal;
   font-weight: 400;
-  /* margin-top: 2rem; */
-  /* line-height: normal; */
-
 }
+
 button:hover{
   color: #ffffff;
   background-color: #119C59;
   border: none;
-}
-
-button{
-  width: 155px;
-  height: 50px;
-  flex-shrink: 0;
-  background-color:#fff;
-  color:#119C59;
-  font-family: Poppins;
-  font-size: 18px;
-  font-style: normal;
-  font-weight: 600;
-  line-height: normal;
-  border-color: var(--green, #119C59);
-  border-radius: 14px;
-  border: 1px solid green;
- 
-  margin-bottom: 1rem;
-  margin-top: 1rem;
 }
 
 .navLinks:hover {
@@ -78,8 +57,7 @@ button{
 
 @media (max-width: 768px) {
   .NavbarItems {
-    flex-direction: column; 
-    /* margin-top: 4rem; */
+    flex-direction: column;   
   }
   .Middle{
     width: auto;

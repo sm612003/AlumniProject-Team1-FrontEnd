@@ -3,6 +3,10 @@
     --color-black: #000;
     --color-green: #119C59;
 }
+
+.header{
+    margin-bottom: 2rem;
+}
 .main{
     padding: 2% 10%;
 }
@@ -25,6 +29,11 @@
 }
 .pheader{
     margin-top: 10px;
+}
+
+.btn{
+    display: flex;
+    justify-content: center;
 }
 
 @media screen and (max-width: 450px) {

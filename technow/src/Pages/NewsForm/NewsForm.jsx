@@ -1,4 +1,3 @@
-import React from "react";
 import { Button } from "../../Components/Buttons/Buttons";
 import styles from "./NewsForm.module.css"; 
 import photo from "../../Assets/Images/Mail.png"
@@ -27,18 +26,15 @@ const NewsForm = () => {
         <div className={styles.Left}>
           <form className={styles.form} action="">
 
-            <div className={styles.inputs}>
               <label className={styles.name} htmlFor="fullname">Full Name</label>
               <input className={styles.input}  type="text" id="fullname" name="fullname" />
-            </div>
-            <div className={styles.inputs}>
+
               <label className={styles.name} htmlFor="title">Title</label>
               <input className={styles.input} type="text" id="title" name="title" />
-            </div>
-            <div className={styles.inputs}>
+
               <label className={styles.name} htmlFor="date">Date</label>
               <input className={styles.input}  type="text" id="date" name="date" />
-            </div>
+
             </form>
         </div>
 

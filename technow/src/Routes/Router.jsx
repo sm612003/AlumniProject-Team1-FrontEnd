@@ -12,8 +12,10 @@ import Dashboard from "../Pages/Dashboard/Dashboard"
 import NewsForm from "../Pages/NewsForm/NewsForm"
 import NewsLetterDetails from "../Pages/NewsletterDetails/NewsletterDetais"
 import NewsUpdate from "../Pages/NewsUpdate/NewsUpdateForm"
-import Subscribe from "../Pages/Subscribe/Subscribe"
+import SubscribePage from "../Pages/Subscribe/Subscribe"
 import { createBrowserRouter, Outlet, } from "react-router-dom";
+import { Logo } from '../Components/Logo/Logo';
+import NotFound from '../Pages/NotFound/NotFound';
 
 const Layout =()=>{
   return(
@@ -32,8 +34,12 @@ const router = createBrowserRouter([
     element:<Layout />,
     children:[
       {
-          path:"/",
-          element:<HomePage/>
+        path:"/",
+        element:<HomePage/>
+      },
+      {
+        path: "/",
+        element: <Logo/>
       },
       {
           path:"/newsletter",
@@ -57,7 +63,7 @@ const router = createBrowserRouter([
 },
 {
   path:"/subscribe",
-  element:<Subscribe />
+  element:<SubscribePage />
 },
 {
   path:"/blog",
@@ -74,14 +80,15 @@ const router = createBrowserRouter([
 {
   path:"/newsForm",
   element:<NewsForm />
-},
-   
+},  
     ]
   },
   {
       path: "/dashboard",
       element: <Dashboard />,
-    },
- 
+    },{
+      path: "/*",
+      element : <NotFound/>
+    }
 ]);
 export default router
