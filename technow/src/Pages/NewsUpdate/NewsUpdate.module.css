@@ -1,159 +1,178 @@
 .Container {
-    display: flex;
-    margin: 2% 10%;
-    flex-direction: column;  
-  }
-  .Top{
-    display:flex;
-    column-gap: 20%;
-  }
+  display: flex;
+  margin: 0 10%;
+  flex-direction: column;
+  
+}
+.Top{
+  display:flex;
+  flex-direction: row;
+  width: 100%;
+  column-gap: 20%;
+}
 
-  .Bottom{
-    width: 100%;
-    margin: 0 auto;
-  }
+.Bottom{
+  width: 100%;
+  margin: 2% auto;
+  display: flex;
+  flex-direction: column;
+  row-gap: 20px;
+}
 
-  .Left{
-    display: flex;
+.Left , .photo{
+  width: 40%;
+}
+
+.h1{
+  color: var(--color-green);
+  font-family: Poppins;
+  font-size: 48px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  position: relative;
+  width: fit-content;
+}
+
+.h1::after{
+  content: "";
+  position: absolute;
+  bottom: -5px;
+  right: 50%;
+  width: 50%;
+  height: 5px;
+  background-color: var(--color-green);
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  row-gap: 1.5rem;
+  margin-top: 1.5rem;
+  padding: 0;  
+  width: 100% ;
+}
+
+.name{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex: 1 0 0;
+  align-self: stretch;
+  color: #25282B;
+  font-family: Poppins;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: bold;
+  line-height: normal;
+  margin-bottom: 0;
+}
+
+.input {
+  display: flex;
+  flex-shrink: 0;
+  width: 100%;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.label {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.submitButton {
+  color: white;
+  display: flex;
+  width: 200px;
+  padding: 15px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  border-radius: 10px;
+  background: var(--green, #119C59);
+  
+}
+
+
+.area {
+  display: flex;
+  width: 100% ;
+  height: 15rem;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
+  margin-left: 0;
+  border-radius: 10px;
+  margin-top: 1rem;
+  padding: 1rem;
+}
+
+.area.links{
+  height: 5rem !important ;
+}
+
+.img{
+  width: 75%;  
+}
+
+.area , .input{
+  border: 1px solid #ccc;
+}
+
+.area:focus , .input:focus {
+  outline: none;
+}
+
+.btn{
+  display: flex;
+  flex-direction: column;
+  row-gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+@media (max-width: 768px) {
+  .Container {
     flex-direction: column;
-    row-gap: 5rem;
+    margin: 0 2rem;
   }
-
-  .Left , .photo{
-    width: 40%;
-  }
-
-  .h1{
-    color: var(--color-green);
-    font-family: Poppins;
-    font-size: 48px;
-    font-style: normal;
-    font-weight: 700;
-    line-height: normal;
-    position: relative;
-    width: fit-content;
-    margin-top:0;
-  }
-
-  .h1::after{
-    content: "";
-    position: absolute;
-    bottom: -5px;
-    right: 50%;
-    width: 50%;
-    height: 5px;
-    background-color: #14B86E;
-  }
-
   .form {
     display: flex;
     flex-direction: column;
-    margin-top: 1.5rem;
-    row-gap: 1.5rem;
+    row-gap: 20px;
     padding: 0;  
-    width: 100% ;
+    width: 170% ;
   }
-  
-  .name{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    flex: 1 0 0;
-    align-self: stretch;
-    color: #25282B;
-    font-family: Poppins;
-    font-size: 20px;
-    font-style: normal;
-    line-height: normal;
-    margin-bottom: 0;
+  .name {
     font-weight: bold;
+    margin-top: 2rem;
   }
-  
-  .input {
-    display: flex;
-    flex-shrink: 0;
-    width: 100%;
-    padding: 10px;
-    border-radius: 5px;
-    cursor: pointer;
+
+
+  .photo {
+    display: none; 
   }
-  
+
+  .h1 {
+    text-align: left;
+    font-size: 30px;
+    margin-top: 70px;
+
+  }
   .area {
-    display: flex;
-    width: 100% ;
-    height: 15rem;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    flex-shrink: 0;
-    margin-left: 0;
-    border-radius: 10px;
     margin-top: 1rem;
+    width: 100%;
+    height: 10rem; 
+  }
+  .input {
+    width: 100%;
     
+   
   }
-  .img{
-    width: 75%;
+  .submitButton{
+    margin-top: 1rem;
   }
-
-  .Bottom{
-    display: flex;
-    flex-direction: column;
-  }
-
-  .area , .input{
-    border: 1px solid #ccc;
-  }
-
-  .area:focus , .input:focus {
-    outline: none;
-  }
-
-  .photo{
-    display: flex;
-    align-items: center;
-  }
-
-  @media (max-width: 768px) {
-    .Container {
-      flex-direction: column;
-      margin: 0 2rem; /* Adjust the margin for smaller screens */
-    }
-    .form {
-      display: flex;
-      flex-direction: column;
-      row-gap: 20px;
-      padding: 0;  
-      width: 170% ;
-    }
-    .label {
-      font-weight: bold;
-      margin-bottom: 5px;
-      margin-top: 2rem;
-    }
   
-
-    .photo {
-      display: none; /* Hide the photo on smaller screens */
-    }
-  
-    .h1 {
-      text-align: left;
-      font-size: 30px;
-      margin-top: 70px;
-
-    }
-    .textarea {
-      margin-top: 1rem;
-      width: 100%; /* Adjust the width for smaller screens */
-      height: 10rem; /* Adjust the height for smaller screens */
-    }
-    .input {
-      width: 100%;
-      
-     
-    }
-    .submitButton{
-      margin-top: 1rem;
-    }
-    
-  }
+}

@@ -13,7 +13,10 @@
 
   .Bottom{
     width: 100%;
-    margin: 0 auto;
+    margin: 2% auto;
+    display: flex;
+    flex-direction: column;
+    row-gap: 20px;
   }
 
   .Left , .photo{
@@ -106,6 +109,11 @@
     margin-top: 1rem;
     padding: 1rem;
   }
+
+  .area.links{
+    height: 5rem !important ;
+  }
+
   .img{
     width: 75%;  
   }
@@ -118,10 +126,17 @@
     outline: none;
   }
 
+  .btn{
+    display: flex;
+    flex-direction: column;
+    row-gap: 1rem;
+    margin-bottom: 1rem;
+  }
+
   @media (max-width: 768px) {
     .Container {
       flex-direction: column;
-      margin: 0 2rem; /* Adjust the margin for smaller screens */
+      margin: 0 2rem;
     }
     .form {
       display: flex;
@@ -137,7 +152,7 @@
   
 
     .photo {
-      display: none; /* Hide the photo on smaller screens */
+      display: none; 
     }
   
     .h1 {
@@ -148,8 +163,8 @@
     }
     .area {
       margin-top: 1rem;
-      width: 100%; /* Adjust the width for smaller screens */
-      height: 10rem; /* Adjust the height for smaller screens */
+      width: 100%;
+      height: 10rem; 
     }
     .input {
       width: 100%;
