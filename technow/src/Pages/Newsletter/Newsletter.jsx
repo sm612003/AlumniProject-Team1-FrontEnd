@@ -4,6 +4,7 @@ import NewsCard from '../../Components/NewsCard/News'
 import styles from './Newsletter.module.css'
 import axios from 'axios'
 import { ScrollButton } from '../../Components/ScrollButton/ScrollButton'
+import { Link } from 'react-router-dom'
 
 const Newsletter = () => {
     const [screenWidth, setScreenWidth] = useState(window.innerWidth);
@@ -22,43 +23,112 @@ const Newsletter = () => {
     }, []);
         
     const [newsData , setNewsData] = useState([]);
+    const [networkError, setNetworkError] = useState(false);
+    const [error, setError] = useState(false);
+    const [isLoading, setIsLoading] = useState(false);
 
     useEffect(() => {
         const fetchData = async () => {
-            try{
+            try{ 
+                if(newsData.length === 0)
+                    setIsLoading(true)
+                if (!navigator.onLine) {
+                    setNetworkError(true);
+                    setError(false);
+                    setIsLoading(false)
+                    return;
+                  }
                 const response = await axios.get('http://localhost:5000/read/news') ;
+                  if(!response.ok){
+                    setError(true)
+                    setIsLoading(false)
+                    setError(false)
+                    setNetworkError(false)
+                  }
                 setNewsData(response.data);
-                console.log(newsData)
+                if(newsData){
+                    setIsLoading(false)
+                    setError(false)
+                    setNetworkError(false)
+                }
             } catch(error){
-                console.error('Error fetching data: ', error)
+                if (error.message === "Network request failed") {
+                    setNetworkError(true);
+                    setIsLoading(false)
+                  } else {
+                    setError(true);
+                  }
+                  window.addEventListener("offline", () => {
+                    setNetworkError(true);
+                    setError(false);
+                    setIsLoading(false)
+                  });
+                  console.error("API Error: ", error);
+                  setIsLoading(false);
             }
         };
     fetchData();
-    }, [newsData]) ;
+    }, [newsData    ]) ;
 
+    const errorStyle = {
+        display: "flex",
+        color: "red",
+        padding: "10px",
+        borderRadius: "5px",
+      };
+
+    const containerStyle = {
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "center",
+        alignItems: "center",
+        height: "100%",
+    };
+    
     return (
         <>
             <div className={styles.Container}>
                 <h1 className={styles.H1}>
                     Latest News
                 </h1>
-                <article className={styles.Newsletter}>
-                {newsData.map((key , index) => (
-                    <NewsCard 
-                    key={key._id}
-                    first={index === 0} 
-                    title={key.title}
-                    image={key.image}   
-                    author={key.author}
-                    date = {key.date}
-                    />
-                ))}
-                </article>
-                <div className={styles.btn}>
-                    <Button text="Load more" size={width} color={"green"} subscribed={false}/>                
-                </div>
-                <ScrollButton/>
+
+                    {isLoading ? (
+                        <div style={containerStyle}>
+                            <h1 >Loading ...</h1>
+                        </div>
+                    ) : networkError? (
+                <div style={containerStyle}>
+                    <h1 style={errorStyle}>Newtwork Issue</h1>
+                </div> 
+                ) : error ? (
+                    <div style={containerStyle}>
+                        <h1 style={errorStyle}>News Not Found</h1>
+                    </div>
+                ): (
+                    <>
+                        <article className={styles.Newsletter}>
+                            {newsData.map((key , index) => (
+                                <Link to={`/newsletterDetails/${key._id}`}>
+                                <NewsCard 
+                                    key={key._id}
+                                    first={index === 0} 
+                                    title={key.title}
+                                    image={key.image}   
+                                    author={key.author}
+                                    date = {key.date}
+                                    > 
+                                </NewsCard>
+                                </Link>
+                                ))}
+                        </article>
+                        <div className={styles.btn}>
+                            <Button text="Load more" size={width} color={"green"} subscribed={false}/>                
+                        </div>
+                    </>
+                )}
+
             </div>
+            <ScrollButton/>
         </>
     )
 }
