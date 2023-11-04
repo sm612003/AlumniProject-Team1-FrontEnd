@@ -6,7 +6,7 @@ export const Logo = ({color}) =>{
 
     return(
         <Link to='/'>
-            <div>
+            <div className={styles.Container}>
                 <p className={`${styles.Logo} ${logoColor}`}>TechNow</p>
                 <span className={styles.Span}>News</span>
             </div>

@@ -5,6 +5,11 @@
     --color-red: #E32751;
 }
 
+.Container{
+    display: flex;
+
+}
+
 .Logo{
     font-family: 'Offside', sans-serif;
     font-size: 2rem;
@@ -18,7 +23,7 @@
     font-family: 'Manrope' , sans-serif;
     color: var(--color-red);
     font-size: 1rem;
-    margin-top: 0;
+    margin: 0;
     padding: 0 5px;
 }
 

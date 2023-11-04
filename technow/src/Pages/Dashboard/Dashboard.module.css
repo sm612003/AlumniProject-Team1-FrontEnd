@@ -62,14 +62,18 @@
     line-height: normal;
     letter-spacing: 0.1px;
 }
-.Buttons{
-    gap:1rem;
+
+.ul{
     display: flex;
+    list-style: none;
+    column-gap: 1rem;
+    font-size: 1.2rem;
 }
-.Button{
-    border: none;
-    
+
+.li:hover{
+    color: var(--green2);
 }
+
 .Manage{
     display: flex;
     flex-direction: column;

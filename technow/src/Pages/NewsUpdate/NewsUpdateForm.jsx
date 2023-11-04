@@ -3,8 +3,9 @@ import styles from "./NewsUpdate.module.css";
 import photo from "../../Assets/Images/Mail.png"
 import { Button } from "../../Components/Buttons/Buttons";
 import { ScrollButton } from "../../Components/ScrollButton/ScrollButton";
+import { useParams } from "react-router-dom";
 
-const NewsForm = () => {
+const NewsUpdate = () => {
   const [screenWidth, setScreenWidth] = useState(window.innerWidth);
   const [width, setWidth] = useState(screenWidth < 1024 ? 'small' : 'big');
 
@@ -19,6 +20,9 @@ const NewsForm = () => {
           window.removeEventListener('resize', handleResize);
       };
   }, []);
+
+  const {id} = useParams();
+  console.log(id)
 
   return (   
     <div className={styles.Container}>
@@ -71,4 +75,4 @@ const NewsForm = () => {
   );
 }
 
-export default NewsForm;
+export default NewsUpdate ;
