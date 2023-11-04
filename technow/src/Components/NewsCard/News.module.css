@@ -26,6 +26,7 @@
     align-items: center;
     column-gap: 5%;
     margin : 0 3% 3% 3% ;
+    color: black;
 }
 
 .SectionFirst:hover {
