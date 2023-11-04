@@ -6,6 +6,7 @@ import axios from 'axios'
 import { ScrollButton } from '../../Components/ScrollButton/ScrollButton'
 import { Link } from 'react-router-dom'
 
+//Page
 const Newsletter = () => {
     const [screenWidth, setScreenWidth] = useState(window.innerWidth);
     const [width, setWidth] = useState(screenWidth < 1024 ? 'small' : 'big');
