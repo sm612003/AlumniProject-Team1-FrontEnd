@@ -1,14 +1,14 @@
 .container{
-    width:12rem;
+    width:8rem;
     height: 4rem;
     display: flex;
     align-items: center;
 }
 .icon{
-    width: 45%;
+    width: 50%;
 }
 .desc{
-    width: 50%;
+    width: fit-content;
     height: 100%;
     font-size: 1rem;
     display: flex;
@@ -17,4 +17,6 @@
 }
 .p{
     margin: 0;
+    width: fit-content;
+    font-size: 0.8rem;
 }

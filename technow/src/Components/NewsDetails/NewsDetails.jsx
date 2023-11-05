@@ -3,11 +3,7 @@ import styles from './NewsDetails.module.css'
 
 // Component
 const NewsDetails = ({title , author , date , image , desc , sub , subDesc , links}) => {
-    const formatDate = (date) => {
-        const dateOnly = date.split('T')[0];
-        const [year, month, day] = dateOnly.split('-');
-        return `${day}-${month}-${year}`;
-    }
+    const time = new Date(date).toLocaleDateString('en-us', { weekday:"long", year:"numeric", month:"short", day:"numeric", timeZone: "GMT"}) 
     return(
         <div className={styles.Container}>
             <div className={styles.Title}>
@@ -15,7 +11,7 @@ const NewsDetails = ({title , author , date , image , desc , sub , subDesc , lin
                     {title}
                 </h1>
                 <p className={styles.Caption}>
-                    {author}/ {formatDate(date)}
+                    {author}/ {time}
                 </p>
             </div>
             <div className={styles.Desc}>

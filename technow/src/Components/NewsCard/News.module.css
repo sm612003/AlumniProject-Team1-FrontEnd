@@ -6,10 +6,11 @@
 .Section{
     display: flex;
     flex-direction: column;
-    width : 40% ;
+    width : 100% ;
     align-items: center;
     margin: 2%;
     padding: 1% ;
+    color: black;
 }
 
 .Section:hover{
@@ -24,6 +25,7 @@
     flex-direction: row-reverse;
     width: 100%;
     align-items: center;
+    justify-content: flex-end;
     column-gap: 5%;
     margin : 0 3% 3% 3% ;
     color: black;
@@ -77,6 +79,16 @@
 .Desc{
     width: 100%;
 }
+
+.Link.FirstLink{
+    width: 100%;
+    display: flex;  
+}
+
+.Link{
+    width: 45%;
+}
+
 
 @media screen and (max-width: 600px) {
     .Section{
