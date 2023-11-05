@@ -1,13 +1,13 @@
 import { useState , useEffect} from 'react'
 import { Button } from '../../Components/Buttons/Buttons'
 import NewsCard from '../../Components/NewsCard/News'
-import styles from './Newsletter.module.css'
+import styles from '../../Pages/Newsletter/Newsletter.module.css'
 import axios from 'axios'
 import { ScrollButton } from '../../Components/ScrollButton/ScrollButton'
-import { Link } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 
 //Page
-const Newsletter = () => {
+const NewsCategory = () => {
     const [screenWidth, setScreenWidth] = useState(window.innerWidth);
     const [width, setWidth] = useState(screenWidth < 1024 ? 'small' : 'big');
 
@@ -23,6 +23,8 @@ const Newsletter = () => {
         };
     }, []);
         
+    const {categoryName} = useParams()
+    console.log(categoryName);
     const [newsData , setNewsData] = useState([]);
     const [networkError, setNetworkError] = useState(false);
     const [error, setError] = useState(false);
@@ -39,7 +41,7 @@ const Newsletter = () => {
                     setIsLoading(false)
                     return;
                   }
-                const response = await axios.get('http://localhost:5000/read/news') ;
+                const response = await axios.get(`http://localhost:5000/read/news/byCategory/${categoryName}`) ;
                   if(!response.ok){
                     setError(true)
                     setIsLoading(false)
@@ -68,8 +70,10 @@ const Newsletter = () => {
                   setIsLoading(false);
             }
         };
-    fetchData();
-    },) ;
+        if(categoryName){
+            fetchData();
+        }
+    }) ;
 
     const errorStyle = {
         display: "flex",
@@ -109,17 +113,17 @@ const Newsletter = () => {
                     <>
                         <article className={styles.Newsletter}>
                             {newsData.map((key , index) => (
-                                <Link to={`/newsletterDetails/${key._id}`}>
-                                <NewsCard 
-                                    key={key._id}
-                                    first={index === 0} 
-                                    title={key.title}
-                                    image={key.image}   
-                                    author={key.author}
-                                    date = {key.date}
-                                    > 
-                                </NewsCard>
-                                </Link>
+                               <Link to={`/newsletterDetails/${key._id}`}>
+                               <NewsCard 
+                                   key={key._id}
+                                   first={index === 0} 
+                                   title={key.title}
+                                   image={key.image}   
+                                   author={key.author}
+                                   date = {key.date}
+                                   > 
+                               </NewsCard>
+                               </Link>
                                 ))}
                         </article>
                         <div className={styles.btn}>
@@ -134,4 +138,4 @@ const Newsletter = () => {
     )
 }
 
-export default Newsletter
+export default NewsCategory

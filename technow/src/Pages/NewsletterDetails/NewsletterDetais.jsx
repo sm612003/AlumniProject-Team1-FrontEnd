@@ -55,7 +55,7 @@ const NewsletterDetails =() => {
       if(id){
         fetchData();
       }
-  }, [newsData , id]) ;
+  },) ;
 
   const errorStyle = {
       display: "flex",

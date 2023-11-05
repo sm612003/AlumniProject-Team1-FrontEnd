@@ -16,6 +16,7 @@ import SubscribePage from "../Pages/Subscribe/Subscribe"
 import { createBrowserRouter, Outlet, } from "react-router-dom";
 import { Logo } from '../Components/Logo/Logo';
 import NotFound from '../Pages/NotFound/NotFound';
+import NewsCategory from '../Pages/NewsCategory/NewsCategory';
 
 const Layout =()=>{
   return(
@@ -48,6 +49,10 @@ const router = createBrowserRouter([
       {
           path:"/newsletterDetails/:id",
           element:<NewsLetterDetails />
+      },
+      {
+        path:"/newsCategory/:categoryName",
+        element:<NewsCategory />
       },
       {
         path:"/contact",

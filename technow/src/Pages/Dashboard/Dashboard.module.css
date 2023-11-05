@@ -28,6 +28,7 @@
     color: var(--green1);
     font-family: "Poppins", sans-serif;
     font-size: 48px;
+    width: fit-content;
     font-style: normal;
     font-weight: 700;
     line-height: normal;

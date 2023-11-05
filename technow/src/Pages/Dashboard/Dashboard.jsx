@@ -5,6 +5,7 @@ import { ScrollButton } from '../../Components/ScrollButton/ScrollButton'
 import { Button } from '../../Components/Buttons/Buttons'
 import axios from 'axios'
 import {Logo} from '../../Components/Logo/Logo'
+import { Link } from 'react-router-dom'
 
  const Dashboard = () => {
   const [screenWidth, setScreenWidth] = useState(window.innerWidth);
@@ -68,7 +69,7 @@ import {Logo} from '../../Components/Logo/Logo'
           }
       };
   fetchData();
-  }, [newsData    ]) ;  
+  },) ;  
 
     const errorStyle = {
       display: "flex",
@@ -100,7 +101,9 @@ import {Logo} from '../../Components/Logo/Logo'
       <div className={styles.Bottom}>
       <div className={styles.Manage}>
         <h1 className={styles.h1}>Manage News</h1>
-        <Button color={"green"} text={'Add News'} size={width} subscribed={false}/>
+        <Link to='/newsForm'>
+          <Button color={"green"} text={'Add News'} size={width} subscribed={false}/>
+        </Link>
       </div>
         {isLoading ? (
                         <div style={containerStyle}>
@@ -117,15 +120,17 @@ import {Logo} from '../../Components/Logo/Logo'
                 ): (
                     <>
                         <div className={styles.cont}>
-                            {newsData.map((key , index) => (
-                                <DashboardCard 
-                                    key={key._id}
-                                    title={key.title}  
-                                    author={key.author}
-                                    date = {key.date}
-                                    _id={key._id}
-                                    > 
-                                </DashboardCard>
+                            {newsData.map((key , index) => (  
+                              <Link to={`/newsletterDetails/${key._id}`}>
+                                  <DashboardCard 
+                                      key={key._id}
+                                      title={key.title}  
+                                      author={key.author}
+                                      date = {key.date}
+                                      _id={key._id}
+                                      > 
+                                  </DashboardCard>
+                                </Link>
                                 ))}
                         </div>
                     </>
