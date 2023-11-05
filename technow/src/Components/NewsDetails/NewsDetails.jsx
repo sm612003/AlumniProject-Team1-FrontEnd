@@ -3,6 +3,11 @@ import styles from './NewsDetails.module.css'
 
 // Component
 const NewsDetails = ({title , author , date , image , desc , sub , subDesc , links}) => {
+    const formatDate = (date) => {
+        const dateOnly = date.split('T')[0];
+        const [year, month, day] = dateOnly.split('-');
+        return `${day}-${month}-${year}`;
+    }
     return(
         <div className={styles.Container}>
             <div className={styles.Title}>
@@ -10,7 +15,7 @@ const NewsDetails = ({title , author , date , image , desc , sub , subDesc , lin
                     {title}
                 </h1>
                 <p className={styles.Caption}>
-                    {author}/ {date}
+                    {author}/ {formatDate(date)}
                 </p>
             </div>
             <div className={styles.Desc}>
