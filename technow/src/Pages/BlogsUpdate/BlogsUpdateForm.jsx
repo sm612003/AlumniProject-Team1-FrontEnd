@@ -3,6 +3,7 @@ import styles from "./BlogsUpdate.module.css";
 import photo from "../../Assets/Images/Mail.png"
 import { ScrollButton } from "../../Components/ScrollButton/ScrollButton";
 import { Button } from "../../Components/Buttons/Buttons";
+import axios from "axios";
 
 
 const BlogUpdate = () => {
@@ -22,6 +23,24 @@ const BlogUpdate = () => {
       };
   }, []);
 
+  const formData = new FormData();
+  
+  const formDataObject = {};
+  const image = formData.get("image");
+  if (image.size === 0) {
+    delete formDataObject.image;
+  }
+  axios
+    .patch(`http://localhost:5000/update/blogs`, formDataObject)
+    .then((response) => {
+      console.log("Request was successful:", response.data);
+    })
+    .catch((error) => {
+      console.error("Error while making the request:", error);
+    });
+
+
+
   return (
     <div className={styles.Container}>
        
@@ -36,8 +55,25 @@ const BlogUpdate = () => {
               <label className={styles.name} htmlFor="title">Title</label>
               <input  className={styles.input} type="text" id="title" name="title" />
 
-              <label className={styles.name} htmlFor="date">Date</label>
-              <input  className={styles.input} type="text" id="date" name="date" />
+              <div className={styles.Bottom}>
+          <div className={styles.textarea}>
+            <label  className={styles.name} htmlFor="content">Content</label>
+            <textarea className={styles.area} id="content" name="content"></textarea>
+            <div className={styles.inputContainer}>
+            <label className={styles.label}>Enter an image</label>
+            <input
+              className={styles.input}
+              type="file"
+              name="image"/>
+          </div>
+            
+          </div>
+      
+
+        </div>
+              
+              <Button color={"red"} text={"Update Photo"} size={width}/>
+          <Button color={"green"} text={"Submit"} size={width}/>
             </form>
         </div>
 
@@ -46,15 +82,7 @@ const BlogUpdate = () => {
         </div>
       </div >
 
-        <div className={styles.Bottom}>
-          <div className={styles.textarea}>
-            <label  className={styles.name} htmlFor="content">Content</label>
-            <textarea className={styles.area} id="content" name="content"></textarea>
-          </div>
-          <Button color={"red"} text={"Update Photo"} size={width}/>
-          <Button color={"green"} text={"Submit"} size={width}/>
-
-        </div>
+     
         <ScrollButton/>
     </div>
   );

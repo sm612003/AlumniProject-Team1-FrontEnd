@@ -107,3 +107,13 @@ const [failure , setFailure ] = useState(false)
 }
 
 export default BlogForm;
+
+
+// fetch ... 
+// use state ( categories ) []
+
+// select 
+// map( key +> {
+  // <option vlaue={key._id}>{key.name} </option> 
+  // <?selecy> 
+// })
