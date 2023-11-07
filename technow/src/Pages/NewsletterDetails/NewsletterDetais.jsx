@@ -52,9 +52,6 @@ const NewsletterDetails =() => {
                 setIsLoading(false);
           }
       };
-      if(id){
-        fetchData();
-      }
   },) ;
 
   const errorStyle = {

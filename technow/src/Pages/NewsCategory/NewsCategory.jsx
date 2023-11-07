@@ -70,10 +70,8 @@ const NewsCategory = () => {
                   setIsLoading(false);
             }
         };
-        if(categoryName){
-            fetchData();
-        }
-    }) ;
+        fetchData()
+    }, []) ;
 
     const errorStyle = {
         display: "flex",

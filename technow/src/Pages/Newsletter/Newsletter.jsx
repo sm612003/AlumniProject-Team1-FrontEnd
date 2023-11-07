@@ -69,7 +69,7 @@ const Newsletter = () => {
             }
         };
     fetchData();
-    }, [newsData    ]) ;
+    }, []) ;
 
     const errorStyle = {
         display: "flex",

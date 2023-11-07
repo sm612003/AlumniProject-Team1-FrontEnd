@@ -35,7 +35,7 @@ const BlogCardLayout =() => {
             }
         }
         fetchData();
-    }, [blogData])
+    }, [])
 
     return(
         <>
