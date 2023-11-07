@@ -113,7 +113,6 @@ const NewsCategory = () => {
                     <>
                         <article className={styles.Newsletter}>
                             {newsData.map((key , index) => (
-                               <Link to={`/newsletterDetails/${key._id}`}>
                                <NewsCard 
                                    key={key._id}
                                    first={index === 0} 
@@ -121,9 +120,9 @@ const NewsCategory = () => {
                                    image={key.image}   
                                    author={key.author}
                                    date = {key.date}
+                                   id ={key._id}
                                    > 
                                </NewsCard>
-                               </Link>
                                 ))}
                         </article>
                         <div className={styles.btn}>

@@ -121,7 +121,6 @@ import { Link } from 'react-router-dom'
                     <>
                         <div className={styles.cont}>
                             {newsData.map((key , index) => (  
-                              <Link to={`/newsletterDetails/${key._id}`}>
                                   <DashboardCard 
                                       key={key._id}
                                       title={key.title}  
@@ -130,7 +129,7 @@ import { Link } from 'react-router-dom'
                                       _id={key._id}
                                       > 
                                   </DashboardCard>
-                                </Link>
+
                                 ))}
                         </div>
                     </>
