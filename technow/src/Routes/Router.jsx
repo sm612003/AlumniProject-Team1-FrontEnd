@@ -4,7 +4,7 @@ import Header from "../Layouts/Header/Header"
 import Footer from "../Layouts/Footer/Footer"
 import HomePage from "../Pages/Home/Home"
 import Blogs from "../Pages/Blogs/BlogsPage"
-import {BlogDetails} from '../Pages/BlogsDetails/BlogsDetails';
+import BlogDetails from '../Pages/BlogsDetails/BlogsDetails';
 import BlogForm from "../Pages/BlogsForm/BlogsForm"
 import BlogUpdate from '../Pages/BlogsUpdate/BlogsUpdateForm'
 import Contact from "../Pages/Contact/Contact"
@@ -63,7 +63,7 @@ const router = createBrowserRouter([
       element:<BlogForm />
   },
   {
-    path:"/updateBlog",
+    path:"/updateBlog/:id",
     element:<BlogUpdate />
 },
 {
@@ -75,7 +75,7 @@ const router = createBrowserRouter([
   element:<Blogs />
 },
 {
-  path:"/blogDetails",
+  path:"/blogDetails/:id",
   element:<BlogDetails />
 },
 {

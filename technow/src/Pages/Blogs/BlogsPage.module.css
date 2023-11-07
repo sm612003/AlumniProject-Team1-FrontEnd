@@ -36,6 +36,10 @@
     justify-content: center;
 }
 
+.Link{
+    color: black;
+}
+
 @media screen and (max-width: 450px) {
 
     .h1{

@@ -4,6 +4,7 @@ import { useState , useEffect } from "react"
 import axios from 'axios'
 import { ScrollButton } from "../../Components/ScrollButton/ScrollButton"
 import { Button } from "../../Components/Buttons/Buttons"
+import { Link } from "react-router-dom"
 
 const BlogCardLayout =() => {
     const [screenWidth, setScreenWidth] = useState(window.innerWidth);
@@ -29,7 +30,6 @@ const BlogCardLayout =() => {
             try{
                 const response = await axios.get('http://localhost:5000/read/blogs')
                 setBlogData(response.data)
-                console.log(blogData)
             }catch(error){
                 console.log("error");
             }
@@ -43,6 +43,9 @@ const BlogCardLayout =() => {
                 <header className={styles.header}>
                     <h1 className={styles.h1}>Blogs</h1>
                     <p className={styles.pheader}>Blog your news</p>
+                    <Link to='/blogsForm' className={styles.Link}>
+                    <Button color={"green"} text={"Add Blog"} size={width} subscribed={false}/>
+                    </Link>
                         {blogData.map((key , index) => (
                             <BlogCard 
                             key={key._id}
@@ -51,6 +54,7 @@ const BlogCardLayout =() => {
                             image={key.image}
                             createdAt={key.createdAt}
                             reversed={(index % 2 === 0)}
+                            id={key._id}
                             />
                         ))}
                 </header>

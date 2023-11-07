@@ -63,7 +63,8 @@
 
 .icons{
     display: flex;
-    justify-content: flex-end;
+    justify-content: flex-end;margin-top: 10px;
+
 }
 
 .icons:hover{
@@ -72,6 +73,33 @@
 
 .blogcontent.blogReverse .icons{
     justify-content: flex-start;
+}
+.link{
+    color: black;
+}
+
+.btn , .btn:hover {
+    margin: 0;
+    padding: 0;
+    border: none;
+    background: transparent;
+    width: 20px;
+    height: 20px ;
+}
+
+.span{
+    display: flex;
+    column-gap: 10px;
+}
+
+.Icon{
+    width: 20px ;
+    height: 20px;
+    color: black;
+}
+
+.Icon:hover{
+    color: var(--colorgreen);
 }
 
 @media screen and (max-width: 768px) {
