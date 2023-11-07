@@ -6,6 +6,8 @@ import { Button } from '../../Components/Buttons/Buttons'
 import axios from 'axios'
 import {Logo} from '../../Components/Logo/Logo'
 import { Link } from 'react-router-dom'
+import NewsUpdate from '../NewsUpdate/NewsUpdateForm'
+import NewsForm from '../NewsForm/NewsForm'
 
  const Dashboard = () => {
   const [screenWidth, setScreenWidth] = useState(window.innerWidth);
@@ -25,17 +27,27 @@ import { Link } from 'react-router-dom'
 
 
   const [clicked , setClicked] = useState(false)
+  const [newsForm , setNewsForm] = useState(false)
+  const [newUpdate , setNewUpdate] = useState(false)
   const [newsData , setNewsData] = useState([]);
   const [networkError, setNetworkError] = useState(false);
   const [error, setError] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
-
+  const [newsID , setNewsID] = useState('')
 
   const toogleBlogs = () => {
     setClicked(true)
   }
   const toogleNews = () => {
     setClicked(false)
+  }
+
+  const toogleNewsForm = () => {
+    if (newsForm === false){
+    setNewsForm(true)
+    } else {
+      setNewsForm(false)
+    }
   }
 
   useEffect(() => {
@@ -160,9 +172,10 @@ import { Link } from 'react-router-dom'
         <div className={styles.Bottom}>
         <div className={styles.Manage}>
           <h1 className={styles.h1}>Manage News</h1>
-          <Link to='/newsForm' className={styles.Link}>
+          <span onClick={toogleNewsForm}>
             <Button color={"green"} text={'Add News'} size={width} subscribed={false}/>
-          </Link>
+          </span>
+          { newsForm ? <NewsForm/> : ""}
         </div>
         {isLoading ? (
                         <div style={containerStyle}>
@@ -177,7 +190,13 @@ import { Link } from 'react-router-dom'
                         <h1 style={errorStyle}>News Not Found</h1>
                     </div>
                 ): (
-                    <>
+                    <> 
+                    { newUpdate ? (
+                      <NewsUpdate 
+                      newsID = {newsID}
+                      />
+                    ) : ""
+                    }
                         <div className={styles.cont}>
                             {newsData.map((key , index) => (  
                                   <DashboardCard 
@@ -186,6 +205,9 @@ import { Link } from 'react-router-dom'
                                       author={key.author}
                                       date = {key.date}
                                       _id={key._id}
+                                      newUpdate ={newUpdate}
+                                      setNewUpdate = {setNewUpdate}
+                                      setNewsID = {setNewsID}
                                       > 
                                   </DashboardCard>
 

@@ -5,7 +5,7 @@ import { Button } from "../../Components/Buttons/Buttons";
 import { ScrollButton } from "../../Components/ScrollButton/ScrollButton";
 import { useParams } from "react-router-dom";
 
-const NewsUpdate = () => {
+const NewsUpdate = ( newsId ) => {
   const [screenWidth, setScreenWidth] = useState(window.innerWidth);
   const [width, setWidth] = useState(screenWidth < 1024 ? 'small' : 'big');
 
@@ -21,8 +21,7 @@ const NewsUpdate = () => {
       };
   }, []);
 
-  const {id} = useParams();
-  console.log(id)
+  console.log(newsId)
 
   return (   
     <div className={styles.Container}>

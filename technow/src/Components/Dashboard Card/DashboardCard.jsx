@@ -4,10 +4,12 @@ import {FaTrashCan} from 'react-icons/fa6'
 import {FiEdit} from 'react-icons/fi'
 import { Link } from "react-router-dom"
 import { useState } from "react"
+import NewsUpdate from "../../Pages/NewsUpdate/NewsUpdateForm"
 
-const DashboardCard = ({author , date , title , _id , blog}) => {
+const DashboardCard = ({author , date , title , _id , blog , newUpdate , setNewUpdate , setNewsID}) => {
 
 const [errorDelete , setErrorDelete] = useState(false)
+
 
 const handleDelete = (id , e) => {
   e.preventDefault();
@@ -33,6 +35,13 @@ const handleDelete2 = (id , e) => {
   .catch((error) => {
     setErrorDelete(true)
   })
+}
+
+const toogleNewsUpdate = () => {
+
+  setNewUpdate(!newUpdate)
+  setNewsID(_id)
+
 }
 
 const errorStyle = {
@@ -61,7 +70,7 @@ const errorStyle = {
               {!blog ? (
                 <>
                 <button className={styles.btn} onClick={(e) => handleDelete(_id , e)} ><FaTrashCan className={styles.icon}/></button>
-                <Link to={`/newsletterUpdate/${_id}`}><FiEdit className={styles.icon}/></Link>
+                <span onClick={toogleNewsUpdate}><FiEdit className={styles.icon}/></span>
                 </>
               ) : (
                 <>

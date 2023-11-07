@@ -52,6 +52,7 @@ const NewsletterDetails =() => {
                 setIsLoading(false);
           }
       };
+      fetchData()
   },) ;
 
   const errorStyle = {
