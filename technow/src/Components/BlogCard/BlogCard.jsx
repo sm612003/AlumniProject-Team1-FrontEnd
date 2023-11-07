@@ -43,7 +43,9 @@ import axios from "axios"
         
             <div className={`${styles.blogcontent} ${reverse}`}>
                 <div className={styles.mainimage}>
+                <Link to={`/blogDetails/${id}`} className={styles.link}>
                     <img src={`http://localhost:5000/${image}`} className={styles.image} alt="Image for the blog"></img>
+                </Link>
                 </div>
                 <div className={styles.maincontent}>
                     <p className={styles.pclass}>{author} / {formatDate(createdAt)}</p>

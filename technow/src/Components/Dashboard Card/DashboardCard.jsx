@@ -5,18 +5,26 @@ import {FiEdit} from 'react-icons/fi'
 import { Link } from "react-router-dom"
 import { useState } from "react"
 
-const DashboardCard = ({author , date , title , _id}) => {
-  const formatDate = (date) => {
-    const dateOnly = date.split('T')[0];
-    const [year, month, day] = dateOnly.split('-');
-    return `${day}-${month}-${year}`;
-}
+const DashboardCard = ({author , date , title , _id , blog}) => {
 
 const [errorDelete , setErrorDelete] = useState(false)
 
 const handleDelete = (id , e) => {
   e.preventDefault();
   axios.delete('http://localhost:5000/delete/news' , {data : {id : _id}})
+  .then((response)=>{
+    if(response.ok){
+      setErrorDelete(false)
+    }
+  })
+  .catch((error) => {
+    setErrorDelete(true)
+  })
+}
+
+const handleDelete2 = (id , e) => {
+  e.preventDefault();
+  axios.delete('http://localhost:5000/delete/blogs' , {data : {id : _id}})
   .then((response)=>{
     if(response.ok){
       setErrorDelete(false)
@@ -36,15 +44,31 @@ const errorStyle = {
   return (
     <div className={styles.Heroo}>
         <div className={styles.Hero}>
-        <Link to={`/newsletterDetails/${_id}`}>
+          {!blog ? (
+          <Link to={`/newsletterDetails/${_id}`}>
           <h4 className={styles.h4}>{title}</h4>
-          </Link>
+          </Link> ) : (
+          <Link to={`/blogDetails/${_id}`}>
+          <h4 className={styles.h4}>{title}</h4>
+          </Link> 
+          ) 
+
+        }
           <div className={styles.DashboardBottom}>
-            <p className={styles.p}>{author} / {formatDate(date)} 
+            <p className={styles.p}>{author} / {date} 
               <span className={styles.span}>
               {errorDelete && <p style={errorStyle}>Error deleting news</p>}
+              {!blog ? (
+                <>
                 <button className={styles.btn} onClick={(e) => handleDelete(_id , e)} ><FaTrashCan className={styles.icon}/></button>
                 <Link to={`/newsletterUpdate/${_id}`}><FiEdit className={styles.icon}/></Link>
+                </>
+              ) : (
+                <>
+                <button className={styles.btn} onClick={(e) => handleDelete2(_id , e)} ><FaTrashCan className={styles.icon}/></button>
+                <Link to={`/updateBlog/${_id}`}><FiEdit className={styles.icon}/></Link>
+                </>
+              )}
               </span>
             </p>
           </div>

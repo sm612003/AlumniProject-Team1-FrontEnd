@@ -17,6 +17,7 @@
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
+    flex-wrap: wrap;
 }
 
 .Bottom{
@@ -30,7 +31,7 @@
     font-size: 48px;
     width: fit-content;
     font-style: normal;
-    font-weight: 700;
+    font-weight: 400;
     line-height: normal;
     position: relative;
 }
@@ -55,11 +56,11 @@
 }
 
 .Name{
-    color: var(--green2);
+    color: var(--colorblack);
     font-family: Poppins;
     font-size: 36px;
     font-style: normal;
-    font-weight: 800;
+    font-weight: 700;
     line-height: normal;
     letter-spacing: 0.1px;
 }
@@ -81,6 +82,10 @@
 }
 .button{
     margin-bottom: 2rem;
+}
+
+.Link{
+    width: fit-content;
 }
 @media (max-width: 768px) {
     .Dashboard{

@@ -23,10 +23,20 @@ import { Link } from 'react-router-dom'
       };
   }, []);
 
+
+  const [clicked , setClicked] = useState(false)
   const [newsData , setNewsData] = useState([]);
   const [networkError, setNetworkError] = useState(false);
   const [error, setError] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+
+
+  const toogleBlogs = () => {
+    setClicked(true)
+  }
+  const toogleNews = () => {
+    setClicked(false)
+  }
 
   useEffect(() => {
       const fetchData = async () => {
@@ -69,8 +79,54 @@ import { Link } from 'react-router-dom'
           }
       };
   fetchData();
-  },) ;  
+  }, []) ;  
 
+  const [blogData , setBlogData] = useState([]);
+
+    useEffect(() => {
+      const fetchData1 = async () => {
+        try{ 
+          if(blogData.length === 0)
+          setIsLoading(true)
+        if (!navigator.onLine) {
+          setNetworkError(true);
+          setError(false);
+          setIsLoading(false)
+          return;
+        }
+        const response = await axios.get('http://localhost:5000/read/blogs') ;
+        if(!response.ok){
+          setError(true)
+          setIsLoading(false)
+          setError(false)
+          setNetworkError(false)
+        }
+        setBlogData(response.data);
+        if(newsData){
+                setIsLoading(false)
+                setError(false)
+                setNetworkError(false)
+              }
+            } catch(error){
+              if (error.message === "Network request failed") {
+                setNetworkError(true);
+                setIsLoading(false)
+              } else {
+                setError(true);
+              }
+              window.addEventListener("offline", () => {
+                setNetworkError(true);
+                setError(false);
+                setIsLoading(false)
+              });
+              console.error("API Error: ", error);
+              setIsLoading(false);
+            }
+          };
+          fetchData1()
+        }, []) ;  
+        
+        
     const errorStyle = {
       display: "flex",
       color: "red",
@@ -88,23 +144,26 @@ import { Link } from 'react-router-dom'
 
   return (
     <div className={styles.Dashboard}>
-      <nav className={styles.Navbar}>
+
+
+      {!clicked ? (
+        <>
+        <nav className={styles.Navbar}>
         <div className={styles.Name}>Dashboard</div>
-        <div className={styles.Logo}><Logo color={"green"}/></div>
         <div className={styles.Buttons}>
-          <ul className={styles.ul}>
-            <li className={styles.li}>News</li>
-            <li className={styles.li}>Blogs</li>
-          </ul>
+            <ul className={styles.ul}>
+              <li className={styles.li} onClick={toogleNews}>News</li>
+              <li className={styles.li} onClick={toogleBlogs}>Blogs</li>
+            </ul>
+          </div>
+        </nav>
+        <div className={styles.Bottom}>
+        <div className={styles.Manage}>
+          <h1 className={styles.h1}>Manage News</h1>
+          <Link to='/newsForm' className={styles.Link}>
+            <Button color={"green"} text={'Add News'} size={width} subscribed={false}/>
+          </Link>
         </div>
-      </nav>
-      <div className={styles.Bottom}>
-      <div className={styles.Manage}>
-        <h1 className={styles.h1}>Manage News</h1>
-        <Link to='/newsForm'>
-          <Button color={"green"} text={'Add News'} size={width} subscribed={false}/>
-        </Link>
-      </div>
         {isLoading ? (
                         <div style={containerStyle}>
                             <h1 >Loading ...</h1>
@@ -135,6 +194,61 @@ import { Link } from 'react-router-dom'
                     </>
                 )}
       </div>
+      </>
+      ) : (
+        <>
+        <nav className={styles.Navbar}>
+        <div className={styles.Name}>Dashboard</div>
+        <div className={styles.Logo}><Logo color={"green"}/></div>
+        <div className={styles.Buttons}>
+          <ul className={styles.ul}>
+            <li className={styles.li} onClick={toogleNews}>News</li>
+            <li className={styles.li} onClick={toogleBlogs}>Blogs</li>
+          </ul>
+        </div>
+      </nav>
+        <div className={styles.Bottom}>
+        <div className={styles.Manage}>
+          <h1 className={styles.h1}>Manage Blogs</h1>
+          <Link to='/blogsForm' className={styles.Link}>
+            <Button color={"green"} text={'Add Blogs'} size={width} subscribed={false}/>
+          </Link>
+        </div>
+        {isLoading ? (
+                        <div style={containerStyle}>
+                            <h1 >Loading ...</h1>
+                        </div>
+                    ) : networkError? (
+                <div style={containerStyle}>
+                    <h1 style={errorStyle}>Newtwork Issue</h1>
+                </div> 
+                ) : error ? (
+                    <div style={containerStyle}>
+                        <h1 style={errorStyle}>News Not Found</h1>
+                    </div>
+                ): (
+                    <>
+                        <div className={styles.cont}>
+                            {blogData.map((key , index) => (  
+                                  <DashboardCard 
+                                      key={key._id}
+                                      title={key.title}  
+                                      author={key.author}
+                                      createdAt = {key.createdAt}
+                                      _id={key._id}
+                                      blog = {true}
+                                      > 
+                                  </DashboardCard>
+
+                                ))}
+                        </div>
+                    </>
+                )}
+      </div>
+      </>
+      )
+      }
+      
       <ScrollButton/>
     </div>
   )
