@@ -9,11 +9,8 @@ import axios from "axios"
  const BlogCard = ({title  , author , image , createdAt , reversed , id})=>{
     const reverse = reversed === true ? styles.blogReverse : styles.blogNormal ;
 
-    const formatDate = (date) => {
-        const dateonly = date.split('T')[0];
-        const [year , month , day] = dateonly.split('-');
-        return `${day}-${month}-${year}`
-    }
+    const time = new Date(createdAt).toLocaleDateString('en-us', { weekday:"long", year:"numeric", month:"short", day:"numeric", timeZone: "GMT"}) 
+
 
     const [errorDelete , setErrorDelete] = useState(false)
     const handleDelete = (e) => {
@@ -48,7 +45,7 @@ import axios from "axios"
                 </Link>
                 </div>
                 <div className={styles.maincontent}>
-                    <p className={styles.pclass}>{author} / {formatDate(createdAt)}</p>
+                    <p className={styles.pclass}>{author} / {time}</p>
                     <Link to={`/blogDetails/${id}`} className={styles.link}>
                     <h2 className={styles.h2}>{title}</h2>
                     </Link>
