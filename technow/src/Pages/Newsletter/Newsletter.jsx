@@ -4,7 +4,6 @@ import NewsCard from "../../Components/NewsCard/News";
 import styles from "./Newsletter.module.css";
 import axios from "axios";
 import { ScrollButton } from "../../Components/ScrollButton/ScrollButton";
-import Toast from "../../Components/Toast/Toast";
 
 //Page
 const Newsletter = () => {
@@ -88,7 +87,6 @@ const Newsletter = () => {
   return (
     <>
       <div className={styles.Container}>
-        <Toast />
         <h1 className={styles.H1}>Latest News</h1>
 
         {isLoading ? (

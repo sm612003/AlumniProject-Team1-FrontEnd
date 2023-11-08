@@ -3,7 +3,6 @@ import NewsDetails from "../../Components/NewsDetails/NewsDetails";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import styles from "./NewsletterDetails.module.css";
-// import Toast from "../../Components/Toast/Toast";
 
 //Page
 const NewsletterDetails = () => {
@@ -74,7 +73,6 @@ const NewsletterDetails = () => {
 
   return (
     <div className={styles.Container}>
-      {/* <Toast /> */}
       {isLoading ? (
         <div style={containerStyle}>
           <h1>Loading ...</h1>

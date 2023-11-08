@@ -14,8 +14,8 @@
     display: flex;
     column-gap: 10%;
     align-items: center;
-    padding: 2% 10%;  
-    height: 100vh;
+    padding: 0 10%;  
+    height: 80vh;
     justify-content: center;
 }
 
