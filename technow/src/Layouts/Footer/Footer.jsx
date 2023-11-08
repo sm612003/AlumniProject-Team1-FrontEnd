@@ -25,13 +25,13 @@ const Footer =()=>{
                     <h3 className={styles.h3}>Our Pages</h3>
                     <ul className={styles.links}>
                     <Link to='newsletter'>
-                        <li className={styles.li}>NewsLetters</li>
+                        <li className={styles.liFooter}>NewsLetters</li>
                     </Link>
                     <Link to='/blog'>
-                        <li className={styles.li}>Blogs</li>
+                        <li className={styles.liFooter}>Blogs</li>
                     </Link>
                     <Link to='/contact'>
-                        <li className={styles.li}>Contact Us </li>
+                        <li className={styles.liFooter}>Contact Us </li>
                     </Link>
                         
                     </ul>
@@ -40,30 +40,40 @@ const Footer =()=>{
                 <div className={styles.footerCol}>
                     <h3 className={styles.h3}>Category</h3>
                     <ul className={styles.links}>
-                        <Link to='/newsletter'>
-                            <li className={styles.li}>Engineering</li>
-                        </Link>
-                        <Link to='/newsletter'>
-                            <li className={styles.li}>Cloud</li>
-                        </Link>
-                        <Link to='/newsletter'>
-                            <li className={styles.li}>Web</li>
-                        </Link>
-                        <Link to='/newsletter'>
-                            <li className={styles.li}>App</li>                            
-                        </Link>     
-                        <Link to='/newsletter'>
-                            <li className={styles.li}>AI</li>                            
-                        </Link>                    
+                            <li className={styles.liFooter}>
+                                <Link to='/newsCategory/Engineering'>
+                                Engineering
+                                </Link>
+                            </li>
+                            <li className={styles.liFooter}>
+                                <Link to='/newsCategory/Cloud'>
+                                    Cloud
+                                </Link>
+                            </li>
+                            <li className={styles.liFooter}>
+                                <Link to='/newsCategory/Web'>
+                                    Web
+                                </Link>
+                            </li>
+                            <li className={styles.liFooter}>
+                                <Link to='/newsCategory/App'>
+                                    App
+                                </Link>
+                            </li>                               
+                            <li className={styles.liFooter}>
+                                <Link to='/newsCategory/AI'>
+                                    AI
+                                </Link>
+                            </li>                                            
                     </ul>
                 </div>
             </div>
             <div className={`${styles.footerCol} ${styles.socials}`}>
                     <ul className={styles.icons}>
-                        <li className={styles.li}><BsFacebook className={styles.icon}/></li>
-                        <li className={styles.li}><BsWhatsapp className={styles.icon}/></li>
-                        <li className={styles.li}><BsInstagram className={styles.icon}/></li>
-                        <li className={styles.li}><BsLinkedin className={styles.icon}/></li>
+                        <li className={styles.liFooter}><BsFacebook className={styles.icon}/></li>
+                        <li className={styles.liFooter}><BsWhatsapp className={styles.icon}/></li>
+                        <li className={styles.liFooter}><BsInstagram className={styles.icon}/></li>
+                        <li className={styles.liFooter}><BsLinkedin className={styles.icon}/></li>
                     </ul>
                 </div>
 

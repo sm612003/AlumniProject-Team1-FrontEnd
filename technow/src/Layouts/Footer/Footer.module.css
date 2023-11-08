@@ -47,18 +47,14 @@
   padding: 0 ;
 }
 
-.footerCol .links li {
+.footerCol .links .liFooter {
   list-style: none;
   margin-bottom: 10px;
 }
 
-.footerCol .links li a {
+.footerCol .links .liFooter a {
   text-decoration: none;
-  color: #bfbfbf;
-}
-
-.footerCol .links li a:hover {
-  color: #fff;
+  color: #000;
 }
 
 .footerCol .p {
@@ -80,18 +76,19 @@
 .icon{
   width: 25px ;
   height: 25px;
+  color: var(--color-white);
 }
 
 .icon:hover{
   color: black;
 }
 
-.li{
+.liFooter{
   display: flex;
   color: black;
 }
 
-li:hover{
+.liFooter:hover{
   text-decoration: underline;
   cursor: pointer;
   color: black;
@@ -117,6 +114,7 @@ li:hover{
 .pcopyright{
   margin: 0;
   margin: 10px 0 5px 0 ;
+  color: var(--color-white);
 }
 
 @media (max-width: 768px) {
@@ -137,7 +135,7 @@ li:hover{
     font-size: 0.9rem;
   }
 
-  .icons .li{
+  .icons .liFooter{
     font-size: 1.2rem;
   }
 }

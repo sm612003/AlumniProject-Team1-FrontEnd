@@ -33,8 +33,13 @@
 
 .LogoWhite{
     color: white;
+    text-shadow: 3px 3px 3px #000;
 }
 
 a{
     text-decoration: none;
+}
+
+.FooterSpan{
+    text-shadow: 1px 1px 1px #000;
 }

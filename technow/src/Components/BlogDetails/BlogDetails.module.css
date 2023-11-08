@@ -18,19 +18,18 @@
 
 .h1{
     margin-bottom: 3px;
-    font-size: 3rem;
+    font-size: 2.5rem;
     font-family: 'poppins';
 
 }
 .image{
     margin-top: 5px;
     margin-bottom: 5px;
-    width: 100%;
-    height: 100%;
+    width: 80%
 }
 .p{
     margin-top: 0;
-    font-size: 1.2rem;
+    font-size: 1rem;
     font-family: 'poppins';
     color: var(--color-grayblack);
 }
@@ -38,7 +37,7 @@
     display: flex;
     justify-content: center;
     height: 100%;
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     font-family: 'poppins';
     color: var(--color-black);
 }
@@ -48,13 +47,13 @@
         padding: 2% 5%;     }
 
     .h1{
-        font-size: 2.5rem;    }
+        font-size: 2rem;    }
 
     .p{
-        font-size: 1rem;     }
+        font-size: 0.8rem;     }
 
     .blogcontent{
-        font-size: 1.2rem; 
+        font-size: 1rem; 
     }
 }
 
@@ -75,7 +74,7 @@
         font-size: 1.2rem; 
     }
     .image{
-        max-width: 100%;
+        width: 100%;
         height: auto;
     }
 }

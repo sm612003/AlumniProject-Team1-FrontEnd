@@ -26,10 +26,12 @@
     margin-top: 2%;
     gap :2rem;
     padding: 1%;
+    height: 400px;  
 }
 
 .blogcontent.blogReverse{
     flex-direction: row-reverse;
+    height: 400px;
 }
 
 .blogcontent:hover{
@@ -55,8 +57,18 @@
 }
 .image{
    width: 100%;
+   height: 100%;
 }
 
+.ReversedImg{
+    justify-content: flex-end;
+    width: 100%;
+    height: 100%;
+}
+
+.normalImg{
+    justify-content: flex-start;
+}
 .pclass{
     font-size: 0.8rem;
 }
@@ -78,7 +90,7 @@
     color: black;
 }
 
-.btn , .btn:hover {
+.btnDelete , .btnDelete:hover {
     margin: 0;
     padding: 0;
     border: none;
@@ -133,6 +145,9 @@
     }
     .blogcontent.blogReverse .icons{
         justify-content: flex-end;
+    }
+    .ReversedImg .normalImg{
+        justify-content: flex-start;
     }
 }
 

@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import BlogDetailsComponent from "../../Components/BlogDetails/BlogDetailsComponent";
 import { useState, useEffect } from "react";
 import axios from "axios";
@@ -117,6 +117,7 @@ const BlogDetails = () => {
           />
         </>
       )}
+      <Link to={`/updateBlog/${blogsData._id}`}>
       <Button
         text="Update"
         subscribed={false}
@@ -124,6 +125,7 @@ const BlogDetails = () => {
         color="green"
         className={styles.button}
       />
+      </Link>
       <ScrollButton />
     </div>
   );

@@ -8,6 +8,7 @@ import axios from "axios"
 
  const BlogCard = ({title  , author , image , createdAt , reversed , id})=>{
     const reverse = reversed === true ? styles.blogReverse : styles.blogNormal ;
+    const reversedImg = reversed === true ? styles.ReversedImg : styles.normalImg ;
 
     const time = new Date(createdAt).toLocaleDateString('en-us', { weekday:"long", year:"numeric", month:"short", day:"numeric", timeZone: "GMT"}) 
 
@@ -39,7 +40,7 @@ import axios from "axios"
     return(   
         
             <div className={`${styles.blogcontent} ${reverse}`}>
-                <div className={styles.mainimage}>
+                <div className={`${styles.mainimage} ${reversedImg}`}>
                 <Link to={`/blogDetails/${id}`} className={styles.link}>
                     <img src={`http://localhost:5000/${image}`} className={styles.image} alt="Image for the blog"></img>
                 </Link>
@@ -52,7 +53,7 @@ import axios from "axios"
                      <div className={styles.icons}>
                         {errorDelete && <p style={errorStyle}>Error Deleting Blog</p>}
                         <span className={styles.span}>
-                        <button onClick={(e) => handleDelete(e)} className={styles.btn}><FaTrashCan className={styles.Icon}/></button>
+                        <button onClick={(e) => handleDelete(e)} className={styles.btnDelete}><FaTrashCan className={styles.Icon}/></button>
                         <Link to={`/updateBlog/${id}`} className={styles.link}><FiEdit className={styles.Icon} /></Link>
                         </span>
 
