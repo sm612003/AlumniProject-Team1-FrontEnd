@@ -5,7 +5,6 @@ import axios from "axios";
 import { ScrollButton } from "../../Components/ScrollButton/ScrollButton";
 import { Button } from "../../Components/Buttons/Buttons";
 import { Link } from "react-router-dom";
-import Toast from "../../Components/Toast/Toast";
 
 const BlogCardLayout = () => {
   const [screenWidth, setScreenWidth] = useState(window.innerWidth);
@@ -40,8 +39,8 @@ const BlogCardLayout = () => {
   return (
     <>
       <div className={styles.main}>
-        <Toast />
         <header className={styles.header}>
+          <span>
           <h1 className={styles.h1}>Blogs</h1>
           <p className={styles.pheader}>Blog your news</p>
           <Link to="/blogsForm" className={styles.Link}>
@@ -52,6 +51,7 @@ const BlogCardLayout = () => {
               subscribed={false}
             />
           </Link>
+          </span>
           {blogData.map((key, index) => (
             <BlogCard
               key={key._id}
@@ -64,14 +64,6 @@ const BlogCardLayout = () => {
             />
           ))}
         </header>
-        <div className={styles.btn}>
-          <Button
-            color={"green"}
-            text={"Load more"}
-            size={width}
-            subscribed={false}
-          />
-        </div>
       </div>
       <ScrollButton />
     </>

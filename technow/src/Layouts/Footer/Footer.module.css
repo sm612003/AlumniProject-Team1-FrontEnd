@@ -71,6 +71,7 @@
   color: var(--color-white);
   justify-content: center;
   margin: 0;
+  padding: 0;
 }
 
 .icon{

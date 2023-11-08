@@ -40,6 +40,13 @@
     color: black;
 }
 
+@media screen and (max-width: 768px) {
+    .header{
+        display: flex;
+        flex-direction: column;
+        row-gap: 5rem;
+    }
+}
 @media screen and (max-width: 450px) {
 
     .h1{

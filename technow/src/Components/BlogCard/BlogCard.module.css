@@ -26,12 +26,12 @@
     margin-top: 2%;
     gap :2rem;
     padding: 1%;
-    height: 400px;  
+    height: 600px;  
 }
 
 .blogcontent.blogReverse{
     flex-direction: row-reverse;
-    height: 400px;
+    height: 600px;
 }
 
 .blogcontent:hover{
@@ -90,6 +90,10 @@
     color: black;
 }
 
+.link2{
+    color: black;
+    width: 70%;
+}
 .btnDelete , .btnDelete:hover {
     margin: 0;
     padding: 0;
@@ -120,6 +124,9 @@
 
     .h2 {
         font-size: 1.2rem; 
+    }
+    .link2{
+        width: 100%;
     }
 
     .blogcontent{

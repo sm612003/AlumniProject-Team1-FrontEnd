@@ -39,8 +39,13 @@
     height: 100%;
     font-size: 1.2rem;
     font-family: 'poppins';
+    text-align: justify;
     color: var(--color-black);
 }
+/* .center{
+    display: flex;
+    justify-content: center;
+} */
 
 @media screen and (max-width: 992px) {
     .blogdetails{

@@ -41,7 +41,7 @@ import axios from "axios"
         
             <div className={`${styles.blogcontent} ${reverse}`}>
                 <div className={`${styles.mainimage} ${reversedImg}`}>
-                <Link to={`/blogDetails/${id}`} className={styles.link}>
+                <Link to={`/blogDetails/${id}`} className={styles.link2}>
                     <img src={`http://localhost:5000/${image}`} className={styles.image} alt="Image for the blog"></img>
                 </Link>
                 </div>

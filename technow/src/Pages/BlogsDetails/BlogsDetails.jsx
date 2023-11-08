@@ -5,7 +5,6 @@ import axios from "axios";
 import { ScrollButton } from "../../Components/ScrollButton/ScrollButton";
 import { Button } from "../../Components/Buttons/Buttons";
 import styles from "./BlogsDetails.module.css";
-import Toast from "../../Components/Toast/Toast";
 
 //Page
 const BlogDetails = () => {
@@ -92,7 +91,6 @@ const BlogDetails = () => {
 
   return (
     <div className={styles.container}>
-      <Toast />
       {isLoading ? (
         <div style={containerStyle}>
           <h1>Loading ...</h1>
@@ -117,15 +115,6 @@ const BlogDetails = () => {
           />
         </>
       )}
-      <Link to={`/updateBlog/${blogsData._id}`}>
-      <Button
-        text="Update"
-        subscribed={false}
-        size={width}
-        color="green"
-        className={styles.button}
-      />
-      </Link>
       <ScrollButton />
     </div>
   );
