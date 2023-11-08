@@ -1,13 +1,15 @@
-import {Subscribe} from "../../Layouts/SubscribeSection/Subscribe";
-import {ScrollButton} from "../../Components/ScrollButton/ScrollButton";
+import { Subscribe } from "../../Layouts/SubscribeSection/Subscribe";
+import { ScrollButton } from "../../Components/ScrollButton/ScrollButton";
+import Toast from "../../Components/Toast/Toast";
 
 const SubscribePage = () => {
-    return(
-        <>
-            <Subscribe page={true}/>
-            <ScrollButton/>
-        </>
-    )
-}
+  return (
+    <>
+      <Toast />
+      <Subscribe page={true} />
+      <ScrollButton />
+    </>
+  );
+};
 
-export default SubscribePage
+export default SubscribePage;

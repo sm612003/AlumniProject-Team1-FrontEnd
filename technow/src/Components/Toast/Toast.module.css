@@ -1,0 +1,23 @@
+/* Toast.css */
+.toast-container {
+    position: fixed;
+    top: 0;
+    right: 0;
+    z-index: 9999;
+  }
+  
+  .Toast {
+    background-color: #4caf50;
+    color: white;
+    padding: 12px 24px;
+    margin: 10px;
+    border-radius: 4px;
+  }
+  
+  .Header {
+    font-weight: bold;
+  }
+  
+  .Body {
+    font-size: 16px;
+  }
