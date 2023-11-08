@@ -4,7 +4,7 @@ import NewsCard from "../../Components/NewsCard/News";
 import styles from "../../Pages/Newsletter/Newsletter.module.css";
 import axios from "axios";
 import { ScrollButton } from "../../Components/ScrollButton/ScrollButton";
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import Toast from "../../Components/Toast/Toast";
 
 //Page
@@ -73,7 +73,7 @@ const NewsCategory = () => {
       }
     };
     fetchData();
-  }, []);
+  }, [categoryName]);
 
   const errorStyle = {
     display: "flex",

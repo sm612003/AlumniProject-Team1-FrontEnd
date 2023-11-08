@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from "react";
 import styles from "./BlogDetails.module.css"
-//import { useParams } from "react-router-dom";
-import axios from 'axios';
 
 const BlogDetailsComponent = ({title , author , image , createdAt , content }) =>{
     const time = new Date(createdAt).toLocaleDateString('en-us', { weekday:"long", year:"numeric", month:"short", day:"numeric", timeZone: "GMT"}) 
