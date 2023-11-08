@@ -42,11 +42,6 @@
   font-weight: 400;
 }
 
-button:hover{
-  color: #ffffff;
-  background-color: #119C59;
-  border: none;
-}
 
 .navLinks:hover {
   color: rgb(34, 142, 50);
@@ -87,66 +82,4 @@ button:hover{
     gap:0;
     
   }
-
-  button{
-    width: 155px;
-    height: 50px;
-    flex-shrink: 0;
-    background-color:#fff;
-    color:#119C59;
-    font-family: Poppins;
-    font-size: 18px;
-    font-style: normal;
-    font-weight: 600;
-    line-height: normal;
-    border-color: var(--green, #119C59);
-    border-radius: 14px;
-    border: 1px solid green;
-   
-    margin-bottom: 1rem;
-    margin-top: 4rem;
-  }
-  
-
-
-  /* .navMenu {
-    width: 100%; 
-    justify-content: center; 
-  
-  } */
-
-  /* .nav-menu {
-    margin-right: 0;
-   
-  
-  } */
-
-  /* .menu-icon {
-    display: block; 
-    cursor: pointer;
-  } */
-
-  /* .navLinks {
-    text-align: center;
-    padding: 0.5rem 0;
-  } */
-  
- 
-
-  /* .navbarlogo {
-    
-      text-align: center; 
-      align-self: flex-start;
-      margin-top: 4rem;
-      
-    } */
-  /* button {
-    width: 80%; 
-    margin: 1rem 0; 
-    
-  } */
 }
-
-
-
-

@@ -3,7 +3,7 @@ import styles from "./Contact.module.css";
 import image from "../../Assets/Images/mobile.png";
 import { ScrollButton } from "../../Components/ScrollButton/ScrollButton";
 import { Button } from "../../Components/Buttons/Buttons";
-import axios from "axios";
+import emailjs from '@emailjs/browser'
 
 const Contact = () => {
   const [screenWidth, setScreenWidth] = useState(window.innerWidth);
@@ -21,28 +21,43 @@ const Contact = () => {
     };
   }, []);
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    const formData = new FormData(e.target);
-    const data = {
-      name: formData.get("name"),
-      email: formData.get("email"),
-      subject: formData.get("subject"),
-      message: formData.get("message"),
-    };
+  const [formData , setFormData] = useState({
+    name : "" ,
+    email : "" ,
+    subject: "",
+    message : "",
+  })
 
-    try {
-      const response = await axios.post("/api/sendContactEmail", data);
-      if (response.status === 200) {
-        alert("Form submitted successfully");
-      } else {
-        alert("Form submission failed");
-      }
-    } catch (error) {
-      console.error("Error sending the form data:", error);
-      alert("Form submission failed");
-    }
+  const {name , email , subject , message} = formData
+
+  const handleChange = (e) => {
+    const {name , value } = e.target ;
+    setFormData((prevData) => ({
+        ...prevData, 
+        [name] : value
+    }))
+  }
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    emailjs.sendForm('service_gclgezg' , 'template_9uaeona' , e.target , 's5KP7u_1YACGBQ7AF')
+    .then((result) => {
+        alert('Message sent successfully!')
+    }, (error) => {
+        alert('Error sending message , please try again')
+    });
+    resetForm()
   };
+
+  const resetForm = () => {
+    setFormData({
+        name : "" ,
+        email : "" ,
+        subject: "",
+        message : "",
+    })
+  }
 
   return (
     <section>
@@ -52,48 +67,56 @@ const Contact = () => {
 
         <div className={styles.Content}>
           <div className={styles.Left}>
-            <form className={styles.form} onSubmit={handleSubmit}>
-              <label className={styles.names} for="name">
+            <form className={styles.form} onSubmit={handleSubmit} method="post" action="#">
+              <label className={styles.names} htmlFor="name">
                 Name
               </label>
               <input
                 className={styles.inputs}
                 type="text"
-                name="name "
+                name="name"
                 required
                 id="name"
+                value={name}
+                onChange={handleChange}
               />
-              <label className={styles.names} for="email">
-                Email{" "}
+              <label className={styles.names} htmlFor="email">
+                Email
               </label>
               <input
                 className={styles.inputs}
                 type="email"
-                name="email "
+                name="email"
                 required
                 id="email"
+                value={email}
+                onChange={handleChange}
               />
-              <label className={styles.names} for="subject">
-                Subject{" "}
+              <label className={styles.names} htmlFor="email">
+                Subject
               </label>
               <input
                 className={styles.inputs}
                 type="text"
                 name="subject"
                 required
-                id="subjet"
+                id="subject"
+                value={subject}
+                onChange={handleChange}
               />
-              <label className={styles.names} for="message">
+              <label className={styles.names} htmlFor="message">
                 Message
               </label>
               <textarea
                 className={styles.area}
-                name="message "
+                name="message"
                 cols="30"
                 rows="10"
                 id="message"
+                value={message}
+                onChange={handleChange}
               ></textarea>
-              <Button color={"green"} size={width} text={"Submit"} />
+              <Button type={"submit"} color={"green"} size={width} text={"Submit"} />
             </form>
           </div>
           <div className={styles.Right}>

@@ -8,7 +8,7 @@ import { Logo } from "../../Components/Logo/Logo";
 import { Link } from "react-router-dom";
 import NewsUpdate from "../NewsUpdate/NewsUpdateForm";
 import NewsForm from "../NewsForm/NewsForm";
-import Toast from "../../Components/Toast/Toast";
+// import Toast from "../../Components/Toast/Toast";
 
 const Dashboard = () => {
   const [screenWidth, setScreenWidth] = useState(window.innerWidth);
@@ -153,7 +153,7 @@ const Dashboard = () => {
 
   return (
     <div className={styles.Dashboard}>
-      <Toast />
+      {/* <Toast /> */}
 
       {!clicked ? (
         <>

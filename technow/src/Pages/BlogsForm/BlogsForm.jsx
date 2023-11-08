@@ -33,15 +33,14 @@ const BlogForm = () => {
       .post("http://localhost:5000/add/blogs", formData)
       .then((response) => {
         console.log("Request sent successfully", response.data);
-        if (response.ok) {
+        if (response === 200) {
           setSuccess(true);
-        } else {
-          setSuccess(false);
-          setFailure(true);
         }
       })
       .catch((error) => {
         console.log(error);
+        setSuccess(false);
+        setFailure(true);
       });
   };
 
@@ -89,8 +88,6 @@ const BlogForm = () => {
                   <input className={styles.input} type="file" name="image" />
                 </div>
                 <Button color={"red"} size={width} text={"Post Now"} />
-                {success && <p>Blog added successfully</p>}
-                {failure && <p>An error occured </p>}
                 <Link to="/blog">
                   <Button
                     color={"green"}

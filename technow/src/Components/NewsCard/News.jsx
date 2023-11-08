@@ -9,11 +9,14 @@ const NewsCard = ({title , image , auther , date , first , id}) => {
     return(
         <Link to={`/newsletterDetails/${id}`} className={`${styles.Link} ${firstLink}`}>
         <section className={firstt}>
-            <h2 className={styles.H2}>{title}</h2>
             <figure className={styles.Figure}>
                 <img src={`http://localhost:5000/${image}`} alt="newscard img" className={styles.Img}/>
-                <caption className={styles.Caption}>{auther}{time}</caption>
-            </figure>                
+            </figure>  
+            <span>
+                <p className={styles.Time}>{time}</p>           
+                <h2 className={styles.H2}>{title}</h2>
+            </span>   
+
         </section>
         </Link>
     )
