@@ -24,9 +24,7 @@ export const Subscribe = ({page}) => {
 
     const [email, setEmail] = useState('');
     const [submitting, setSubmitting] = useState(false);
-    const [subscriptionSuccess, setSubscriptionSuccess] = useState(false);
-    const [subscriptionError, setSubscriptionError] = useState(false);
-
+    const [empty , setEmpty] = useState(false)
 
     const handleFindNewsletterId = async () => {
         try {
@@ -59,6 +57,9 @@ export const Subscribe = ({page}) => {
             })
         } catch (error) {
             console.log(error);
+            if(email.length === 0){
+                setEmpty(true)
+            }
         }finally{
             setSubmitting(false)
         }
@@ -93,6 +94,9 @@ export const Subscribe = ({page}) => {
                                     onChange={(e) => setEmail(e.target.value)}/>
                                 <label className={styles.Label} htmlFor="email">Email</label>
                             </div>
+                            {empty === true ? (
+                                <p>Please Fill out the email</p>
+                            ) : ""}
                             <span className={styles.Button}>
                                 <Button text="Subscribe" subscribed={true} size={width} color={"green"}/>
                             </span>  

@@ -1,8 +1,6 @@
 import styles from './FeaturesCard.module.css'
 
-export const FeatureCard = () =>{
-    const title = "Kill The Spam "
-    const content = "Use Newsletter email to subscribe to newsletters. Win the battle against spam. Earn more time for a joyful reading."
+export const FeatureCard = ({title , content}) =>{
     return(
         <div className={styles.Container}>
             <h3 className={styles.H3}>

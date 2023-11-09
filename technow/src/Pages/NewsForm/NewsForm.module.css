@@ -133,6 +133,10 @@
     margin-bottom: 1rem;
   }
 
+  .hidden{
+    display: none ;
+  }
+
   @media (max-width: 768px) {
     .Container {
       flex-direction: column;

@@ -1,14 +1,23 @@
 import { Button } from "../../Components/Buttons/Buttons";
 import styles from "./NewsForm.module.css";
 import photo from "../../Assets/Images/Mail.png";
-import { useState, useEffect } from "react";
+import { useState, useEffect , useRef } from "react";
 import { ScrollButton } from "../../Components/ScrollButton/ScrollButton";
 import axios from "axios";
+import emailjs from '@emailjs/browser'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const NewsForm = () => {
   const [screenWidth, setScreenWidth] = useState(window.innerWidth);
   const [width, setWidth] = useState(screenWidth < 1024 ? "small" : "big");
-
+  const [Loading,setLoading] = useState(false)
+  const [newsletter, setNewsletter] = useState([]);
+  const [emails , setEmails] = useState([])
+  const [success, setSuccess] = useState(false);
+  const [failure, setFailure] = useState(false);
+  const [categoriesData, setCategoriesData] = useState([]);
+  
   useEffect(() => {
     const handleResize = () => {
       const newWidth = window.innerWidth;
@@ -21,7 +30,6 @@ const NewsForm = () => {
     };
   }, []);
 
-  const [categoriesData, setCategoriesData] = useState([]);
 
   useEffect(() => {
     const fetchCategory = async () => {
@@ -33,46 +41,73 @@ const NewsForm = () => {
       }
     };
 
-    fetchCategory();
-  }, []);
-
-  const [newsletter, setNewsletter] = useState([]);
-  useEffect(() => {
     const fetchNewsletter = async () => {
       try {
+        setLoading(true)
         const response = await axios.get(
           "http://localhost:5000/read/newsletter"
         );
         setNewsletter(response.data);
+        if(response === 200){
+          setLoading(false)
+          setEmails(newsletter.subscribedUser)
+        }
       } catch (error) {
         console.error(error);
       }
     };
-
+    
+    fetchCategory();
     fetchNewsletter();
   }, []);
 
-  const [success, setSuccess] = useState(false);
-  const [failure, setFailure] = useState(false);
 
-  const addNews = (e) => {
-    e.preventDefault();
-    const formData = new FormData(e.target);
-    axios
-      .post("http://localhost:5000/add/news", formData)
-      .then((respone) => {
-        console.log("Request sent successfully", respone.data);
-        if (respone.status === 200) {
-          setSuccess(true);
-        } else {
-          setSuccess(false);
-          setFailure(true);
-        }
-      })
-      .catch((error) => {
-        console.log(error);
+// const emailRef = useRef('');
+// const authorRef = useRef('');
+// const titleRef = useRef('');
+
+
+// useEffect(() => emailjs.init('s5KP7u_1YACGBQ7AF') , [])
+
+// const sendEmails = (e) => {
+//   e.preventDefault();
+//     const serviceId = 'service_gclgezg'
+//     const templateId = 'template_stjbtfl'
+//     emailjs.send( serviceId , templateId , {
+//       author : authorRef.current.value ,
+//       title : titleRef.curent.value ,
+//       email : emailRef.current.value
+//     })
+//     .then((result) => {
+//         alert('Message sent successfully!')
+//     }, (error) => {
+//         alert('Error sending message , please try again')
+//     });
+//   };
+
+const addNews = (e) => {
+  e.preventDefault();
+  const formData = new FormData(e.target);
+  axios
+  .post("http://localhost:5000/add/news", formData)
+  .then((respone) => {
+    console.log("Request sent successfully", respone.data);
+    if (respone.status === 200) {
+      setSuccess(true);
+    } else {
+      setSuccess(false);
+      setFailure(true);
+    }
+  })
+  .catch((error) => {
+    console.log(error);
       });
   };
+
+  const notify = () => toast("News Added Sucessfuly!")
+  if (success === true){
+    notify()
+  }
 
   return (
     <div className={styles.Container}>
@@ -88,6 +123,7 @@ const NewsForm = () => {
               type="text"
               id="author"
               name="author"
+              // ref={authorRef}
             />
 
             <label className={styles.name} htmlFor="title">
@@ -98,6 +134,7 @@ const NewsForm = () => {
               type="text"
               id="title"
               name="title"
+              // ref={titleRef}
             />
 
             <label className={styles.name} htmlFor="Category">
@@ -171,6 +208,17 @@ const NewsForm = () => {
                   name="links"
                 ></textarea>
               </div>
+              {/* {!Loading && emails.map((user) =>(
+                <input
+                key={user}
+                className={styles.hidden}
+                type="email"
+                id="name"
+                name="name"
+                ref={emailRef}
+                value={user}
+              />
+              ))} */}
             </div>
             <div className={styles.inputContainer}>
               <label className={styles.label}>Enter an image</label>

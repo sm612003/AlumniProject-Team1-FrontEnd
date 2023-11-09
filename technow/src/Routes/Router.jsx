@@ -17,11 +17,30 @@ import { createBrowserRouter, Outlet, } from "react-router-dom";
 import { Logo } from '../Components/Logo/Logo';
 import NotFound from '../Pages/NotFound/NotFound';
 import NewsCategory from '../Pages/NewsCategory/NewsCategory';
+import HeaderMobile from '../Layouts/HeaderMobile/HeaderMobile';
+import { useState , useEffect } from 'react';
 
 const Layout =()=>{
+  const [screenWidth, setScreenWidth] = useState(window.innerWidth);
+  const [nav, setNav] = useState(screenWidth < 800 ? true : false)
+
+  useEffect(() => {
+    const handleResize = () => {
+      const newWidth = window.innerWidth;
+      setScreenWidth(newWidth);
+      setNav(newWidth < 800 ? true : false);
+    };
+    window.addEventListener("resize", handleResize);
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
   return(
   <>
-  <Header />
+  {nav ? (
+    <HeaderMobile/>
+  ): (  <Header/>) }
   <Outlet />
   <Footer />
   </>

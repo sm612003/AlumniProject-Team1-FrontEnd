@@ -1,0 +1,88 @@
+.Container{
+    padding: 10px 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.Navbar {
+    display: flex;
+    justify-content: space-between;
+    width: 85%;
+    border-bottom: solid 1px #000;
+}
+
+.SpanUl{
+    width: 50%;
+}
+.Li{
+    font-size: 1.1em;
+}
+
+.Ul{
+    display: flex;
+    list-style: none;
+    justify-content: space-around;
+    margin-left: 0;
+    padding-left: 0;
+}
+
+.Category{
+    display: flex;
+    justify-content: center;
+    width: 60%;
+}
+
+.CategoryUl{
+    display: flex;
+    list-style: none;
+    justify-content: space-between;
+    padding: 1rem 0 ;
+    width: 100%;
+    border-bottom: solid 1px #000;
+}
+
+.Link{
+    color: black;
+}
+
+.Link:hover{
+    color: var(--color-green);
+    text-decoration: underline;
+    transition: all 0.3s ease-in-out;
+}
+
+
+@media screen and (max-width : 800px) {
+    .Li{
+        font-size: 0.9rem;
+    }
+}
+
+@media screen and (max-width : 400px ){
+    .SpanUl{
+        width: 65%;
+    }
+    .CategoryUl{
+        width: 80%;
+        display: flex;
+        list-style: none;
+        justify-content: space-between;
+    }
+    .Category{
+        width: 90%;
+    }
+    .Li{
+        font-size: 0.8rem;
+    }
+}
+@media screen and (max-width: 350px) {
+    .Navbar{
+        flex-direction: column;
+    }
+    .SpanUl{
+        width: 100%;
+    }
+    .CategoryUl{
+        width: 100%;
+    }
+}

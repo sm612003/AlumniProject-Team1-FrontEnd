@@ -10,9 +10,14 @@
     flex-direction: column;
 }
 
+.LogoMargin{
+    margin-top: 12px;
+    margin-left: 5px;
+}
+
 .Logo{
     font-family: 'Offside', sans-serif;
-    font-size: 2rem;
+    font-size: 1.5rem;
     display: flex;
     flex-direction: column;
     margin: 0;
@@ -22,7 +27,7 @@
 .Span{
     font-family: 'Manrope' , sans-serif;
     color: var(--color-red);
-    font-size: 1rem;
+    font-size: 0.8rem;
     margin: 0;
     padding: 0 5px;
 }

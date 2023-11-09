@@ -26,13 +26,14 @@
 
 .categLinks{
     color: black;
-    text-decoration: none;
+}
+.categLinks.active{
+    color: var(--color-green);
 }
 .categLinks:hover {
     color: rgb(34, 142, 50);
      border-radius: 4px;
-     transition: all 0.2s ease-out;
-     text-decoration-line: underline;
+     transition: all 0.2s ease-out;;
    }
 
    @media (max-width: 768px) {

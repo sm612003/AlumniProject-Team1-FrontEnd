@@ -74,6 +74,11 @@
 
 .li:hover{
     color: var(--green2);
+    cursor: pointer;
+}
+
+.li.active{
+    color: var(--color-green);
 }
 
 .Manage{

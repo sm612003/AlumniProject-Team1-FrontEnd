@@ -13,6 +13,18 @@ const NewsletterDetails = () => {
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
+    const handleOffline = () => {
+      setNetworkError(true);
+    };
+
+    window.addEventListener("offline", handleOffline);
+
+    return () => {
+      window.removeEventListener("offline", handleOffline);
+    };
+  }, []);
+
+  useEffect(() => {
     const fetchData = async () => {
       try {
         if (newsData.length === 0) setIsLoading(true);

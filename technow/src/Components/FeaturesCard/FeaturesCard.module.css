@@ -25,6 +25,7 @@
 .H3 , .P {
     margin: 0;
     padding: 0;
+    color: white;
 }
 
 .H3{
@@ -34,6 +35,8 @@
 .P {
     color: var(--color-P);
     letter-spacing: 0.01rem;
+    color: white;
+    opacity: 80%;
 }
 
 @media screen and (min-width: 0px) and (max-width: 400px) {

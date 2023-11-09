@@ -22,6 +22,18 @@ const Newsletter = () => {
     };
   }, []);
 
+  useEffect(() => {
+    const handleOffline = () => {
+      setNetworkError(true);
+    };
+
+    window.addEventListener("offline", handleOffline);
+
+    return () => {
+      window.removeEventListener("offline", handleOffline);
+    };
+  }, []);
+
   const [newsData, setNewsData] = useState([]);
   const [networkError, setNetworkError] = useState(false);
   const [error, setError] = useState(false);
@@ -116,14 +128,6 @@ const Newsletter = () => {
                 ></NewsCard>
               ))}
             </article>
-            <div className={styles.btn}>
-              <Button
-                text="Load more"
-                size={width}
-                color={"green"}
-                subscribed={false}
-              />
-            </div>
           </>
         )}
       </div>

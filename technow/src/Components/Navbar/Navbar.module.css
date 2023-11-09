@@ -33,6 +33,10 @@
   padding: 0.5rem 0;
 }
 
+.navLinks.active{
+  color: var(--color-green);
+}
+
 .navbarlogo{
   color: var(--green, #119C59);
   align-self: start;
@@ -47,7 +51,6 @@
   color: rgb(34, 142, 50);
    border-radius: 4px;
    transition: all 0.2s ease-out;
-   text-decoration-line: underline;
  }
 
 

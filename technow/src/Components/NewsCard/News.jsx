@@ -7,18 +7,18 @@ const NewsCard = ({title , image , auther , date , first , id}) => {
     const time = new Date(date).toLocaleDateString('en-us', { weekday:"long", year:"numeric", month:"short", day:"numeric", timeZone: "GMT"}) 
 
     return(
-        <Link to={`/newsletterDetails/${id}`} className={`${styles.Link} ${firstLink}`}>
         <section className={firstt}>
+            <Link to={`/newsletterDetails/${id}`} className={`${styles.Link} ${firstLink}`}>
             <figure className={styles.Figure}>
                 <img src={`http://localhost:5000/${image}`} alt="newscard img" className={styles.Img}/>
             </figure>  
-            <span>
+            <span className={styles.Span}>
                 <p className={styles.Time}>{time}</p>           
                 <h2 className={styles.H2}>{title}</h2>
             </span>   
 
-        </section>
         </Link>
+        </section>
     )
 }
 export default NewsCard ;
