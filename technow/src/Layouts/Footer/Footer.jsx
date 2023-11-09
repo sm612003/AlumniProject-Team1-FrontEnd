@@ -70,10 +70,26 @@ const Footer =()=>{
             </div>
             <div className={`${styles.footerCol} ${styles.socials}`}>
                     <ul className={styles.icons}>
-                        <li className={styles.liFooter}><BsFacebook className={styles.icon}/></li>
-                        <li className={styles.liFooter}><BsWhatsapp className={styles.icon}/></li>
-                        <li className={styles.liFooter}><BsInstagram className={styles.icon}/></li>
-                        <li className={styles.liFooter}><BsLinkedin className={styles.icon}/></li>
+                        <li className={styles.liFooter}>
+                            <Link to='https://www.facebook.com/profile.php/?id=100002482212667&name=xhp_nt__fb__action__open_user'>
+                            <BsFacebook className={styles.icon}/>
+                            </Link>
+                        </li>
+                        <li className={styles.liFooter}>
+                            <Link to='https://wa.me/+96176843642'>
+                            <BsWhatsapp className={styles.icon}/>
+                            </Link>
+                        </li>
+                        <li className={styles.liFooter}>
+                            <Link to='https://www.instagram.com/omar__banat?igshid=MXBlZ2Y2Z29zcGgzcQ=='>
+                            <BsInstagram className={styles.icon}/>
+                            </Link>
+                        </li>
+                        <li className={styles.liFooter}>
+                            <Link to='https://www.linkedin.com/in/banat-omar?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app'>
+                            <BsLinkedin className={styles.icon}/>
+                            </Link>
+                        </li>
                     </ul>
                 </div>
 

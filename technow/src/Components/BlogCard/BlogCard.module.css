@@ -52,7 +52,7 @@
 .maincontent{
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: center;
     width: 50%;
 }
 .image{
@@ -68,6 +68,8 @@
 
 .normalImg{
     justify-content: flex-start;
+    width: 100%;
+    height: 100%;
 }
 .pclass{
     font-size: 0.8rem;

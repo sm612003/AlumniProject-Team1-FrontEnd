@@ -50,14 +50,14 @@ import axios from "axios"
                     <Link to={`/blogDetails/${id}`} className={styles.link}>
                     <h2 className={styles.h2}>{title}</h2>
                     </Link>
-                     <div className={styles.icons}>
+                     {/* <div className={styles.icons}>
                         {errorDelete && <p style={errorStyle}>Error Deleting Blog</p>}
                         <span className={styles.span}>
                         <button onClick={(e) => handleDelete(e)} className={styles.btnDelete}><FaTrashCan className={styles.Icon}/></button>
                         <Link to={`/updateBlog/${id}`} className={styles.link}><FiEdit className={styles.Icon} /></Link>
                         </span>
 
-                        </div>
+                        </div> */}
                 </div>
             </div>
     );

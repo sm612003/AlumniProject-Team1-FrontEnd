@@ -23,6 +23,18 @@ const BlogDetails = () => {
     };
   }, []);
 
+  useEffect(() => {
+    const handleOffline = () => {
+      setNetworkError(true);
+    };
+
+    window.addEventListener("offline", handleOffline);
+
+    return () => {
+      window.removeEventListener("offline", handleOffline);
+    };
+  }, []);
+
   const { id } = useParams();
   const [blogsData, setBlogsData] = useState([]);
   const [networkError, setNetworkError] = useState(false);
@@ -43,7 +55,7 @@ const BlogDetails = () => {
         const response = await axios.get(
           `http://localhost:5000/read/blogsById/${id}`
         );
-        if (!response.ok) {
+        if (!response===200) {
           setError(true);
           setIsLoading(false);
           setError(false);
