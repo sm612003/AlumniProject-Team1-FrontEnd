@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import { Button } from "../../Components/Buttons/Buttons";
 import NewsCard from "../../Components/NewsCard/News";
 import styles from "./Newsletter.module.css";
 import axios from "axios";
@@ -7,20 +6,6 @@ import { ScrollButton } from "../../Components/ScrollButton/ScrollButton";
 
 //Page
 const Newsletter = () => {
-  const [screenWidth, setScreenWidth] = useState(window.innerWidth);
-  const [width, setWidth] = useState(screenWidth < 1024 ? "small" : "big");
-
-  useEffect(() => {
-    const handleResize = () => {
-      const newWidth = window.innerWidth;
-      setScreenWidth(newWidth);
-      setWidth(newWidth < 1024 ? "small" : "big");
-    };
-    window.addEventListener("resize", handleResize);
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
-  }, []);
 
   useEffect(() => {
     const handleOffline = () => {
@@ -91,9 +76,8 @@ const Newsletter = () => {
   const containerStyle = {
     display: "flex",
     flexDirection: "column",
-    justifyContent: "center",
     alignItems: "center",
-    height: "100%",
+    height: "100vh",
   };
 
   return (

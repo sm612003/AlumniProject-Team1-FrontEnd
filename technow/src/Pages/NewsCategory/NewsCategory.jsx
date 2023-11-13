@@ -84,9 +84,8 @@ const NewsCategory = () => {
   const containerStyle = {
     display: "flex",
     flexDirection: "column",
-    justifyContent: "center",
     alignItems: "center",
-    height: "100%",
+    height: "100vh",
   };
 
   return (

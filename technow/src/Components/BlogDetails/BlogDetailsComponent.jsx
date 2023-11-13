@@ -1,4 +1,3 @@
-import React, { useEffect, useState } from "react";
 import styles from "./BlogDetails.module.css"
 
 const BlogDetailsComponent = ({title , author , image , createdAt , content }) =>{
@@ -12,7 +11,7 @@ const BlogDetailsComponent = ({title , author , image , createdAt , content }) =
             </div>
             <div className={styles.center}>
                 
-                <img className={styles.image} src={`http://localhost:5000/${image}`} alt="blog image" />
+                <img className={styles.image} src={`http://localhost:5000/${image}`} alt="blog img" />
             </div>    
                 <article className={styles.bottom}>
                     <p className={styles.blogcontent}>{content}

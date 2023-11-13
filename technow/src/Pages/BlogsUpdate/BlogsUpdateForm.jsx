@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import styles from "./BlogsUpdate.module.css";
 import photo from "../../Assets/Images/Mail.png";
@@ -9,6 +9,14 @@ import axios from "axios";
 const BlogUpdate = () => {
   const [screenWidth, setScreenWidth] = useState(window.innerWidth);
   const [width, setWidth] = useState(screenWidth < 900 ? 'small' : 'big');
+  const { id } = useParams();
+  const [existingData, setExistingData] = useState({});
+  const [inputData, setInputData] = useState({
+    fullname: existingData.author,
+    title: existingData.title,
+    content: existingData.content,
+  });
+  const [imageFile, setImageFile] = useState(existingData.image);
 
   useEffect(() => {
     const handleResize = () => {
@@ -22,20 +30,12 @@ const BlogUpdate = () => {
     };
   }, []);
 
-  const { id } = useParams();
-  const [existingData, setExistingData] = useState({});
-  const [inputData, setInputData] = useState({
-    fullname: existingData.author,
-    title: existingData.title,
-    content: existingData.content,
-  });
-  const [imageFile, setImageFile] = useState(existingData.image);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const response = await axios.get(`http://localhost:5000/read/blogsById/${id}`);
-        if (!response.ok) {
+        if (!response === 200) {
           console.log('error');
         }
         setExistingData(response.data);
@@ -59,23 +59,8 @@ const BlogUpdate = () => {
   };
 
   const handleImageChange = (e) => {
-    console.log(e.target.files[0])
     const file = e.target.files[0] || existingData.image;
     setImageFile(file);
-  };
-
-  const handleImageUpdate = async (file) => {
-    try {
-      const formData = new FormData();
-      formData.append("image", file);
-
-      const response = await axios.patch(`http://localhost:5000/update/blogs`,
-      {...formData, id : id});
-
-      console.log("Image updated successfully:", response.data);
-    } catch (error) {
-      console.error("Error updating the image:", error);
-    }
   };
 
   const handleSubmit = async (e) => {
@@ -90,8 +75,10 @@ const BlogUpdate = () => {
       };
       console.log(updatedData)
       const response = await axios.patch(`http://localhost:5000/update/blogs`, 
-      {image: imageFile,
-        ...updatedData, id : id },
+      {
+        image: imageFile,
+        ...updatedData,
+        id : id },
       {headers: {'Content-Type' : 'multipart/form-data'}});
 
       console.log("Blog updated successfully:", response.data);
@@ -155,7 +142,7 @@ const BlogUpdate = () => {
                   {existingData.image && (
                     <img
                       src={`http://localhost:5000/${existingData.image}`}
-                      alt="Current Image"
+                      alt="Current Img"
                       className={styles.currentImage}
                     />
                   )}

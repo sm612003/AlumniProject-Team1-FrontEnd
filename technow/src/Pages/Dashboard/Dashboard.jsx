@@ -6,9 +6,9 @@ import { Button } from "../../Components/Buttons/Buttons";
 import axios from "axios";
 import { Logo } from "../../Components/Logo/Logo";
 import { Link } from "react-router-dom";
-import NewsUpdate from "../NewsUpdate/NewsUpdateForm";
+// import NewsUpdate from "../NewsUpdate/NewsUpdateForm";
 import NewsForm from "../NewsForm/NewsForm";
-// import Toast from "../../Components/Toast/Toast";
+import UpdateNewsPage from "../NewsUpdate/PageNewsUpdate";
 
 const Dashboard = () => {
   const [screenWidth, setScreenWidth] = useState(window.innerWidth);
@@ -153,8 +153,6 @@ const Dashboard = () => {
 
   return (
     <div className={styles.Dashboard}>
-      {/* <Toast /> */}
-
       {!clicked ? (
         <>
           <nav className={styles.Navbar}>
@@ -197,7 +195,7 @@ const Dashboard = () => {
               </div>
             ) : (
               <>
-                {newUpdate ? <NewsUpdate newsID={newsID} /> : ""}
+                {newUpdate ? <UpdateNewsPage newsID={newsID} /> : ""}
                 <div className={styles.cont}>
                   {newsData.map((key, index) => (
                     <DashboardCard

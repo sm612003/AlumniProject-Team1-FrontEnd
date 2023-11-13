@@ -12,28 +12,20 @@ export const icons = (id) => {
     switch(true) {
         case id < 300:
         return `${storm}`;
-        break;
         case id <= 499:
         return `${drizzle}`;
-        break;
         case id <= 599:
         return `${rain}`;
-        break;
         case id <= 699:
         return `${snow}`;
-        break;
         case id <= 799:
         return `${fog}`;
-        break;
-        case id == 800:
+        case id === 800:
         return `${clear}`;
-        break;
-        case id == 801:
+        case id === 801:
         return `${partlycloudy}`;
-        break;
         case id <= 805:
         return `${mostlycloudy}`;
-        break;
         default:;
     }
 }

@@ -5,6 +5,7 @@ import { ScrollButton } from "../../Components/ScrollButton/ScrollButton";
 import { Button } from "../../Components/Buttons/Buttons";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import TextEditor from "../../Components/TextEditor/TextEditor";
 
 const BlogForm = () => {
   const [screenWidth, setScreenWidth] = useState(window.innerWidth);
@@ -22,9 +23,6 @@ const BlogForm = () => {
     };
   }, []);
 
-  const [success, setSuccess] = useState(false);
-  const [failure, setFailure] = useState(false);
-
   const addBlog = (e) => {
     e.preventDefault();
     const formData = new FormData(e.target);
@@ -34,13 +32,10 @@ const BlogForm = () => {
       .then((response) => {
         console.log("Request sent successfully", response.data);
         if (response === 200) {
-          setSuccess(true);
         }
       })
       .catch((error) => {
         console.log(error);
-        setSuccess(false);
-        setFailure(true);
       });
   };
 
@@ -51,6 +46,7 @@ const BlogForm = () => {
         <div className={styles.Top}>
           <div className={styles.Left}>
             <form className={styles.form} action="" onSubmit={addBlog}>
+              <TextEditor/>
               <label className={styles.name} htmlFor="fullname">
                 Full Name
               </label>
@@ -110,12 +106,3 @@ const BlogForm = () => {
 };
 
 export default BlogForm;
-
-// fetch ...
-// use state ( categories ) []
-
-// select
-// map( key +> {
-// <option vlaue={key._id}>{key.name} </option>
-// <?selecy>
-// })

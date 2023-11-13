@@ -66,7 +66,7 @@ const NewsletterDetails = () => {
       }
     };
     fetchData();
-  });
+  }, []);
 
   const errorStyle = {
     display: "flex",
@@ -78,9 +78,8 @@ const NewsletterDetails = () => {
   const containerStyle = {
     display: "flex",
     flexDirection: "column",
-    justifyContent: "center",
     alignItems: "center",
-    height: "100%",
+    height: "100vh",
   };
 
   return (

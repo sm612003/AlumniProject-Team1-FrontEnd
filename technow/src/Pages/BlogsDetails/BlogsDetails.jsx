@@ -1,28 +1,12 @@
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import BlogDetailsComponent from "../../Components/BlogDetails/BlogDetailsComponent";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { ScrollButton } from "../../Components/ScrollButton/ScrollButton";
-import { Button } from "../../Components/Buttons/Buttons";
 import styles from "./BlogsDetails.module.css";
 
 //Page
 const BlogDetails = () => {
-  const [screenWidth, setScreenWidth] = useState(window.innerWidth);
-  const [width, setWidth] = useState(screenWidth < 1024 ? "small" : "big");
-
-  useEffect(() => {
-    const handleResize = () => {
-      const newWidth = window.innerWidth;
-      setScreenWidth(newWidth);
-      setWidth(newWidth < 1024 ? "small" : "big");
-    };
-    window.addEventListener("resize", handleResize);
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
-  }, []);
-
   useEffect(() => {
     const handleOffline = () => {
       setNetworkError(true);
@@ -96,9 +80,8 @@ const BlogDetails = () => {
   const containerStyle = {
     display: "flex",
     flexDirection: "column",
-    justifyContent: "center",
     alignItems: "center",
-    height: "100%",
+    height: "100vh",
   };
 
   return (

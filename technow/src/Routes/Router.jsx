@@ -9,9 +9,7 @@ import BlogForm from "../Pages/BlogsForm/BlogsForm"
 import BlogUpdate from '../Pages/BlogsUpdate/BlogsUpdateForm'
 import Contact from "../Pages/Contact/Contact"
 import Dashboard from "../Pages/Dashboard/Dashboard"
-import NewsForm from "../Pages/NewsForm/NewsForm"
 import NewsLetterDetails from "../Pages/NewsletterDetails/NewsletterDetais"
-import NewsUpdate from "../Pages/NewsUpdate/NewsUpdateForm"
 import SubscribePage from "../Pages/Subscribe/Subscribe"
 import { createBrowserRouter, Outlet, } from "react-router-dom";
 import { Logo } from '../Components/Logo/Logo';

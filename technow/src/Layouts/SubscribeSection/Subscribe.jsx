@@ -4,9 +4,12 @@ import img from '../../Assets/Images/Envelope-amico.png'
 import {useState , useEffect} from 'react'
 import axios from 'axios'
 
+
 export const Subscribe = ({page}) => {
     const [screenWidth, setScreenWidth] = useState(window.innerWidth);
     const [width, setWidth] = useState(screenWidth < 1024 ? 'small' : 'big');
+    const [email, setEmail] = useState('');
+    const [empty , setEmpty] = useState(false)
 
     useEffect(() => {
         const handleResize = () => {
@@ -22,9 +25,6 @@ export const Subscribe = ({page}) => {
 
     const background = page === false ? styles.Gray : styles.White ;
 
-    const [email, setEmail] = useState('');
-    const [submitting, setSubmitting] = useState(false);
-    const [empty , setEmpty] = useState(false)
 
     const handleFindNewsletterId = async () => {
         try {
@@ -45,27 +45,22 @@ export const Subscribe = ({page}) => {
 
     const handleSubmit = async (event) => {
         event.preventDefault();
-
-        setSubmitting(true)
         const newsletterId = await handleFindNewsletterId();
-
         if(newsletterId){
-        try{
-            axios.patch('http://localhost:5000/add/newsletter/email' , {
-                id: newsletterId,
-                email: email,
-            })
-        } catch (error) {
-            console.log(error);
-            if(email.length === 0){
-                setEmpty(true)
+            try{
+                axios.patch('http://localhost:5000/add/newsletter/email' , {
+                    id: newsletterId,
+                    email: email,
+                })
+            } catch (error) {
+                console.log(error);
+                if(email.length === 0){
+                    setEmpty(true)
+                }
             }
-        }finally{
-            setSubmitting(false)
         }
-    }
-};
-    
+    };
+
     return(
         <div className={`${styles.Container} ${background}`}>
             <h1 className={styles.H1}> 

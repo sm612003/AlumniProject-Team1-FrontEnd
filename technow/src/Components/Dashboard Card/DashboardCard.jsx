@@ -4,7 +4,6 @@ import {FaTrashCan} from 'react-icons/fa6'
 import {FiEdit} from 'react-icons/fi'
 import { Link } from "react-router-dom"
 import { useState } from "react"
-import NewsUpdate from "../../Pages/NewsUpdate/NewsUpdateForm"
 
 const DashboardCard = ({author , date , title , _id , blog , newUpdate , setNewUpdate , setNewsID}) => {
 
@@ -66,7 +65,7 @@ const errorStyle = {
           <div className={styles.DashboardBottom}>
             <p className={styles.p}>{author} / {date} 
               <span className={styles.span}>
-              {errorDelete && <p style={errorStyle}>Error deleting news</p>}
+              {errorDelete ? <p style={errorStyle}>Error deleting news</p> : "  "}
               {!blog ? (
                 <>
                 <button className={styles.btn} onClick={(e) => handleDelete(_id , e)} ><FaTrashCan className={styles.icon}/></button>

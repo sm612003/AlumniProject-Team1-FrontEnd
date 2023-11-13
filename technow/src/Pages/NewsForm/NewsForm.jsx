@@ -1,21 +1,20 @@
 import { Button } from "../../Components/Buttons/Buttons";
 import styles from "./NewsForm.module.css";
 import photo from "../../Assets/Images/Mail.png";
-import { useState, useEffect , useRef } from "react";
+import { useState, useEffect } from "react";
+// import { useRef } from "react";
 import { ScrollButton } from "../../Components/ScrollButton/ScrollButton";
 import axios from "axios";
 import emailjs from '@emailjs/browser'
-import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 const NewsForm = () => {
   const [screenWidth, setScreenWidth] = useState(window.innerWidth);
   const [width, setWidth] = useState(screenWidth < 1024 ? "small" : "big");
-  const [Loading,setLoading] = useState(false)
+  // const [Loading,setLoading] = useState(false)
   const [newsletter, setNewsletter] = useState([]);
-  const [emails , setEmails] = useState([])
-  const [success, setSuccess] = useState(false);
-  const [failure, setFailure] = useState(false);
+  // const [success, setSuccess] = useState(false);
+  // const [failure, setFailure] = useState(false);
   const [categoriesData, setCategoriesData] = useState([]);
   
   useEffect(() => {
@@ -43,15 +42,13 @@ const NewsForm = () => {
 
     const fetchNewsletter = async () => {
       try {
-        setLoading(true)
+        // setLoading(true)
         const response = await axios.get(
           "http://localhost:5000/read/newsletter"
         );
         setNewsletter(response.data);
-        if(response === 200){
-          setLoading(false)
-          setEmails(newsletter.subscribedUser)
-        }
+        // setLoading(false)
+       
       } catch (error) {
         console.error(error);
       }
@@ -67,7 +64,7 @@ const NewsForm = () => {
 // const titleRef = useRef('');
 
 
-// useEffect(() => emailjs.init('s5KP7u_1YACGBQ7AF') , [])
+useEffect(() => emailjs.init('s5KP7u_1YACGBQ7AF') , [])
 
 // const sendEmails = (e) => {
 //   e.preventDefault();
@@ -75,7 +72,7 @@ const NewsForm = () => {
 //     const templateId = 'template_stjbtfl'
 //     emailjs.send( serviceId , templateId , {
 //       author : authorRef.current.value ,
-//       title : titleRef.curent.value ,
+//       title : titleRef.current.value ,
 //       email : emailRef.current.value
 //     })
 //     .then((result) => {
@@ -93,22 +90,16 @@ const addNews = (e) => {
   .then((respone) => {
     console.log("Request sent successfully", respone.data);
     if (respone.status === 200) {
-      setSuccess(true);
+      // setSuccess(true);
     } else {
-      setSuccess(false);
-      setFailure(true);
+      // setSuccess(false);
+      // setFailure(true);
     }
   })
   .catch((error) => {
     console.log(error);
       });
   };
-
-  const notify = () => toast("News Added Sucessfuly!")
-  if (success === true){
-    notify()
-  }
-
   return (
     <div className={styles.Container}>
       <h1 className={styles.h1}>Add News</h1>
@@ -208,7 +199,9 @@ const addNews = (e) => {
                   name="links"
                 ></textarea>
               </div>
-              {/* {!Loading && emails.map((user) =>(
+              {/* {!Loading && newsletter ? 
+               newsletter[0].subscribedUser.map((user) =>{
+                return <p>{user}</p>}
                 <input
                 key={user}
                 className={styles.hidden}
@@ -218,14 +211,13 @@ const addNews = (e) => {
                 ref={emailRef}
                 value={user}
               />
-              ))} */}
+                ) : <p>Loading....</p>} */}
             </div>
             <div className={styles.inputContainer}>
               <label className={styles.label}>Enter an image</label>
               <input className={styles.input} type="file" name="image" />
             </div>
             <div className={styles.btn}>
-              <Button color={"red"} text={"Upload photo"} size={width} />
               <Button color={"green"} text={"Add News"} size={width} />
             </div>
           </form>
