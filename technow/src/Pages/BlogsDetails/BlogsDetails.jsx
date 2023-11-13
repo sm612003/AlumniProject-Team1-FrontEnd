@@ -37,7 +37,7 @@ const BlogDetails = () => {
           return;
         }
         const response = await axios.get(
-          `http://localhost:5000/read/blogsById/${id}`
+          `${process.env.REACT_APP_API}/read/blogsById/${id}`
         );
         if (!response===200) {
           setError(true);

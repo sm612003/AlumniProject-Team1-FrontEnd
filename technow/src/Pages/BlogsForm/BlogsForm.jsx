@@ -28,7 +28,7 @@ const BlogForm = () => {
     const formData = new FormData(e.target);
 
     axios
-      .post("http://localhost:5000/add/blogs", formData)
+      .post(`${process.env.REACT_APP_API}/add/blogs`, formData)
       .then((response) => {
         console.log("Request sent successfully", response.data);
         if (response === 200) {

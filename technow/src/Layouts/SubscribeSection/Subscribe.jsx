@@ -29,7 +29,7 @@ export const Subscribe = ({page}) => {
     const handleFindNewsletterId = async () => {
         try {
         // Send a request to find the newsletter and get its ID
-        const response = await axios.get('http://localhost:5000/read/newsletter');
+        const response = await axios.get(`${process.env.REACT_APP_API}/read/newsletter`);
         if (response.status === 200) {
             const data = response.data 
             const newsletter = data[0]
@@ -48,7 +48,7 @@ export const Subscribe = ({page}) => {
         const newsletterId = await handleFindNewsletterId();
         if(newsletterId){
             try{
-                axios.patch('http://localhost:5000/add/newsletter/email' , {
+                axios.patch(`${process.env.REACT_APP_API}/add/newsletter/email` , {
                     id: newsletterId,
                     email: email,
                 })

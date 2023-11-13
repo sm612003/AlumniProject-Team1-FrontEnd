@@ -33,7 +33,7 @@ const NewsForm = () => {
   useEffect(() => {
     const fetchCategory = async () => {
       try {
-        const response = await axios.get("http://localhost:5000/read/category");
+        const response = await axios.get(`${process.env.REACT_APP_API}/read/category`);
         setCategoriesData(response.data);
       } catch (error) {
         console.error(error);
@@ -44,7 +44,7 @@ const NewsForm = () => {
       try {
         // setLoading(true)
         const response = await axios.get(
-          "http://localhost:5000/read/newsletter"
+          `${process.env.REACT_APP_API}/read/newsletter`
         );
         setNewsletter(response.data);
         // setLoading(false)
@@ -86,7 +86,7 @@ const addNews = (e) => {
   e.preventDefault();
   const formData = new FormData(e.target);
   axios
-  .post("http://localhost:5000/add/news", formData)
+  .post(`${process.env.REACT_APP_API}/add/news`, formData)
   .then((respone) => {
     console.log("Request sent successfully", respone.data);
     if (respone.status === 200) {

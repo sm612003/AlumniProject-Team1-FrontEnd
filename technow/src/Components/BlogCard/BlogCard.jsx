@@ -12,7 +12,7 @@ import { Link } from 'react-router-dom'
             <div className={`${styles.blogcontent} ${reverse}`}>
                 <div className={`${styles.mainimage} ${reversedImg}`}>
                 <Link to={`/blogDetails/${id}`} className={styles.link2}>
-                    <img src={`http://localhost:5000/${image}`} className={styles.image} alt="Img for the blog"></img>
+                    <img src={`${process.env.REACT_APP_API}/${image}`} className={styles.image} alt="Img for the blog"></img>
                 </Link>
                 </div>
                 <div className={styles.maincontent}>

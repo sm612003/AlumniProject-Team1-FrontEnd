@@ -10,7 +10,7 @@ const NewsCard = ({title , image , auther , date , first , id}) => {
         <section className={firstt}>
             <Link to={`/newsletterDetails/${id}`} className={`${styles.Link} ${firstLink}`}>
             <figure className={styles.Figure}>
-                <img src={`http://localhost:5000/${image}`} alt="newscard img" className={styles.Img}/>
+                <img src={`${process.env.REACT_APP_API}/${image}`} alt="newscard img" className={styles.Img}/>
             </figure>  
             <span className={styles.Span}>
                 <p className={styles.Time}>{time}</p>           

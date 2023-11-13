@@ -12,7 +12,7 @@ const [errorDelete , setErrorDelete] = useState(false)
 
 const handleDelete = (id , e) => {
   e.preventDefault();
-  axios.delete('http://localhost:5000/delete/news' , {data : {id : _id}})
+  axios.delete(`${process.env.REACT_APP_API}/delete/news` , {data : {id : _id}})
   .then((response)=>{
     if(response.ok){
       setErrorDelete(false)
@@ -25,7 +25,7 @@ const handleDelete = (id , e) => {
 
 const handleDelete2 = (id , e) => {
   e.preventDefault();
-  axios.delete('http://localhost:5000/delete/blogs' , {data : {id : _id}})
+  axios.delete(`${process.env.REACT_APP_API}/delete/blogs` , {data : {id : _id}})
   .then((response)=>{
     if(response.ok){
       setErrorDelete(false)
@@ -65,7 +65,7 @@ const errorStyle = {
           <div className={styles.DashboardBottom}>
             <p className={styles.p}>{author} / {date} 
               <span className={styles.span}>
-              {errorDelete ? <p style={errorStyle}>Error deleting news</p> : "  "}
+              {errorDelete ? <p style={errorStyle}>Error deleting</p> : "  "}
               {!blog ? (
                 <>
                 <button className={styles.btn} onClick={(e) => handleDelete(_id , e)} ><FaTrashCan className={styles.icon}/></button>

@@ -41,7 +41,7 @@ const NewsCategory = () => {
           return;
         }
         const response = await axios.get(
-          `http://localhost:5000/read/news/byCategory/${categoryName}`
+          `${process.env.REACT_APP_API}/read/news/byCategory/${categoryName}`
         );
         if (!response.ok) {
           setError(true);

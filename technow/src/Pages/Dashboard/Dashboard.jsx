@@ -60,7 +60,7 @@ const Dashboard = () => {
           setIsLoading(false);
           return;
         }
-        const response = await axios.get("http://localhost:5000/read/news");
+        const response = await axios.get(`${process.env.REACT_APP_API}/read/news`);
         if (!response.ok) {
           setError(true);
           setIsLoading(false);
@@ -104,7 +104,7 @@ const Dashboard = () => {
           setIsLoading(false);
           return;
         }
-        const response = await axios.get("http://localhost:5000/read/blogs");
+        const response = await axios.get(`${process.env.REACT_APP_API}/read/blogs`);
         if (!response.ok) {
           setError(true);
           setIsLoading(false);

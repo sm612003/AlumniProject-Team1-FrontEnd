@@ -34,7 +34,7 @@ const Newsletter = () => {
           setIsLoading(false);
           return;
         }
-        const response = await axios.get("http://localhost:5000/read/news");
+        const response = await axios.get(`${process.env.REACT_APP_API}/read/news`);
         if (!response.ok) {
           setError(true);
           setIsLoading(false);

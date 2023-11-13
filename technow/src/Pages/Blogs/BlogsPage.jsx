@@ -50,7 +50,7 @@ const BlogCardLayout = () => {
           return;
         }
         const response = await axios.get(
-          "http://localhost:5000/read/blogs");
+          `${process.env.REACT_APP_API}/read/blogs`);
         setBlogData(response.data);
         if (!response===200) {
           setError(true);

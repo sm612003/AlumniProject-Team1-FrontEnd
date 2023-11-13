@@ -11,7 +11,7 @@ const BlogDetailsComponent = ({title , author , image , createdAt , content }) =
             </div>
             <div className={styles.center}>
                 
-                <img className={styles.image} src={`http://localhost:5000/${image}`} alt="blog img" />
+                <img className={styles.image} src={`${process.env.REACT_APP_API}/${image}`} alt="blog img" />
             </div>    
                 <article className={styles.bottom}>
                     <p className={styles.blogcontent}>{content}

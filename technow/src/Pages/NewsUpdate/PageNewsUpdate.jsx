@@ -38,7 +38,7 @@ const UpdateNewsPage = (newsID) => {
     useEffect(() => {
         const fetchCategory = async () => {
           try {
-            const response = await axios.get("http://localhost:5000/read/category");
+            const response = await axios.get(`${process.env.REACT_APP_API}/read/category`);
             setCategoriesData(response.data);
           } catch (error) {
             console.error(error);
@@ -48,7 +48,7 @@ const UpdateNewsPage = (newsID) => {
         const fetchNewsletter = async () => {
           try {
             const response = await axios.get(
-              "http://localhost:5000/read/newsletter"
+              `${process.env.REACT_APP_API}/read/newsletter`
             );
             setNewsletterData(response.data);
           } catch (error) {
@@ -63,7 +63,7 @@ const UpdateNewsPage = (newsID) => {
       useEffect(() => {
         const fetchData = async () => {
           try {
-            const response = await axios.get(`http://localhost:5000/read/newsById/${id}`);
+            const response = await axios.get(`${process.env.REACT_APP_API}/read/newsById/${id}`);
             if (!response === 200 ) {
               console.log('error');
             }

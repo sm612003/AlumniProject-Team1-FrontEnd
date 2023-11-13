@@ -34,7 +34,7 @@ const BlogUpdate = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(`http://localhost:5000/read/blogsById/${id}`);
+        const response = await axios.get(`${process.env.REACT_APP_API}/read/blogsById/${id}`);
         if (!response === 200) {
           console.log('error');
         }
@@ -74,7 +74,7 @@ const BlogUpdate = () => {
         // Include any other fields that need to be updated.
       };
       console.log(updatedData)
-      const response = await axios.patch(`http://localhost:5000/update/blogs`, 
+      const response = await axios.patch(`${process.env.REACT_APP_API}/update/blogs`, 
       {
         image: imageFile,
         ...updatedData,
@@ -141,7 +141,7 @@ const BlogUpdate = () => {
                   />
                   {existingData.image && (
                     <img
-                      src={`http://localhost:5000/${existingData.image}`}
+                      src={`${process.env.REACT_APP_API}/${existingData.image}`}
                       alt="Current Img"
                       className={styles.currentImage}
                     />

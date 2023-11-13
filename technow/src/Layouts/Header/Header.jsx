@@ -14,7 +14,7 @@ const Header = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get('http://localhost:5000/read/category');
+        const response = await axios.get(`${process.env.REACT_APP_API}/read/category`);
         setCategories(response.data);
         setNetworkError(false);
       } catch (error) {

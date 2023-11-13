@@ -42,7 +42,7 @@ const NewsUpdate = ({
       };
       console.log(updatedData);
       const response = await axios.patch(
-        `http://localhost:5000/update/news`,
+        `${process.env.REACT_APP_API}/update/news`,
         { image: imageFile, ...updatedData, id: id },
         { headers: { "Content-Type": "multipart/form-data" } }
       );
@@ -198,7 +198,7 @@ const NewsUpdate = ({
               />
               {existingData.image && (
                 <img
-                  src={`http://localhost:5000/${existingData.image}`}
+                  src={`${process.env.REACT_APP_API}/${existingData.image}`}
                   alt="Current Img"
                   className={styles.currentImage}
                 />
