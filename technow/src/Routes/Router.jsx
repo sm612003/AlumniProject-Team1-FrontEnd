@@ -14,6 +14,7 @@ import { Logo } from "../Components/Logo/Logo";
 import NotFound from "../Pages/NotFound/NotFound";
 import NewsCategory from "../Pages/NewsCategory/NewsCategory";
 import LayoutWithHeaderFooter from "./Layout";
+import  LoginComponent from "../Pages/SignIn";
 
 // const Layout =()=>{
 //   const [screenWidth, setScreenWidth] = useState(window.innerWidth);
@@ -141,7 +142,7 @@ const AppRoute = () => {
               <LayoutWithHeaderFooter>
                 <SubscribePage />
                 </LayoutWithHeaderFooter>} />
-        <Route path="/blogs" element={
+        <Route path="/blog" element={
               <LayoutWithHeaderFooter>
                 <Blogs />
                 </LayoutWithHeaderFooter>
@@ -161,6 +162,9 @@ const AppRoute = () => {
 
       <Route path="/dashboard" element={<Dashboard/>}/>
       <Route path="/*" element={<NotFound/>}/>
+      <Route path="/signin" element={< LoginComponent/>}/>
+
+
     </Routes>
     </BrowserRouter>
   );

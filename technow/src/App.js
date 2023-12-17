@@ -1,6 +1,6 @@
 import './App.css';
 import AppRoute from './Routes/Router';
-import {RouterProvider} from "react-router-dom"
+// import {RouterProvider} from "react-router-dom"
 
 
 
@@ -9,6 +9,7 @@ function App() {
     <div className="App">
     <div className='container'>
         <AppRoute/>
+        
       </div>
     </div>
   );
