@@ -1,0 +1,11 @@
+import { useContext } from "react";
+import { AuthContext } from "../Context/AuthContext";
+import NotFound from "../Pages/NotFound/NotFound";
+const ProtectedRoute = ({ children }) => {
+  const { user } = useContext(AuthContext);
+  console.log("userrrrrrrrr" + user);
+  const isAdmin = user && user.role === "user";
+  console.log(isAdmin);
+  return isAdmin ? children : <NotFound />;
+};
+export default ProtectedRoute;

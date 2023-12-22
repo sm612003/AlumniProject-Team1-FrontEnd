@@ -16,6 +16,7 @@ import NewsCategory from "../Pages/NewsCategory/NewsCategory";
 import LayoutWithHeaderFooter from "./Layout";
 import SignUpForm from "../Pages/SignUp/SignUpForm";
 import Login from "../Pages/Login/Login";
+import ProtectedRoute from "./ProtectedRoute";
 // const Layout =()=>{
 //   const [screenWidth, setScreenWidth] = useState(window.innerWidth);
 //   const [nav, setNav] = useState(screenWidth < 800 ? true : false)
@@ -108,7 +109,7 @@ const AppRoute = () => {
     <BrowserRouter>
       <Routes>
         <Route
-          path="/home"
+          path="/"
           element={
             <LayoutWithHeaderFooter>
               <HomePage />
@@ -116,7 +117,7 @@ const AppRoute = () => {
           }
         />
         <Route
-          path="/home"
+          path="/"
           element={
             <LayoutWithHeaderFooter>
               <Logo />
@@ -197,9 +198,17 @@ const AppRoute = () => {
             </LayoutWithHeaderFooter>
           }
         />
-        <Route path="/signup" element={<SignUpForm />} /> 
-         <Route path="/" element={<Login />} />
-        <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/signup" element={<SignUpForm />} />
+        <Route path="/login" element={<Login />} />
+        <Route
+          path="/dashboard"
+          element={
+            
+            <ProtectedRoute>
+              <Dashboard />
+            </ProtectedRoute>
+          }
+        />
         <Route path="/*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>

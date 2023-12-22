@@ -28,7 +28,7 @@ const Login = () => {
           console.log(res);
           if (res) {
             
-            navigate("/home");
+            navigate("/blog");
           }
         });
     } catch (err) {
