@@ -14,7 +14,8 @@ import { Logo } from "../Components/Logo/Logo";
 import NotFound from "../Pages/NotFound/NotFound";
 import NewsCategory from "../Pages/NewsCategory/NewsCategory";
 import LayoutWithHeaderFooter from "./Layout";
-
+import SignUpForm from "../Pages/SignUp/SignUpForm";
+import Login from "../Pages/Login/Login";
 // const Layout =()=>{
 //   const [screenWidth, setScreenWidth] = useState(window.innerWidth);
 //   const [nav, setNav] = useState(screenWidth < 800 ? true : false)
@@ -105,63 +106,102 @@ import LayoutWithHeaderFooter from "./Layout";
 const AppRoute = () => {
   return (
     <BrowserRouter>
-    <Routes>
-        <Route path="/" element={
-         <LayoutWithHeaderFooter>
-          <HomePage />
-          </LayoutWithHeaderFooter>
-        } />
-        <Route path="/" element={
-         <LayoutWithHeaderFooter>
-          <Logo />
-          </LayoutWithHeaderFooter>
-        } />
-        <Route path="/newsletter" element={
-         <LayoutWithHeaderFooter>
-          <Newsletter />
-          </LayoutWithHeaderFooter>
-        } />
-        <Route path="/newsletterDetails/:id" element={
-         <LayoutWithHeaderFooter>
-          <NewsLetterDetails />
-          </LayoutWithHeaderFooter>} />
-        <Route path="/newsCategory/:categoryName" element={
-         <LayoutWithHeaderFooter>
-          <NewsCategory />
-          </LayoutWithHeaderFooter>} />
-        <Route path="/contact" element={
-         <LayoutWithHeaderFooter>
-          <Contact />
-          </LayoutWithHeaderFooter>} />
-        <Route path="/blogsForm" element={
-         <LayoutWithHeaderFooter>
-          <BlogForm />
-          </LayoutWithHeaderFooter>} />
-        <Route path="/subscribe" element={
-              <LayoutWithHeaderFooter>
-                <SubscribePage />
-                </LayoutWithHeaderFooter>} />
-        <Route path="/blogs" element={
-              <LayoutWithHeaderFooter>
-                <Blogs />
-                </LayoutWithHeaderFooter>
-              } />
+      <Routes>
+        <Route
+          path="/home"
+          element={
+            <LayoutWithHeaderFooter>
+              <HomePage />
+            </LayoutWithHeaderFooter>
+          }
+        />
+        <Route
+          path="/home"
+          element={
+            <LayoutWithHeaderFooter>
+              <Logo />
+            </LayoutWithHeaderFooter>
+          }
+        />
+        <Route
+          path="/newsletter"
+          element={
+            <LayoutWithHeaderFooter>
+              <Newsletter />
+            </LayoutWithHeaderFooter>
+          }
+        />
+        <Route
+          path="/newsletterDetails/:id"
+          element={
+            <LayoutWithHeaderFooter>
+              <NewsLetterDetails />
+            </LayoutWithHeaderFooter>
+          }
+        />
+        <Route
+          path="/newsCategory/:categoryName"
+          element={
+            <LayoutWithHeaderFooter>
+              <NewsCategory />
+            </LayoutWithHeaderFooter>
+          }
+        />
+        <Route
+          path="/contact"
+          element={
+            <LayoutWithHeaderFooter>
+              <Contact />
+            </LayoutWithHeaderFooter>
+          }
+        />
+        <Route
+          path="/blogsForm"
+          element={
+            <LayoutWithHeaderFooter>
+              <BlogForm />
+            </LayoutWithHeaderFooter>
+          }
+        />
+        <Route
+          path="/subscribe"
+          element={
+            <LayoutWithHeaderFooter>
+              <SubscribePage />
+            </LayoutWithHeaderFooter>
+          }
+        />
+        <Route
+          path="/blogs"
+          element={
+            <LayoutWithHeaderFooter>
+              <Blogs />
+            </LayoutWithHeaderFooter>
+          }
+        />
 
-        <Route path="/blogDetails/:id" element={
-                <LayoutWithHeaderFooter>
-        <BlogDetails />
-        </LayoutWithHeaderFooter>
-        } />
+        <Route
+          path="/blogDetails/:id"
+          element={
+            <LayoutWithHeaderFooter>
+              <BlogDetails />
+            </LayoutWithHeaderFooter>
+          }
+        />
 
-        <Route path="/updateBlog/:id" element={
-        <LayoutWithHeaderFooter>
-          <BlogUpdate />
-        </LayoutWithHeaderFooter>
-        } />
-
-      <Route path="/dashboard" element={<Dashboard/>}/>
-      <Route path="/*" element={<NotFound/>}/>
-    </Routes>
+        <Route
+          path="/updateBlog/:id"
+          element={
+            <LayoutWithHeaderFooter>
+              <BlogUpdate />
+            </LayoutWithHeaderFooter>
+          }
+        />
+        <Route path="/signup" element={<SignUpForm />} /> 
+         <Route path="/" element={<Login />} />
+        <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/*" element={<NotFound />} />
+      </Routes>
     </BrowserRouter>
   );
 };
