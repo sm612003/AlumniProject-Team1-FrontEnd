@@ -120,7 +120,7 @@ const SignUpForm = () => {
   };
   const handleLogin = () => {
     // Navigate to the login page or perform any other desired action
-    navigate("/");
+    navigate("/login");
   };
 
   // const handleOAuth = async () => {
@@ -181,7 +181,7 @@ const SignUpForm = () => {
       console.log(res);
       if (res) {
         setLogBtn(true);
-        navigate("/"); // navigate to login as user
+        navigate("/login"); // navigate to login as user
       }
     } catch (err) {
       console.log(err);

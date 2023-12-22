@@ -4,7 +4,7 @@ import NotFound from "../Pages/NotFound/NotFound";
 const ProtectedRoute = ({ children }) => {
   const { user } = useContext(AuthContext);
   console.log("userrrrrrrrr" + user);
-  const isAdmin = user && user.role === "user";
+  const isAdmin = user && user.role === "admin";
   console.log(isAdmin);
   return isAdmin ? children : <NotFound />;
 };

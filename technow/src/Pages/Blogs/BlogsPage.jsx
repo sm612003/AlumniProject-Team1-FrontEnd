@@ -119,7 +119,8 @@ const BlogCardLayout = () => {
           <>
           <span>
           <h2 className={styles.pheader}>Blog your news</h2>
-          <Link to="/blogsForm" className={styles.Link}>
+          {/* <Link to="/blogsForm" className={styles.Link}> */}
+            <Link to="/login" className={styles.Link}>
             <Button
               color={"green"}
               text={"Add Blog"}

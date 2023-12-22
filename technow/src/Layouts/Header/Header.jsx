@@ -1,4 +1,4 @@
-import navStyle from "../../Components/Navbar/Navbar.module.css"
+import navStyle from "../../Components/Navbar/Navbar.module.css";
 import { Weather } from "../../Components/Weather/Weather.jsx";
 import { Link } from "react-router-dom";
 import { Logo } from "../../Components/Logo/Logo";
@@ -14,7 +14,9 @@ const Header = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(`${process.env.REACT_APP_API}/read/category`);
+        const response = await axios.get(
+          `${process.env.REACT_APP_API}/read/category`
+        );
         setCategories(response.data);
         setNetworkError(false);
       } catch (error) {
@@ -46,59 +48,71 @@ const Header = () => {
   };
   return (
     <div>
-       <nav className={navStyle.NavbarItems}>
-      <div className={navStyle.Left}>
-        <Logo color={"green"}/>
-      </div>
+      <nav className={navStyle.NavbarItems}>
+        <div className={navStyle.Left}>
+          <Logo color={"green"} />
+        </div>
 
         <div className={navStyle.Middle}>
-      <ul className={navStyle.navMenu}>
-        <li>
-          <Link to="./newsletter" className={navStyle.navLinks}>
-          Newsletter
-          </Link>
-        </li>
-        <li>
-          <Link className={navStyle.navLinks} to='/blog'>
-          Blog
-          </Link>
-        </li>
-        <li>
-          <Link className={navStyle.navLinks} to="./contact">
-          Contact us
-          </Link>
-        </li>
-        <li>
-        <Weather/>
-        </li>
-      </ul>
-      </div>
-      <Link className={navStyle.navLinks} to='/subscribe'>
-        <Button color={"green"} size={"small"} text={"Subscribe"} subscribed={true}/>
-      </Link>
-    </nav>
-    <div className={styles.container}>
-      {networkError? (
-                <div>
-                    <h1 style={errorStyle}>Newtwork Issue</h1>
-                </div> 
-                ) :(
-                    <>
-                      <ul className={styles.categ}>
-                        {categories.map((category) => (
-                          <li key={category._id} className={styles.categMenu}>
-                            <Link to={`/newsCategory/${category.name}`} className={styles.categLinks}>
-                              {category.name}
-                            </Link>
-                          </li>
-                        ))}
-                      </ul>
-                    </>
+          <ul className={navStyle.navMenu}>
+            <li>
+              <Link to="/newsletter" className={navStyle.navLinks}>
+                Newsletter
+              </Link>
+            </li>
+            <li>
+              <Link className={navStyle.navLinks} to="/blogs">
+                Blog
+              </Link>
+            </li>
+            <li>
+              <Link className={navStyle.navLinks} to="/login">
+                Login
+              </Link>
+            </li>
+            <li>
+              <Link className={navStyle.navLinks} to="/contact">
+                Contact us
+              </Link>
+            </li>
+            <li>
+              <Weather />
+            </li>
+          </ul>
+        </div>
+        <Link className={navStyle.navLinks} to="/subscribe">
+          <Button
+            color={"green"}
+            size={"small"}
+            text={"Subscribe"}
+            subscribed={true}
+          />
+        </Link>
+      </nav>
+      <div className={styles.container}>
+        {networkError ? (
+          <div>
+            <h1 style={errorStyle}>Newtwork Issue</h1>
+          </div>
+        ) : (
+          <>
+            <ul className={styles.categ}>
+              {categories.map((category) => (
+                <li key={category._id} className={styles.categMenu}>
+                  <Link
+                    to={`/newsCategory/${category.name}`}
+                    className={styles.categLinks}
+                  >
+                    {category.name}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </>
         )}
+      </div>
     </div>
-    </div>
-    
-  )
-}
+  );
+};
 
-export default Header ;
+export default Header;

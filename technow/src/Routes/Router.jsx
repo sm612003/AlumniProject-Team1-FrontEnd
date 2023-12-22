@@ -203,7 +203,7 @@ const AppRoute = () => {
         <Route
           path="/dashboard"
           element={
-            
+         
             <ProtectedRoute>
               <Dashboard />
             </ProtectedRoute>

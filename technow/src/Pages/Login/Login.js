@@ -1,12 +1,14 @@
 // Login.js
 import { GoogleAuthProvider, getAuth, signInWithPopup } from "firebase/auth";
 import { app } from "../../firebase";
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import styles from "./Login.module.css"; // Import your styles
+import { AuthContext } from "../../Context/AuthContext";
 
 const Login = () => {
+  const { user, setUser } = useContext(AuthContext);
   const navigate = useNavigate();
   const handleOAuth = async () => {
     try {
@@ -27,8 +29,7 @@ const Login = () => {
         .then((res) => {
           console.log(res);
           if (res) {
-            
-            navigate("/blog");
+            navigate("/blogsForm");
           }
         });
     } catch (err) {
@@ -63,14 +64,23 @@ const Login = () => {
         formData
       );
 
-      console.log(response);
+      console.log(response.data);
 
       // Assuming your API returns some kind of token upon successful login
       // You may want to save the token in the local storage or a state variable
       // and use it for authentication in your app
 
-      setLoading(false);
-      navigate("/dashboard"); // Redirect to the dashboard or any other route
+      if (response) {
+        setUser(response.data);
+        console.log("role" +response.data.role);
+        if(response.data.role==="admin"){
+          navigate("/dashboard"); // Redirect to the dashboard or any other route
+        }
+        else{
+          navigate("/blogsForm"); // Redirect to the dashboard or any other route
+        }
+        setLoading(false);
+      } 
     } catch (error) {
       setError(true);
       setErrorMessage("Invalid email or password");

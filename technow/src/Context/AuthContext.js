@@ -23,7 +23,7 @@ export const AuthProvider = ({ children }) => {
       const response = await axios.get(
         `http://localhost:5000/user/view-one/${user.id}`
       );
-      setUser(response.data.user);
+      setUser(response.user.data);
       console.log("responseee" + response);
     } catch (err) {
       setUser(null);

@@ -6,7 +6,7 @@ export const Logo = ({color}) =>{
     const span = color === "green" ? styles.NormalSpan : styles.FooterSpan ;
     const margin = color === "green" ? styles.LogoMargin : styles.LogoNormal ;
     return(
-        <Link to='/home'>
+        <Link to='/'>
             <div className={`${styles.Container} ${margin}`}>
                 <p className={`${styles.Logo} ${logoColor}`}>TechNow</p>
                 <span className={`${styles.Span} ${span}`}>News</span>
