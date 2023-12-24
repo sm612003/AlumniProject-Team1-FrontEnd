@@ -17,6 +17,9 @@ import LayoutWithHeaderFooter from "./Layout";
 import SignUpForm from "../Pages/SignUp/SignUpForm";
 import Login from "../Pages/Login/Login";
 import ProtectedRoute from "./ProtectedRoute";
+import YourComponent from "../Components/barchart/barchart";
+import  RecentNewsGrid from '../Pages/newpage/newpage'
+
 // const Layout =()=>{
 //   const [screenWidth, setScreenWidth] = useState(window.innerWidth);
 //   const [nav, setNav] = useState(screenWidth < 800 ? true : false)
@@ -210,6 +213,9 @@ const AppRoute = () => {
           }
         />
         <Route path="/*" element={<NotFound />} />
+        <Route path="/barchart" element={<YourComponent />} />
+        <Route path="/table" element={<RecentNewsGrid/>} />
+
       </Routes>
     </BrowserRouter>
   );

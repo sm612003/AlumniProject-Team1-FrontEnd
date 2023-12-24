@@ -10,6 +10,17 @@ import { Link } from "react-router-dom";
 import NewsForm from "../NewsForm/NewsForm";
 import UpdateNewsPage from "../NewsUpdate/PageNewsUpdate";
 
+// material-ui
+import {
+  Box,
+  Grid,
+  List,
+  ListItemButton,
+  ListItemText,
+  Stack,
+  Typography,
+} from "@mui/material";
+
 const Dashboard = () => {
   const [screenWidth, setScreenWidth] = useState(window.innerWidth);
   const [width, setWidth] = useState(screenWidth < 1024 ? "small" : "big");
@@ -50,48 +61,7 @@ const Dashboard = () => {
     }
   };
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        if (newsData.length === 0) setIsLoading(true);
-        if (!navigator.onLine) {
-          setNetworkError(true);
-          setError(false);
-          setIsLoading(false);
-          return;
-        }
-        const response = await axios.get(`${process.env.REACT_APP_API}/read/news`);
-        if (!response.ok) {
-          setError(true);
-          setIsLoading(false);
-          setError(false);
-          setNetworkError(false);
-        }
-        setNewsData(response.data);
-        if (newsData) {
-          setIsLoading(false);
-          setError(false);
-          setNetworkError(false);
-        }
-      } catch (error) {
-        if (error.message === "Network request failed") {
-          setNetworkError(true);
-          setIsLoading(false);
-        } else {
-          setError(true);
-        }
-        window.addEventListener("offline", () => {
-          setNetworkError(true);
-          setError(false);
-          setIsLoading(false);
-        });
-        console.error("API Error: ", error);
-        setIsLoading(false);
-      }
-    };
-    fetchData();
-  }, []);
-
+  
   const [blogData, setBlogData] = useState([]);
 
   useEffect(() => {
@@ -277,6 +247,7 @@ const Dashboard = () => {
       )}
 
       <ScrollButton />
+     
     </div>
   );
 };
