@@ -18,7 +18,10 @@ import SignUpForm from "../Pages/SignUp/SignUpForm";
 import Login from "../Pages/Login/Login";
 import ProtectedRoute from "./ProtectedRoute";
 import YourComponent from "../Components/barchart/barchart";
-import  RecentNewsGrid from '../Pages/newpage/newpage'
+import  RecentNewsGrid from '../Components/tablenews/tabelrecentNews'
+import MostActiveUserChart from "../Components/mostActiveUser/mostActiveuser";
+import UserDescriptionsChart from "../Components/pieChart/userpie";
+import EditProfile from "../Components/editUserProfile/editUserProfile";
 
 // const Layout =()=>{
 //   const [screenWidth, setScreenWidth] = useState(window.innerWidth);
@@ -215,6 +218,9 @@ const AppRoute = () => {
         <Route path="/*" element={<NotFound />} />
         <Route path="/barchart" element={<YourComponent />} />
         <Route path="/table" element={<RecentNewsGrid/>} />
+        <Route path="/active" element={<MostActiveUserChart/>}/>
+        <Route path="/userpie" element={< UserDescriptionsChart/>}/>
+        <Route path="/edituser" element={< EditProfile/>}/>
 
       </Routes>
     </BrowserRouter>

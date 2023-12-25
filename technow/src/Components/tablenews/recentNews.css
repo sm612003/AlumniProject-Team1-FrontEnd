@@ -1,5 +1,5 @@
 .css-1knaqv7-MuiButtonBase-root-MuiButton-root {
-    background-color: #119C59 !important; /* Change to your desired background color */
+    background-color: #94DD8B !important; /* Change to your desired background color */
     color: white !important; /* Change to your desired text color */
   }
   .css-m5hdmq-MuiInputBase-root-MuiInput-root-MuiSelect-root,
@@ -15,11 +15,11 @@
   }
   .css-1e6y48t-MuiButtonBase-root-MuiButton-root {
     color: white !important;
-    background-color: #119C59 !important;
+    background-color: #94DD8B !important;
   }
   .css-i4bv87-MuiSvgIcon-root{
     color: white !important;
-    background-color: #119C59 !important;
+    background-color: #94DD8B !important;
   }
   /* .css-1dmqq7i-MuiNativeSelect-select-MuiInputBase-input-MuiInput-input {
     color: white !important;
@@ -27,11 +27,11 @@
   } */
   .css-1knaqv7-MuiButtonBase-root-MuiButton-root{
     color: white !important;
-    background-color: #119C59 !important;
+    background-color:#94DD8B !important;
   }
   .css-154sxbz-MuiPaper-root-MuiDataGrid-paper {
     color: white !important;
-    background-color: #119C59 !important;
+    background-color: #94DD8B !important;
 
   }
   .css-5ryogn-MuiButtonBase-root-MuiSwitch-switchBase.Mui-checked,
@@ -39,12 +39,13 @@
     color: white !important;
 
   }
+  .css-1x51dt5-MuiInputBase-input-MuiInput-input,
   .css-ptiqhd-MuiSvgIcon-root,
   .css-ptkaw2-MuiDataGrid-root .MuiDataGrid-sortIcon, .css-ptkaw2-MuiDataGrid-root .MuiDataGrid-filterIcon{
     color: white !important;
 
-
   }
   
-
+  /* .css-1x51dt5-MuiInputBase-input-MuiInput-input:focus{
+  /* outline: #119C59; */
   

@@ -7,8 +7,7 @@ import {
   useGridApiRef,
   useKeepGroupedColumnsHidden
 } from '@mui/x-data-grid-premium';
-// import { ThemeProvider, createTheme } from '@mui/system'; // Import createTheme from core MUI library
-import './newpage.css'; // Import your CSS file
+import './recentNews.css'; // Import your CSS file
 
 
 const RecentNewsGrid = () => {
@@ -72,7 +71,7 @@ const RecentNewsGrid = () => {
   
 
   return (
-      <Box sx={{ height: 520, width: '100%', '& .MuiDataGrid-root': { backgroundColor: '#119C59' } }}>
+      <Box sx={{ height: 520, width: '60%', '& .MuiDataGrid-root': { backgroundColor: '#94DD8B' } }}>
         <DataGridPremium
           rows={latestNews}
           columns={columns}
