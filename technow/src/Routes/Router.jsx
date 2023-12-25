@@ -17,6 +17,7 @@ import LayoutWithHeaderFooter from "./Layout";
 import SignUpForm from "../Pages/SignUp/SignUpForm";
 import Login from "../Pages/Login/Login";
 import ProtectedRoute from "./ProtectedRoute";
+import LineChart from '../Components/LineChart/LineChart'
 // const Layout =()=>{
 //   const [screenWidth, setScreenWidth] = useState(window.innerWidth);
 //   const [nav, setNav] = useState(screenWidth < 800 ? true : false)
@@ -112,7 +113,7 @@ const AppRoute = () => {
           path="/"
           element={
             <LayoutWithHeaderFooter>
-              <HomePage />
+              <LineChart />
             </LayoutWithHeaderFooter>
           }
         />
