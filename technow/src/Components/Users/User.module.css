@@ -1,0 +1,48 @@
+.cardUser {
+    height: fit-content;
+    width: 200px;
+    display: flex;
+    padding: 15px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    box-shadow: 0px 2px 5px 1px rgb(224, 222, 222);
+}
+
+.userName {
+    font-weight: 600;
+}
+.description{
+    text-align: center;
+
+}
+.imageUser {
+    border-radius: 50%;
+    margin-bottom: 15px;
+}
+
+.navigation {
+    width: 60%;
+    padding: 5px;
+    margin-top: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.navigation>a {
+    color: black;
+    font-size: 14px;
+    text-align: center;
+}
+
+.navigation>a:hover {
+    color: #119C59;
+}
+
+.navigation>a>img:hover {
+    background-color: #cecece;
+    border-radius: 50%;
+}
+

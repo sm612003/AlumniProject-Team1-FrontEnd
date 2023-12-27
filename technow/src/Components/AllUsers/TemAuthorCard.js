@@ -1,4 +1,4 @@
-// import AllBooksStyle from "../../components/AllBooks/AllBooks.module.css";
+// import AllBooksStyle from "./AllBooks.module.css";
 
 // function TemAuthorCard(props) {
 //   const { authorName, image, rating } = props;
