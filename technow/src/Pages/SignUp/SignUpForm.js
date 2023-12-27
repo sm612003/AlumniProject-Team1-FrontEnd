@@ -123,39 +123,6 @@ const SignUpForm = () => {
     navigate("/login");
   };
 
-  // const handleOAuth = async () => {
-  //   try {
-  //     const provider = new GoogleAuthProvider();
-  //     const auth = getAuth(app);
-
-  //     const result = await signInWithPopup(auth, provider);
-  //     console.log(result);
-
-  //     const res = await axios
-
-  //       .post("http://localhost:5000/google/auth", {
-  //         firstName: result.user.displayName.split([0], " "),
-  //         lastName: result.user.displayName.split(" ")[1],
-  //         email: result.user.email,
-  //         role: "user",
-  //         dob: Date.now(),
-  //         Link: "",
-  //         description: "",
-  //       })
-
-  //       .then((res) => {
-  //         console.log(res);
-  //         if (res) {
-  //           setLogBtn(true);
-  //         }
-  //         if (res) {
-  //           navigate("/"); //navigate to login as user
-  //         }
-  //       });
-  //   } catch (err) {
-  //     console.log(err);
-  //   }
-  // };
   const handleOAuth = async () => {
     try {
       const provider = new GoogleAuthProvider();

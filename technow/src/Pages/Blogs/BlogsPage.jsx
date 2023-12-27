@@ -5,10 +5,12 @@ import axios from "axios";
 import { ScrollButton } from "../../Components/ScrollButton/ScrollButton";
 import { Button } from "../../Components/Buttons/Buttons";
 import { Link } from "react-router-dom";
+import magnifire from "../../Assets/Images/magnifire.jpeg";
 
 const BlogCardLayout = () => {
   const [screenWidth, setScreenWidth] = useState(window.innerWidth);
   const [width, setWidth] = useState(screenWidth < 1024 ? "small" : "big");
+  const [searchInput, setSearchInput] = useState("");
 
   useEffect(() => {
     const handleResize = () => {
@@ -38,11 +40,10 @@ const BlogCardLayout = () => {
     };
   }, []);
 
-
   useEffect(() => {
     const fetchData = async () => {
       try {
-        if(blogData.length===0) setIsLoading(true);
+        if (blogData.length === 0) setIsLoading(true);
         if (!navigator.onLine) {
           setNetworkError(true);
           setError(false);
@@ -50,9 +51,10 @@ const BlogCardLayout = () => {
           return;
         }
         const response = await axios.get(
-          `${process.env.REACT_APP_API}/read/blogs`);
+          `${process.env.REACT_APP_API}/read/blogs`
+        );
         setBlogData(response.data);
-        if (!response===200) {
+        if (!response === 200) {
           setError(true);
           setIsLoading(false);
           setError(false);
@@ -66,10 +68,10 @@ const BlogCardLayout = () => {
         }
       } catch (error) {
         // console.log("error");
-        if(error.message === "Network request failed"){
+        if (error.message === "Network request failed") {
           setNetworkError(true);
           setIsLoading(false);
-        }else{
+        } else {
           setError(true);
         }
         window.addEventListener("offline", () => {
@@ -97,51 +99,82 @@ const BlogCardLayout = () => {
     alignItems: "center",
     height: "100vh",
   };
+  // Handles changes in the search input.
+  const handleSearchInputChange = (e) => {
+    setSearchInput(e.target.value);
+  };
+  const filterBlogByTitle = (blogToFilter, searchInput) => {
+    if (searchInput) {
+      const filteredBlogs = blogToFilter.filter((blogData) =>
+        blogData.title.toLowerCase().includes(searchInput.toLowerCase())
+      );
+      return filteredBlogs.length > 0 ? filteredBlogs : null;
+    }
+    return blogToFilter;
+  };
+  const filteredBlog = filterBlogByTitle(blogData, searchInput);
 
   return (
     <>
       <div className={styles.main}>
         <header className={styles.header}>
           <h1 className={styles.h1}>Blogs</h1>
+          <form className={styles.bookSearch}>
+            <input
+              id="search"
+              className={styles.inputSearch}
+              type="text"
+              placeholder="   Search For Blogs"
+              value={searchInput}
+              onChange={handleSearchInputChange}
+            />
+            <button type="button" className={styles.searchButton}>
+              <img src={magnifire} alt="search img" width="25" height="20" />
+            </button>
+          </form>
           {isLoading ? (
-          <div style={containerStyle}>
-            <h1>Loading ...</h1>
-          </div>
-        ) : networkError ? (
-          <div style={containerStyle}>
-            <h1 style={errorStyle}>Newtwork Issue</h1>
-          </div>
-        ) : error ? (
-          <div style={containerStyle}>
-            <h1 style={errorStyle}>News Not Found</h1>
-          </div>
-        ) : (
-          <>
-          <span>
-          <h2 className={styles.pheader}>Blog your news</h2>
-          {/* <Link to="/blogsForm" className={styles.Link}> */}
-            <Link to="/login" className={styles.Link}>
-            <Button
-              color={"green"}
-              text={"Add Blog"}
-              size={width}
-              subscribed={false}
-            />
-          </Link>
-          </span>
-          {blogData.map((key, index) => (
-            <BlogCard
-              key={key._id}
-              title={key.title}
-              author={key.author}
-              image={key.image}
-              createdAt={key.createdAt}
-              reversed={index % 2 === 0}
-              id={key._id}
-            />
-          ))}
-          </> 
-        )}
+            <div style={containerStyle}>
+              <h1>Loading ...</h1>
+            </div>
+          ) : networkError ? (
+            <div style={containerStyle}>
+              <h1 style={errorStyle}>Newtwork Issue</h1>
+            </div>
+          ) : error ? (
+            <div style={containerStyle}>
+              <h1 style={errorStyle}>News Not Found</h1>
+            </div>
+          ) : (
+            <>
+              <span>
+                <h2 className={styles.pheader}>Blog your news</h2>
+                {/* <Link to="/blogsForm" className={styles.Link}> */}
+                <Link to="/login" className={styles.Link}>
+                  <Button
+                    color={"green"}
+                    text={"Add Blog"}
+                    size={width}
+                    subscribed={false}
+                  />
+                </Link>
+              </span>
+              {filteredBlog ? (
+                filteredBlog.map((blog, index) => (
+                  <BlogCard
+                    key={blog._id}
+                    title={blog.title}
+                    author={blog.author}
+                    image={blog.image}
+                    createdAt={blog.createdAt}
+                    reversed={index % 2 === 0}
+                    id={blog._id}
+                  />
+                ))
+              ) : (
+                <p>No matching blogs found.</p>
+              )}
+            </>
+          )}
         </header>
       </div>
       <ScrollButton />

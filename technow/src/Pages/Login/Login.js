@@ -1,6 +1,7 @@
 // Login.js
 import { GoogleAuthProvider, getAuth, signInWithPopup } from "firebase/auth";
 import { app } from "../../firebase";
+
 import React, { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
@@ -72,7 +73,7 @@ const Login = () => {
 
       if (response) {
         setUser(response.data);
-        console.log("role" +response.data.role);
+        console.log("role: " +response.data.role);
         if(response.data.role==="admin"){
           navigate("/dashboard"); // Redirect to the dashboard or any other route
         }
