@@ -11,6 +11,7 @@ import { AuthContext } from "../../Context/AuthContext";
 const Login = () => {
   const { user, setUser } = useContext(AuthContext);
   const navigate = useNavigate();
+
   const handleOAuth = async () => {
     try {
       const provider = new GoogleAuthProvider();
@@ -25,6 +26,7 @@ const Login = () => {
           lastName: result.user.displayName,
           email: result.user.email,
           role: "user",
+       
         })
 
         .then((res) => {
@@ -55,6 +57,41 @@ const Login = () => {
     });
   };
 
+  // const handleLogin = async (e) => {
+  //   e.preventDefault();
+
+  //   try {
+  //     setLoading(true);
+  //     const response = await axios.post(
+  //       "http://localhost:5000/user/login",
+  //       formData
+  //     );
+
+  //     console.log(response.data);
+  //     console.log(response);
+
+  //     // Assuming your API returns some kind of token upon successful login
+  //     // You may want to save the token in the local storage or a state variable
+  //     // and use it for authentication in your app
+
+  //     if (response) {
+  //       setUser(response.data);
+  //       console.log("role: " + response.data.role);
+
+  //       if (response.data.role === "admin") {
+  //         navigate("/dashboard"); // Redirect to the dashboard or any other route
+  //       } else {
+  //           setToken(response.data.token);
+  //         navigate("/blogsForm", { state: { token: response.data.token } }); // Redirect to the dashboard or any other route
+  //       }
+  //       setLoading(false);
+  //     } 
+  //   } catch (error) {
+  //     setError(true);
+  //     setErrorMessage("Invalid email or password");
+  //     setLoading(false);
+  //   }
+  // };
   const handleLogin = async (e) => {
     e.preventDefault();
 
@@ -66,28 +103,27 @@ const Login = () => {
       );
 
       console.log(response.data);
-
-      // Assuming your API returns some kind of token upon successful login
-      // You may want to save the token in the local storage or a state variable
-      // and use it for authentication in your app
+      console.log(response);
 
       if (response) {
         setUser(response.data);
-        console.log("role: " +response.data.role);
-        if(response.data.role==="admin"){
+        console.log("role: " + response.data.role);
+
+        if (response.data.role === "admin") {
           navigate("/dashboard"); // Redirect to the dashboard or any other route
-        }
-        else{
+        } else {
+         
           navigate("/blogsForm"); // Redirect to the dashboard or any other route
         }
         setLoading(false);
-      } 
+      }
     } catch (error) {
       setError(true);
       setErrorMessage("Invalid email or password");
       setLoading(false);
     }
   };
+
 
   return (
     <div className={styles["login-container"]}>

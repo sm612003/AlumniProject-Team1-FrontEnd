@@ -160,6 +160,7 @@ const AppRoute = () => {
           path="/blogsForm"
           element={
             <LayoutWithHeaderFooter>
+              
               <BlogForm />
             </LayoutWithHeaderFooter>
           }

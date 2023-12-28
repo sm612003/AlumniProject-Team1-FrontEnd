@@ -10,7 +10,7 @@ import magnifire from "../../Assets/Images/magnifire.jpeg";
 const BlogCardLayout = () => {
   const [screenWidth, setScreenWidth] = useState(window.innerWidth);
   const [width, setWidth] = useState(screenWidth < 1024 ? "small" : "big");
-  const [searchInput, setSearchInput] = useState("");
+
 
   useEffect(() => {
     const handleResize = () => {
@@ -50,10 +50,9 @@ const BlogCardLayout = () => {
           setIsLoading(false);
           return;
         }
-        const response = await axios.get(
-          `${process.env.REACT_APP_API}/read/blogs`
-        );
+        const response = await axios.get(`http://localhost:5000/read/blogs`);
         setBlogData(response.data);
+        console.log(response.data)
         if (!response === 200) {
           setError(true);
           setIsLoading(false);
@@ -100,20 +99,20 @@ const BlogCardLayout = () => {
     height: "100vh",
   };
   // Handles changes in the search input.
+    const [searchInput, setSearchInput] = useState("");
   const handleSearchInputChange = (e) => {
     setSearchInput(e.target.value);
   };
-  const filterBlogByTitle = (blogToFilter, searchInput) => {
+  const filterBlogsByTitle = (blogToFilter, searchInput) => {
     if (searchInput) {
-      const filteredBlogs = blogToFilter.filter((blogData) =>
-        blogData.title.toLowerCase().includes(searchInput.toLowerCase())
+      return blogToFilter.filter((ray) =>
+        ray.title.toLowerCase().includes(searchInput.toLowerCase())
       );
-      return filteredBlogs.length > 0 ? filteredBlogs : null;
     }
     return blogToFilter;
   };
-  const filteredBlog = filterBlogByTitle(blogData, searchInput);
 
+  const filteredBlog = filterBlogsByTitle(blogData, searchInput);
   return (
     <>
       <div className={styles.main}>
