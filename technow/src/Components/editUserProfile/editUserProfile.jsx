@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import './EditProfile.css'; // Import the CSS file for styling
 import image from '../../Assets/Images/Mail.png'
+import styles from '../editUserProfile/EditProfile.module.css'
 
 const EditProfile = () => {
   const [formData, setFormData] = useState({
@@ -72,14 +72,14 @@ const EditProfile = () => {
   };
 
   return (
-    <div className="edit-profile-container">
-      <h2>Edit Profile</h2>
-      <div className="form-and-image-container">
+    <div className={styles['edit-profile-container']}>
+      <h2 className={styles.title}>Edit Profile</h2>
+      <div className={styles['form-and-image-container']}>
 
-      <form onSubmit={handleSubmit}>
-        <label>
+      <form className={styles.form} onSubmit={handleSubmit}>
+        <label className={styles.Label}>
           First Name:
-          <input
+          <input className={styles.inputstyle}
             type="text"
             name="firstName"
             value={formData.firstName}
@@ -129,7 +129,7 @@ const EditProfile = () => {
 
         <label>
           Description:
-          <textarea
+          <textarea className={styles.inputstyle}
             name="description"
             value={formData.description}
             onChange={handleChange}
@@ -156,10 +156,10 @@ const EditProfile = () => {
           />
         </label>
 
-        <button type="submit">Save Changes</button>
+        <button className={styles.buttonstyle} type="submit">Save Changes</button>
       </form>
-      <div className="image-container">
-          <img src={image} alt="Profile" />
+      <div className={styles['image-container']}>
+          <img  className={styles.img}src={image} alt="Profile" />
         </div>
     </div>
     </div>

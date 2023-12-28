@@ -88,15 +88,15 @@ const ManageSubscribeUserTable = () => {
       flex: 2,
       renderCell: (params) => (
         <div>
-          <button onClick={() => handleDeleteSubscribeUser(params.row.id)} style={{ backgroundColor: '#14B86E', color: 'white', important: 'true' }}>Delete</button>
+          <button onClick={() => handleDeleteSubscribeUser(params.row.id)} style={{ backgroundColor: '#94DD8B', color: 'white', important: 'true' }}>Delete</button>
         </div>
       ),
     },
   ];
 
   return (
-    <Box sx={{ height: 520, width: '80%', margin: 'auto', backgroundColor: '#94DD8B' }}>
-      <button style={{ backgroundColor: '#14B86E', color: 'white', important: 'true' }} onClick={handleOpenAddSubscribeUserModal}>Add Subscribe User</button>
+    <Box sx={{ height: 520, width: '80%', margin: 'auto', backgroundColor: '#14B86E' }}>
+      <button style={{ backgroundColor: '#94DD8B', color: 'white', important: 'true' }} onClick={handleOpenAddSubscribeUserModal}>Add Subscribe User</button>
 
       <AddSubscribeUserModal
         open={openAddSubscribeUserModal}

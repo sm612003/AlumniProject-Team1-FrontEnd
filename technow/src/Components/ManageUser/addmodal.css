@@ -2,3 +2,8 @@
     background-color: white;
     color: black;
 }
+
+.MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline {
+    border-color: #14B86E !important; /* Use !important to override Material-UI styles */
+  }
+ 

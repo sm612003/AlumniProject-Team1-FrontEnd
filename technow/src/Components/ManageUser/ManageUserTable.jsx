@@ -142,7 +142,7 @@
            renderCell: (params) => (
              <div>
                {/* Button to delete user */}
-               <button  onClick={() => handleDeleteUser(params.row.id)} style={{ backgroundColor: '#14B86E', color: 'white', important: 'true' }}>Delete</button>
+               <button  onClick={() => handleDeleteUser(params.row.id)} style={{ backgroundColor: '#94DD8B', color: 'white', important: 'true' }}>Delete</button>
              </div>
            ),
          },
@@ -150,8 +150,8 @@
        
  
        return (
-         <Box sx={{ height: 520, width: '80%', margin: 'auto',backgroundColor: '#94DD8B' }}>
-           <button onClick={handleOpenAddUserModal} style={{ backgroundColor: '#14B86E', color: 'white', important: 'true' }} >Add User</button>
+         <Box sx={{ height: 520, width: '80%', margin: 'auto',backgroundColor: '#14B86E' }}>
+           <button onClick={handleOpenAddUserModal} style={{ backgroundColor: '#94DD8B', color: 'white', important: 'true' }} >Add User</button>
      
            <AddUserModal
              open={openAddUserModal}

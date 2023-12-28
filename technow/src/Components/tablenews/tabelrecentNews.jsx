@@ -57,21 +57,11 @@ const RecentNewsGrid = () => {
     // Add more columns as needed
   ];
 
-//   const theme = createTheme({
-//     components: {
-//       MuiButton: {
-//         root: {
-//           backgroundColor: 'green', // Change to your desired background color
-//           color: 'white', // Change to your desired text color
-//         },
-//       },
-      
-//     },
-//   });
+
   
 
   return (
-      <Box sx={{ height: 520, width: '60%', '& .MuiDataGrid-root': { backgroundColor: '#94DD8B' } }}>
+      <Box sx={{ height: 520, width: '60%', '& .MuiDataGrid-root': { backgroundColor: '#14B86E' } }}>
         <DataGridPremium
           rows={latestNews}
           columns={columns}
