@@ -4,8 +4,9 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { ScrollButton } from "../../Components/ScrollButton/ScrollButton";
 import { Button } from "../../Components/Buttons/Buttons";
-import { Link } from "react-router-dom";
+import { Link, useNavigate ,useParams} from "react-router-dom";
 import magnifire from "../../Assets/Images/magnifire.jpeg";
+import BlogDetails from "../BlogsDetails/BlogsDetails";
 
 const BlogCardLayout = () => {
   const [screenWidth, setScreenWidth] = useState(window.innerWidth);
@@ -83,7 +84,7 @@ const BlogCardLayout = () => {
       }
     };
     fetchData();
-  }, []);
+  }, [blogData]);
 
   const errorStyle = {
     display: "flex",
@@ -113,6 +114,23 @@ const BlogCardLayout = () => {
   };
 
   const filteredBlog = filterBlogsByTitle(blogData, searchInput);
+
+
+  //get blog by ID
+const navigate = useNavigate();
+const [selectedBlog, setSelectedBlog] = useState(null);
+
+const handleBlogCardClick = (clickedBlogId) => {
+  try {
+    // Navigate to the single blog page with the correct URL
+    navigate(`/blogDetails/${clickedBlogId}`);
+  } catch (error) {
+    // Handle navigation error
+    console.error("Error navigating to blog details:", error);
+  }
+};
+
+
   return (
     <>
       <div className={styles.main}>
@@ -157,17 +175,22 @@ const BlogCardLayout = () => {
                   />
                 </Link>
               </span>
+
               {filteredBlog ? (
                 filteredBlog.map((blog, index) => (
-                  <BlogCard
-                    key={blog._id}
-                    title={blog.title}
-                    author={blog.author}
-                    image={blog.image}
-                    createdAt={blog.createdAt}
-                    reversed={index % 2 === 0}
-                    id={blog._id}
-                  />
+                  // on click go to blogdetail page and pass param id to this page
+                  <Link to={`/blogDetails/${blog.id}`} key={blog.id}>
+                    <BlogCard
+                      key={blog.id}
+                      title={blog.title}
+                      author={blog.author}
+                      image={blog.image}
+                      createdAt={blog.createdAt}
+                      reversed={index % 2 === 0}
+                      id={blog.id}
+                      onClick={() => handleBlogCardClick(blog.id)}
+                    />
+                  </Link>
                 ))
               ) : (
                 <p>No matching blogs found.</p>

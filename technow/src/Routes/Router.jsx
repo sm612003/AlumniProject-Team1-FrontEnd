@@ -9,7 +9,7 @@ import Contact from "../Pages/Contact/Contact";
 import Dashboard from "../Pages/Dashboard/Dashboard";
 import NewsLetterDetails from "../Pages/NewsletterDetails/NewsletterDetais";
 import SubscribePage from "../Pages/Subscribe/Subscribe";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter , Routes, Route } from "react-router-dom";
 import { Logo } from "../Components/Logo/Logo";
 import NotFound from "../Pages/NotFound/NotFound";
 import NewsCategory from "../Pages/NewsCategory/NewsCategory";
@@ -160,7 +160,6 @@ const AppRoute = () => {
           path="/blogsForm"
           element={
             <LayoutWithHeaderFooter>
-              
               <BlogForm />
             </LayoutWithHeaderFooter>
           }
@@ -204,7 +203,6 @@ const AppRoute = () => {
         <Route
           path="/dashboard"
           element={
-         
             <ProtectedRoute>
               <Dashboard />
             </ProtectedRoute>

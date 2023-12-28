@@ -1,118 +1,55 @@
-import { useParams } from "react-router-dom";
-import BlogDetailsComponent from "../../Components/BlogDetails/BlogDetailsComponent";
-import { useState, useEffect } from "react";
+
+import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { ScrollButton } from "../../Components/ScrollButton/ScrollButton";
-import styles from "./BlogsDetails.module.css";
+import { Link, useParams } from "react-router-dom";
+import BlogDetailsComponent from "../../Components/BlogDetails/BlogDetailsComponent";
+const BlogsDetails = () => {
+  const { id } = useParams();// pass id as param 
 
-//Page
-const BlogDetails = () => {
-  useEffect(() => {
-    const handleOffline = () => {
-      setNetworkError(true);
-    };
-
-    window.addEventListener("offline", handleOffline);
-
-    return () => {
-      window.removeEventListener("offline", handleOffline);
-    };
-  }, []);
-
-  const { id } = useParams();
-  const [blogsData, setBlogsData] = useState([]);
-  const [networkError, setNetworkError] = useState(false);
-  const [error, setError] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
+  const [blogDetails, setBlogDetails] = useState({});
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    const fetchData = async () => {
+    const fetchBlogDetails = async () => {
       try {
-        console.log(id);
-        if (blogsData.length === 0) setIsLoading(true);
-        if (!navigator.onLine) {
-          setNetworkError(true);
-          setError(false);
-          setIsLoading(false);
-          return;
-        }
         const response = await axios.get(
-          `http://localhost:5000/read/blogsById/${id}`
+          `http://localhost:5000/read/blogsById/${id}` //put id in param
         );
-        if (!response===200) {
-          setError(true);
-          setIsLoading(false);
-          setError(false);
-          setNetworkError(false);
-        }
-        setBlogsData(response.data);
-        if (blogsData) {
-          setIsLoading(false);
-          setError(false);
-          setNetworkError(false);
+
+        if (response.status === 200) {
+          setBlogDetails(response.data);
+          console.log("those image   "+response.data.image)
+        } else {
+          console.error("API Error: ", response);
         }
       } catch (error) {
-        if (error.message === "Network request failed") {
-          setNetworkError(true);
-          setIsLoading(false);
-        } else {
-          setError(true);
-        }
-        window.addEventListener("offline", () => {
-          setNetworkError(true);
-          setError(false);
-          setIsLoading(false);
-        });
-        console.error("API Error: ", error.data);
+        console.error("API Error: ", error);
+      } finally {
         setIsLoading(false);
       }
     };
-    fetchData();
-  }, []);
 
-  const errorStyle = {
-    display: "flex",
-    color: "red",
-    padding: "10px",
-    borderRadius: "5px",
-  };
-
-  const containerStyle = {
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "center",
-    height: "100vh",
-  };
+    fetchBlogDetails();
+  }, [id]);
 
   return (
-    <div className={styles.container}>
+    <div>
       {isLoading ? (
-        <div style={containerStyle}>
-          <h1>Loading ...</h1>
-        </div>
-      ) : networkError ? (
-        <div style={containerStyle}>
-          <h1 style={errorStyle}>Newtwork Issue</h1>
-        </div>
-      ) : error ? (
-        <div style={containerStyle}>
-          <h1 style={errorStyle}>An Error Occured While Fetching </h1>
-        </div>
+        <p>Loading...</p>
       ) : (
-        <>
-          <BlogDetailsComponent
-            id={blogsData._id}
-            title={blogsData.title}
-            author={blogsData.author}
-            image={blogsData.image}
-            content={blogsData.content}
-            createdAt={blogsData.createdAt}
-          />
-        </>
+   
+        <BlogDetailsComponent
+          title={blogDetails.title}
+          author={blogDetails.author}
+          image={blogDetails.image}
+          createdAt={blogDetails.createdAt}
+          content={blogDetails.content}
+        />
       )}
-      <ScrollButton />
+      <Link to="/blogs">Back to Blogs</Link>
     </div>
   );
+
 };
 
-export default BlogDetails;
+export default BlogsDetails;
