@@ -18,11 +18,12 @@ import SignUpForm from "../Pages/SignUp/SignUpForm";
 import Login from "../Pages/Login/Login";
 import ProtectedRoute from "./ProtectedRoute";
 import YourComponent from "../Components/barchart/barchart";
-import  RecentNewsGrid from '../Components/tablenews/tabelrecentNews'
+import RecentNewsGrid from '../Components/tablenews/tabelrecentNews'
 import MostActiveUserChart from "../Components/mostActiveUser/mostActiveuser";
 import UserDescriptionsChart from "../Components/pieChart/userpie";
 import EditProfile from "../Components/editUserProfile/editUserProfile";
-
+import TableUser from "../Components/ManageUser/ManageUserTable";
+import ManageSubscUserTable from "../Components/ManageSubsUser/subscribeUser";
 // const Layout =()=>{
 //   const [screenWidth, setScreenWidth] = useState(window.innerWidth);
 //   const [nav, setNav] = useState(screenWidth < 800 ? true : false)
@@ -146,6 +147,7 @@ const AppRoute = () => {
             </LayoutWithHeaderFooter>
           }
         />
+
         <Route
           path="/newsCategory/:categoryName"
           element={
@@ -209,7 +211,7 @@ const AppRoute = () => {
         <Route
           path="/dashboard"
           element={
-         
+
             <ProtectedRoute>
               <Dashboard />
             </ProtectedRoute>
@@ -217,14 +219,28 @@ const AppRoute = () => {
         />
         <Route path="/*" element={<NotFound />} />
         <Route path="/barchart" element={<YourComponent />} />
-        <Route path="/table" element={<RecentNewsGrid/>} />
-        <Route path="/active" element={<MostActiveUserChart/>}/>
-        <Route path="/userpie" element={< UserDescriptionsChart/>}/>
-        <Route path="/edituser" element={< EditProfile/>}/>
+        <Route path="/table" element={<RecentNewsGrid />} />
+        <Route path="/active" element={<MostActiveUserChart />} />
+        <Route path="/userpie" element={< UserDescriptionsChart />} />
+        <Route path="/edituser" element={< EditProfile />} />
+        <Route path="/dash" element={< Dashboard />} />
+        <Route
+          path="tableuser"
+          element={
+            <TableUser />
+          }
+        />
 
+        <Route
+          path="subscuser"
+          element={
+            <ManageSubscUserTable />
+          }
+        />
       </Routes>
     </BrowserRouter>
   );
 };
 
 export default AppRoute;
+

@@ -7,7 +7,7 @@ import {
   useGridApiRef,
   useKeepGroupedColumnsHidden
 } from '@mui/x-data-grid-premium';
-import './recentNews.css'; // Import your CSS file
+import  '../tablenews/recentNews.css'; // Import your CSS file
 
 
 const RecentNewsGrid = () => {

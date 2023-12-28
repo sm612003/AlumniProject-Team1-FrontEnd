@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './EditProfile.css'; // Import the CSS file for styling
+import image from '../../Assets/Images/Mail.png'
 
 const EditProfile = () => {
   const [formData, setFormData] = useState({
@@ -73,6 +74,8 @@ const EditProfile = () => {
   return (
     <div className="edit-profile-container">
       <h2>Edit Profile</h2>
+      <div className="form-and-image-container">
+
       <form onSubmit={handleSubmit}>
         <label>
           First Name:
@@ -155,6 +158,10 @@ const EditProfile = () => {
 
         <button type="submit">Save Changes</button>
       </form>
+      <div className="image-container">
+          <img src={image} alt="Profile" />
+        </div>
+    </div>
     </div>
   );
 };
