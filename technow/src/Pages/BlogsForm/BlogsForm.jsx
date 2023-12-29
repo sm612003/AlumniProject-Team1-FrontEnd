@@ -239,7 +239,7 @@ const BlogForm = () => {
                   />
                 </Link>
                 {successMessage && (
-                  <p style={{ color: "green" }}>{successMessage}</p>
+                  <p style={{ color: "green" , fontSize:"bold"}}>{successMessage}</p>
                 )}
               </div>
             </form>
