@@ -152,7 +152,7 @@ const BlogForm = () => {
   const [screenWidth, setScreenWidth] = useState(window.innerWidth);
   const [width, setWidth] = useState(screenWidth < 900 ? "small" : "big");
   const [blogData, setBlogData] = useState([]);
-
+  const [successMessage, setSuccessMessage] = useState(""); // New state for success message
 
   useEffect(() => {
     const handleResize = () => {
@@ -173,6 +173,8 @@ const BlogForm = () => {
     axios
       .post(`http://localhost:5000/add/blogs`, formData)
       .then((response) => {
+        setSuccessMessage("Blog added successfully!"); // Set success message
+
         console.log("Request sent successfully", response.data);
         if (response.status === 200) {
           setBlogData(response.data);
@@ -236,6 +238,9 @@ const BlogForm = () => {
                     size={"big"}
                   />
                 </Link>
+                {successMessage && (
+                  <p style={{ color: "green" }}>{successMessage}</p>
+                )}
               </div>
             </form>
           </div>

@@ -4,14 +4,13 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { ScrollButton } from "../../Components/ScrollButton/ScrollButton";
 import { Button } from "../../Components/Buttons/Buttons";
-import { Link, useNavigate ,useParams} from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import magnifire from "../../Assets/Images/magnifire.jpeg";
 import BlogDetails from "../BlogsDetails/BlogsDetails";
 
 const BlogCardLayout = () => {
   const [screenWidth, setScreenWidth] = useState(window.innerWidth);
   const [width, setWidth] = useState(screenWidth < 1024 ? "small" : "big");
-
 
   useEffect(() => {
     const handleResize = () => {
@@ -44,7 +43,9 @@ const BlogCardLayout = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        if (blogData.length === 0) setIsLoading(true);
+        if (blogData.length ===0) {setIsLoading(true)
+      setError("No blogs")
+        }
         if (!navigator.onLine) {
           setNetworkError(true);
           setError(false);
@@ -52,15 +53,15 @@ const BlogCardLayout = () => {
           return;
         }
         const response = await axios.get(`http://localhost:5000/read/blogs`);
-        setBlogData(response.data);
-        console.log(response.data)
-        if (!response === 200) {
+        if (response) {
+          setBlogData(response.data);
+          console.log("blogs " + response.data);
+        } else if (!response === 200) {
           setError(true);
           setIsLoading(false);
           setError(false);
           setNetworkError(false);
         }
-        setBlogData(response.data);
         if (blogData) {
           setIsLoading(false);
           setError(false);
@@ -84,7 +85,7 @@ const BlogCardLayout = () => {
       }
     };
     fetchData();
-  }, [blogData]);
+  }, []);
 
   const errorStyle = {
     display: "flex",
@@ -100,7 +101,7 @@ const BlogCardLayout = () => {
     height: "100vh",
   };
   // Handles changes in the search input.
-    const [searchInput, setSearchInput] = useState("");
+  const [searchInput, setSearchInput] = useState("");
   const handleSearchInputChange = (e) => {
     setSearchInput(e.target.value);
   };
@@ -114,22 +115,21 @@ const BlogCardLayout = () => {
   };
 
   const filteredBlog = filterBlogsByTitle(blogData, searchInput);
-
+  console.log("filtered blogg :  " + filteredBlog);
 
   //get blog by ID
-const navigate = useNavigate();
-const [selectedBlog, setSelectedBlog] = useState(null);
+  const navigate = useNavigate();
+  const [selectedBlog, setSelectedBlog] = useState(null);
 
-const handleBlogCardClick = (clickedBlogId) => {
-  try {
-    // Navigate to the single blog page with the correct URL
-    navigate(`/blogDetails/${clickedBlogId}`);
-  } catch (error) {
-    // Handle navigation error
-    console.error("Error navigating to blog details:", error);
-  }
-};
-
+  const handleBlogCardClick = (clickedBlogId) => {
+    try {
+      // Navigate to the single blog page with the correct URL
+      navigate(`/blogDetails/${clickedBlogId}`);
+    } catch (error) {
+      // Handle navigation error
+      console.error("Error navigating to blog details:", error);
+    }
+  };
 
   return (
     <>
@@ -159,13 +159,12 @@ const handleBlogCardClick = (clickedBlogId) => {
             </div>
           ) : error ? (
             <div style={containerStyle}>
-              <h1 style={errorStyle}>News Not Found</h1>
+              <h1 style={errorStyle}>{error}</h1>
             </div>
           ) : (
             <>
               <span>
                 <h2 className={styles.pheader}>Blog your news</h2>
-                {/* <Link to="/blogsForm" className={styles.Link}> */}
                 <Link to="/login" className={styles.Link}>
                   <Button
                     color={"green"}

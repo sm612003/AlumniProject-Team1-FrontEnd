@@ -56,7 +56,6 @@ const SignUpForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
     if (
       !formData.firstName ||
       !formData.lastName ||
@@ -65,59 +64,64 @@ const SignUpForm = () => {
       !formData.email ||
       !formData.password ||
       !formData.description ||
-      !formData.Link
+      !formData.Link 
     ) {
       setError(true);
       setErrorMessage("All input fields are required");
-      return;
-    }
-
-    const formDataToSubmit = new FormData();
-    formDataToSubmit.append("firstName", formData.firstName);
-    formDataToSubmit.append("lastName", formData.lastName);
-    formDataToSubmit.append("dob", formData.dob);
-    formDataToSubmit.append("email", formData.email);
-    formDataToSubmit.append("password", formData.password);
-    formDataToSubmit.append("role", formData.role);
-    formDataToSubmit.append("image", image);
-    formDataToSubmit.append("Link", formData.Link);
-    formDataToSubmit.append("description", formData.description);
-
-    try {
-      setLoading(true);
-      const addUser = await axios.post(
-        "http://localhost:5000/user/create",
-        formDataToSubmit,
-        {
-          headers: {
-            "Content-Type": "multipart/form-data",
-          },
-        }
-      );
-      console.log(addUser);
-      setError(false);
-      setLoading(false);
-      setFormData({
-        firstName: "",
-        lastName: "",
-        dob: "",
-        email: "",
-        password: "",
-        role: "user",
-        description: "",
-        Link: "",
-      });
-
-      if (addUser) {
-        setLogBtn(true);
-      }
-    } catch (error) {
+    } else if (error && !passwordRegex.test(formData.password)) {
       setError(true);
-      setErrorMessage("Something went wrong");
-      setLoading(false);
-      console.error("Error in API call", errorMessage, error);
+      setErrorMessage(
+        "Password must contain at least one lowercase letter, one uppercase letter, one number, one special character, and be at least 8 characters long."
+      );
+    } else {
+      const formDataToSubmit = new FormData();
+      formDataToSubmit.append("firstName", formData.firstName);
+      formDataToSubmit.append("lastName", formData.lastName);
+      formDataToSubmit.append("dob", formData.dob);
+      formDataToSubmit.append("email", formData.email);
+      formDataToSubmit.append("password", formData.password);
+      formDataToSubmit.append("role", formData.role);
+      formDataToSubmit.append("image", image);
+      formDataToSubmit.append("Link", formData.Link);
+      formDataToSubmit.append("description", formData.description);
+
+      try {
+        setLoading(true);
+        const addUser = await axios.post(
+          "http://localhost:5000/user/create",
+          formDataToSubmit,
+          {
+            headers: {
+              "Content-Type": "multipart/form-data",
+            },
+          }
+        );
+        console.log(addUser);
+        setError(false);
+        setLoading(false);
+        setFormData({
+          firstName: "",
+          lastName: "",
+          dob: "",
+          email: "",
+          password: "",
+          role: "user",
+          description: "",
+          Link: "",
+        });
+
+        if (addUser) {
+          setLogBtn(true);
+        }
+      } catch (error) {
+        setError(true);
+        setErrorMessage("Something went wrong");
+        setLoading(false);
+        console.error("Error in API call", errorMessage, error);
+      }
     }
-  };
+  }
+
   const handleLogin = () => {
     // Navigate to the login page or perform any other desired action
     navigate("/login");
