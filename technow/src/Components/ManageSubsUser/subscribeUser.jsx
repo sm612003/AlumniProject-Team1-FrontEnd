@@ -1,21 +1,16 @@
 import React, { useEffect, useState } from 'react';
 import Box from '@mui/material/Box';
 import {
-  DataGridPremium,
-  GridToolbar,
-  useGridApiRef,
-  useKeepGroupedColumnsHidden
-} from '@mui/x-data-grid-premium';
+  DataGrid,
+  GridToolbar
+} from '@mui/x-data-grid';
 import axios from 'axios';
 import AddSubscribeUserModal from './addmodel';
-
 
 const ManageSubscribeUserTable = () => {
   const [subscribeUserList, setSubscribeUserList] = useState([]);
   const [loading, setLoading] = useState(true);
   const [openAddSubscribeUserModal, setOpenAddSubscribeUserModal] = useState(false);
-
-  const apiRef = useGridApiRef();
 
   const handleOpenAddSubscribeUserModal = () => {
     setOpenAddSubscribeUserModal(true);
@@ -39,15 +34,6 @@ const ManageSubscribeUserTable = () => {
   useEffect(() => {
     fetchAllSubscribeUsers();
   }, []);
-
-  const initialState = useKeepGroupedColumnsHidden({
-    apiRef,
-    initialState: {
-      sorting: {
-        sortModel: [{ field: 'createdAt', sort: 'desc' }],
-      },
-    },
-  });
 
   const handleAddSubscribeUser = async (newSubscribeUser) => {
     try {
@@ -81,7 +67,7 @@ const ManageSubscribeUserTable = () => {
   const columns = [
     { field: 'id', headerName: 'ID', flex: 1 },
     { field: 'email', headerName: 'Email', flex: 1 },
-    { field: 'NewsLetterId', headerName: 'NewsLetter ID', flex: 1 }, // Add this line
+    { field: 'NewsLetterId', headerName: 'NewsLetter ID', flex: 1 },
     {
       field: 'actions',
       headerName: 'Actions',
@@ -104,10 +90,9 @@ const ManageSubscribeUserTable = () => {
         handleAddSubscribeUser={handleAddSubscribeUser}
       />
 
-      <DataGridPremium
+      <DataGrid
         rows={subscribeUserList}
         columns={columns}
-        apiRef={apiRef}
         loading={loading}
         disableRowSelectionOnClick
         components={{

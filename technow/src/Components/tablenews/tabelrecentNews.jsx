@@ -1,19 +1,11 @@
-
 import React, { useEffect, useState } from 'react';
 import Box from '@mui/material/Box';
-import {
-  DataGridPremium,
-  GridToolbar,
-  useGridApiRef,
-  useKeepGroupedColumnsHidden
-} from '@mui/x-data-grid-premium';
+import { DataGrid, GridToolbar } from '@mui/x-data-grid';
 import  '../tablenews/recentNews.css'; // Import your CSS file
-
 
 const RecentNewsGrid = () => {
   const [latestNews, setLatestNews] = useState([]);
   const [loading, setLoading] = useState(true);
-  const apiRef = useGridApiRef();
 
   useEffect(() => {
     const fetchLatestNews = async () => {
@@ -30,15 +22,6 @@ const RecentNewsGrid = () => {
 
     fetchLatestNews();
   }, []);
-
-  const initialState = useKeepGroupedColumnsHidden({
-    apiRef,
-    initialState: {
-      sorting: {
-        sortModel: [{ field: 'date', sort: 'desc' }],
-      },
-    },
-  });
 
   const columns = [
     { field: 'title', headerName: 'Title', flex: 1 },
@@ -57,22 +40,18 @@ const RecentNewsGrid = () => {
     // Add more columns as needed
   ];
 
-
-  
-
   return (
-      <Box sx={{ height: 520, width: '60%', '& .MuiDataGrid-root': { backgroundColor: '#14B86E' } }}>
-        <DataGridPremium
-          rows={latestNews}
-          columns={columns}
-          apiRef={apiRef}
-          loading={loading}
-          disableRowSelectionOnClick
-          components={{
-            Toolbar: GridToolbar,
-          }}
-        />
-      </Box>
+    <Box sx={{ height: 520, width: '60%', '& .MuiDataGrid-root': { backgroundColor: '#14B86E' } }}>
+      <DataGrid
+        rows={latestNews}
+        columns={columns}
+        loading={loading}
+        disableRowSelectionOnClick
+        components={{
+          Toolbar: GridToolbar,
+        }}
+      />
+    </Box>
   );
 };
 
