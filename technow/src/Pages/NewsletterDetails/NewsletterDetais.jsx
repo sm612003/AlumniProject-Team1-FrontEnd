@@ -35,7 +35,10 @@ const NewsletterDetails = () => {
           return;
         }
         const response = await axios.get(
-          `${process.env.REACT_APP_API}/read/newsById/${id}`
+          `${process.env.REACT_APP_API}/read/newsById}`,
+          {data:{
+            id:id
+          }}
         );
         if (!response.ok) {
           setError(true);
