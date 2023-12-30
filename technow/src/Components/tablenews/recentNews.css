@@ -1,0 +1,31 @@
+.css-t89xny-MuiDataGrid-columnHeaderTitle{
+  color: white;
+}
+.css-1knaqv7-MuiButtonBase-root-MuiButton-root{
+  color: white!important;
+}
+.css-1e6y48t-MuiButtonBase-root-MuiButton-root{
+ color: black !important;
+}
+.css-ptkaw2-MuiDataGrid-root .MuiDataGrid-cellContent{
+  color: white!important;
+
+}
+.css-5ryogn-MuiButtonBase-root-MuiSwitch-switchBase.Mui-checked{
+  color: #94DD8B !important;
+}
+.css-5ryogn-MuiButtonBase-root-MuiSwitch-switchBase{
+  color: #14B86E !important;
+}
+.css-v4u5dn-MuiInputBase-root-MuiInput-root:after ,
+.css-m5hdmq-MuiInputBase-root-MuiInput-root-MuiSelect-root:after{
+  border-bottom: 2px  solid #14B86E !important;
+}
+.css-1c2i806-MuiFormLabel-root-MuiInputLabel-root.Mui-focused{
+  color:#14B86E !important;
+}
+.css-106c1u2-MuiBadge-badge{
+  background-color:#94DD8B !important;
+  
+}
+

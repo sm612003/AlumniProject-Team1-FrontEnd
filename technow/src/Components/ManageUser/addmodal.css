@@ -1,0 +1,9 @@
+.css-1ar2bnf-MuiSelect-select-MuiInputBase-input-MuiInput-input.MuiSelect-select{
+    background-color: white;
+    color: black;
+}
+
+.MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline {
+    border-color: #14B86E !important; /* Use !important to override Material-UI styles */
+  }
+ 
