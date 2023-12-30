@@ -3,11 +3,7 @@
 }
 
 .Container{
-    margin-top: 3rem;
-    display: flex;
-    flex-direction: column;
-    padding: 0 10% 3% 10%;
-}
+  padding: 2% 10%;}
 
 .btn{
     display: flex;
@@ -22,13 +18,49 @@
     margin: 0 0 5% 0;
 }
 
+.searchButton {
+  background-color: white;
+  color: #03151e;
+  display: flex;
+  top: 34px;
+  border: none;
+  width: 0px;
+  position: absolute;
+  height: 0px;
+  text-align: center;
+  cursor: pointer;
+  right: 35%;
+  justify-content: center;
+  align-items: center;
+}
 
+.inputSearch:focus {
+  outline: none;
+}
+.bookSearch {
+  margin: 0 auto 2rem auto;
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.inputSearch {
+  width: 30%;
+  border: none;
+  padding: 10px 0;
+  border-bottom: 1px solid black;
+  text-align: left;
+  position: relative;
+  font-size: 1rem;
+}
 .H1{
     font-size: 3rem;
     width: fit-content;
     color: var(--color-green2);
-    margin: 0 0 2% 2% ;
     position: relative;
+  margin-bottom: 0;
 }
     
 .H1::after{
@@ -48,4 +80,65 @@
     .H1{
         font-size: 2.5rem;
     }
+}
+
+@media screen and (max-width: 768px) {
+  .header {
+    display: flex;
+    flex-direction: column;
+    row-gap: 5rem;
+  }
+  .searchButton {
+    background-color: white;
+    color: #03151e;
+    border: none;
+    top: 34px;
+    position: absolute;
+    height: 1rem;
+    text-align: center;
+    cursor: pointer;
+    right: 0%;
+  }
+  .inputSearch {
+    width: 100%;
+    border: none;
+    padding: 10px 0;
+    border-bottom: 1px solid black;
+    text-align: left;
+    position: relative;
+    font-size: 13px;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .h1 {
+    font-size: 1.8rem;
+  }
+
+  .h1::before {
+    width: 30%;
+    height: 3px;
+    bottom: 1px;
+  }
+
+  .searchButton {
+    background-color: white;
+    color: #03151e;
+    border: none;
+    top: 34px;
+    position: absolute;
+    height: 1rem;
+    text-align: center;
+    cursor: pointer;
+    right: 10%;
+  }
+  .inputSearch {
+    width: 90%;
+    border: none;
+    padding: 10px 0;
+    border-bottom: 1px solid black;
+    text-align: left;
+    position: relative;
+    font-size: 10px;
+  }
 }

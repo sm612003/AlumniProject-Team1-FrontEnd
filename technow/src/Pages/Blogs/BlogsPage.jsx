@@ -117,7 +117,6 @@ const BlogCardLayout = () => {
     }
     return blogToFilter;
   };
-
   const filteredBlog = filterBlogsByTitle(blogData, searchInput);
   console.log("filtered blogg :  " + filteredBlog);
 
