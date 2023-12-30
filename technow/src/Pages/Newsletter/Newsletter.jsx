@@ -3,10 +3,10 @@ import NewsCard from "../../Components/NewsCard/News";
 import styles from "./Newsletter.module.css";
 import axios from "axios";
 import { ScrollButton } from "../../Components/ScrollButton/ScrollButton";
+import magnifire from "../../Assets/Images/magnifire.jpeg";
 
 //Page
 const Newsletter = () => {
-
   useEffect(() => {
     const handleOffline = () => {
       setNetworkError(true);
@@ -34,7 +34,9 @@ const Newsletter = () => {
           setIsLoading(false);
           return;
         }
-        const response = await axios.get(`${process.env.REACT_APP_API}/read/news`);
+        const response = await axios.get(
+          `${process.env.REACT_APP_API}/read/news`
+        );
         if (!response.ok) {
           setError(true);
           setIsLoading(false);
@@ -79,12 +81,46 @@ const Newsletter = () => {
     alignItems: "center",
     height: "100vh",
   };
+  // Handles changes in the search input.
+  const [searchInput, setSearchInput] = useState("");
+  const handleSearchInputChange = (e) => {
+    setSearchInput(e.target.value);
+  };
+  const filterNewsByTitle = (newsToFilter, searchInput) => {
+    if (searchInput) {
+      
+      return newsToFilter.filter(
+        (ray) =>
+       
+          ray.title.toLowerCase().includes(searchInput.toLowerCase()) ||
+          ray.author.toLowerCase().includes(searchInput.toLowerCase()) 
+          // ray.first[0].toLowerCase().includes(searchInput.toLowerCase())
+      );
+      
+    }
+    
+    return newsToFilter;
+  };
+  const filterNews = filterNewsByTitle(newsData, searchInput);
+  console.log("filtered blogg :  " + filterNews);
 
   return (
     <>
       <div className={styles.Container}>
         <h1 className={styles.H1}>Latest News</h1>
-
+        <form className={styles.bookSearch}>
+          <input
+            id="search"
+            className={styles.inputSearch}
+            type="text"
+            placeholder="   Search For News's Title, Or Author's name"
+            value={searchInput}
+            onChange={handleSearchInputChange}
+          />
+          <button type="button" className={styles.searchButton}>
+            <img src={magnifire} alt="search img" width="25" height="20" />
+          </button>
+        </form>
         {isLoading ? (
           <div style={containerStyle}>
             <h1>Loading ...</h1>
@@ -100,17 +136,23 @@ const Newsletter = () => {
         ) : (
           <>
             <article className={styles.Newsletter}>
-              {newsData.map((key, index) => (
-                <NewsCard
-                  key={key._id}
-                  first={index === 0}
-                  title={key.title}
-                  image={key.image}
-                  author={key.author}
-                  date={key.date}
-                  id={key._id}
-                ></NewsCard>
-              ))}
+              {filterNews.length > 0 ? (
+                filterNews.map((key, index) => (
+                  <NewsCard
+                    key={key._id}
+                    first={index === 0}
+                    title={key.title}
+                    image={key.image}
+                    author={key.author}
+                    date={key.date}
+                    id={key._id}
+                  ></NewsCard>
+                ))
+              ) : (
+                <p style={{ color: "#ff0000", marginTop: "10px" }}>
+                  No matching blogs found.
+                </p>
+              )}
             </article>
           </>
         )}
