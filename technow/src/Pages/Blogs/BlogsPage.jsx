@@ -7,6 +7,7 @@ import { Button } from "../../Components/Buttons/Buttons";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import magnifire from "../../Assets/Images/magnifire.jpeg";
 import BlogDetails from "../BlogsDetails/BlogsDetails";
+import { margin } from "@mui/system";
 
 const BlogCardLayout = () => {
   const [screenWidth, setScreenWidth] = useState(window.innerWidth);
@@ -28,6 +29,7 @@ const BlogCardLayout = () => {
   const [networkError, setNetworkError] = useState(false);
   const [error, setError] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  //network err
   useEffect(() => {
     const handleOffline = () => {
       setNetworkError(true);
@@ -107,8 +109,10 @@ const BlogCardLayout = () => {
   };
   const filterBlogsByTitle = (blogToFilter, searchInput) => {
     if (searchInput) {
-      return blogToFilter.filter((ray) =>
-        ray.title.toLowerCase().includes(searchInput.toLowerCase())
+      return blogToFilter.filter(
+        (ray) =>
+          ray.title.toLowerCase().includes(searchInput.toLowerCase()) ||
+          ray.author.toLowerCase().includes(searchInput.toLowerCase())
       );
     }
     return blogToFilter;
@@ -141,7 +145,7 @@ const BlogCardLayout = () => {
               id="search"
               className={styles.inputSearch}
               type="text"
-              placeholder="   Search For Blogs"
+              placeholder="   Search For Blog's Title, Or Author's name"
               value={searchInput}
               onChange={handleSearchInputChange}
             />
@@ -175,7 +179,7 @@ const BlogCardLayout = () => {
                 </Link>
               </span>
 
-              {filteredBlog ? (
+              {filteredBlog.length > 0 ? (
                 filteredBlog.map((blog, index) => (
                   // on click go to blogdetail page and pass param id to this page
                   <Link to={`/blogDetails/${blog.id}`} key={blog.id}>
@@ -192,7 +196,9 @@ const BlogCardLayout = () => {
                   </Link>
                 ))
               ) : (
-                <p>No matching blogs found.</p>
+                <p style={{ color: "#ff0000", marginTop: "10px" }}>
+                  No matching blogs found.
+                </p>
               )}
             </>
           )}
