@@ -17,15 +17,10 @@ import LayoutWithHeaderFooter from "./Layout";
 import SignUpForm from "../Pages/SignUp/SignUpForm";
 import Login from "../Pages/Login/Login";
 import ProtectedRoute from "./ProtectedRoute";
-import YourComponent from "../Components/barchart/barchart";
-import RecentNewsGrid from '../Components/tablenews/tabelrecentNews'
-import MostActiveUserChart from "../Components/mostActiveUser/mostActiveuser";
-import UserDescriptionsChart from "../Components/pieChart/userpie";
-import EditProfile from "../Components/editUserProfile/editUserProfile";
 import TableUser from "../Components/ManageUser/ManageUserTable";
 import ManageSubscUserTable from "../Components/ManageSubsUser/subscribeUser";
-import Overview from "../Pages/overview/overview";
 import LayoutWithHeaderSidebar from "./Layoutwithsidebar";
+import ManageNewsTable from "../Components/ManageNewsTable/manageNews";
 
 // const Layout =()=>{
 //   const [screenWidth, setScreenWidth] = useState(window.innerWidth);
@@ -221,12 +216,7 @@ const AppRoute = () => {
           }
        />
         {/* <Route path="/*" element={<NotFound />} /> */}
-        {/* <Route path="/barchart" element={<YourComponent />} /> */}
-        {/* <Route path="/table" element={<RecentNewsGrid />} /> */}
-        {/* <Route path="/active" element={<MostActiveUserChart />} /> */}
-        {/* <Route path="/userpie" element={< UserDescriptionsChart />} /> */}
         {/* <Route path="/edituser" element={< EditProfile />} /> */}
-        {/* <Route path="/dash" element={< Dashboard />} /> */}
         <Route
           path="/dashboard/users"
           element={
@@ -242,6 +232,14 @@ const AppRoute = () => {
           element={
             <LayoutWithHeaderSidebar>
             <ManageSubscUserTable />
+            </LayoutWithHeaderSidebar>
+          }
+        />
+         <Route
+          path="/dashboard/news"
+          element={
+            <LayoutWithHeaderSidebar>
+            <ManageNewsTable />
             </LayoutWithHeaderSidebar>
           }
         />

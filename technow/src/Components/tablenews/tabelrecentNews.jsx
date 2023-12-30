@@ -41,7 +41,7 @@ const RecentNewsGrid = () => {
   ];
 
   return (
-    <Box sx={{ height: 520, width: '60%', '& .MuiDataGrid-root': { backgroundColor: '#14B86E' } }}>
+    <Box sx={{ height: 400, width: '100%',  }}>
       <DataGrid
         rows={latestNews}
         columns={columns}

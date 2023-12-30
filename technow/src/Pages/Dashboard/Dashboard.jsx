@@ -14,13 +14,26 @@ const Dashboard = () => {
 
   return (
     <div className={styles.Dashboard}>
-      <SideBar/>
-      <div  className={styles.overview}>
-      <ScrollButton />
-      
-      <LineChart/>
-      <RecentNewsGrid/>
-      <MostActiveUserChart/></div>
+      <SideBar />
+      <div className={styles.overview}>
+        <ScrollButton />
+        
+        {/* LineChart takes full width */}
+        <div className={styles.LineChart}>
+          <LineChart />
+        </div>
+
+        {/* Container for MostActiveUserChart and UserDescriptionsChart */}
+        <div className={styles.chartContainer}>
+          <div className={styles.MostActiveUserChart}><MostActiveUserChart /></div>
+          <div className={styles.UserDescriptionsChart}><UserDescriptionsChart /></div>
+        </div>
+
+        {/* RecentNewsGrid takes full width */}
+        <div className={styles.RecentNewsGrid}>
+          <RecentNewsGrid />
+        </div>
+      </div>
     </div>
   );
 };
