@@ -24,6 +24,9 @@ import UserDescriptionsChart from "../Components/pieChart/userpie";
 import EditProfile from "../Components/editUserProfile/editUserProfile";
 import TableUser from "../Components/ManageUser/ManageUserTable";
 import ManageSubscUserTable from "../Components/ManageSubsUser/subscribeUser";
+import Overview from "../Pages/overview/overview";
+import LayoutWithHeaderSidebar from "./Layoutwithsidebar";
+
 // const Layout =()=>{
 //   const [screenWidth, setScreenWidth] = useState(window.innerWidth);
 //   const [nav, setNav] = useState(screenWidth < 800 ? true : false)
@@ -208,33 +211,38 @@ const AppRoute = () => {
         />
         <Route path="/signup" element={<SignUpForm />} />
         <Route path="/login" element={<Login />} />
+        
         <Route
           path="/dashboard"
           element={
-
             <ProtectedRoute>
               <Dashboard />
             </ProtectedRoute>
           }
-        />
-        <Route path="/*" element={<NotFound />} />
-        <Route path="/barchart" element={<YourComponent />} />
-        <Route path="/table" element={<RecentNewsGrid />} />
-        <Route path="/active" element={<MostActiveUserChart />} />
-        <Route path="/userpie" element={< UserDescriptionsChart />} />
-        <Route path="/edituser" element={< EditProfile />} />
-        <Route path="/dash" element={< Dashboard />} />
+       />
+        {/* <Route path="/*" element={<NotFound />} /> */}
+        {/* <Route path="/barchart" element={<YourComponent />} /> */}
+        {/* <Route path="/table" element={<RecentNewsGrid />} /> */}
+        {/* <Route path="/active" element={<MostActiveUserChart />} /> */}
+        {/* <Route path="/userpie" element={< UserDescriptionsChart />} /> */}
+        {/* <Route path="/edituser" element={< EditProfile />} /> */}
+        {/* <Route path="/dash" element={< Dashboard />} /> */}
         <Route
-          path="tableuser"
+          path="/dashboard/users"
           element={
+            <LayoutWithHeaderSidebar>
             <TableUser />
+            </LayoutWithHeaderSidebar>
+
           }
         />
 
         <Route
-          path="subscuser"
+          path="/dashboard/subscuser"
           element={
+            <LayoutWithHeaderSidebar>
             <ManageSubscUserTable />
+            </LayoutWithHeaderSidebar>
           }
         />
       </Routes>

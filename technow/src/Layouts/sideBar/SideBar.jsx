@@ -122,10 +122,10 @@ export default function SideBar() {
     };
 
     const sidebarItems = [
-        ['Users','/users'],
-       [ 'News','/news'],
-       ['Blogs','/blogs'],
-       [ 'Settings','/profile']
+        ['Users','/dashboard/users'],
+       [ 'News','/dashboard/news'],
+       ['Blogs','/dashboard/blogs'],
+       [ 'Settings','/dashboard/subscuser']
     ]
 
     return (

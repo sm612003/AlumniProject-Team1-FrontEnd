@@ -1,14 +1,15 @@
-.css-t89xny-MuiDataGrid-columnHeaderTitle{
+/* .css-t89xny-MuiDataGrid-columnHeaderTitle{
   color: white;
-}
+  background-color: #119C59 ;
+} */
 .css-1knaqv7-MuiButtonBase-root-MuiButton-root{
-  color: white!important;
+  color: black!important;
 }
 .css-1e6y48t-MuiButtonBase-root-MuiButton-root{
  color: black !important;
 }
 .css-ptkaw2-MuiDataGrid-root .MuiDataGrid-cellContent{
-  color: white!important;
+  color: black!important;
 
 }
 .css-5ryogn-MuiButtonBase-root-MuiSwitch-switchBase.Mui-checked{
@@ -27,5 +28,16 @@
 .css-106c1u2-MuiBadge-badge{
   background-color:#94DD8B !important;
   
+}
+.MuiDataGrid-cell {
+  border: none;
+background-color: #FAFAFA;
+
+ margin-top: 1;
+}
+.MuiDataGrid-columnHeader {
+ background-color: #119C59;
+ color: white;
+  font-weight: 'Bold'
 }
 
