@@ -33,13 +33,14 @@ const NewsletterDetails = () => {
           setError(false);
           setIsLoading(false);
           return;
-        }
+        }console.log('hellooooo',id)
         const response = await axios.get(
-          `${process.env.REACT_APP_API}/read/newsById}`,
+          `${process.env.REACT_APP_API}/read/newsById`,
           {data:{
-            id:id
+            id:parseInt(id)
           }}
         );
+        
         if (!response.ok) {
           setError(true);
           setIsLoading(false);
@@ -69,7 +70,7 @@ const NewsletterDetails = () => {
       }
     };
     fetchData();
-  }, []);
+  }, [id]);
 
   const errorStyle = {
     display: "flex",
