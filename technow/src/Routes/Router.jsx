@@ -21,6 +21,7 @@ import TableUser from "../Components/ManageUser/ManageUserTable";
 import ManageSubscUserTable from "../Components/ManageSubsUser/subscribeUser";
 import LayoutWithHeaderSidebar from "./Layoutwithsidebar";
 import ManageNewsTable from "../Components/ManageNewsTable/manageNews";
+import ManageBlogTable from "../Components/ManageBLogs/ManageBLogs";
 
 // const Layout =()=>{
 //   const [screenWidth, setScreenWidth] = useState(window.innerWidth);
@@ -240,6 +241,15 @@ const AppRoute = () => {
           element={
             <LayoutWithHeaderSidebar>
             <ManageNewsTable />
+            </LayoutWithHeaderSidebar>
+          }
+
+        />
+          <Route
+          path="/dashboard/blogs"
+          element={
+            <LayoutWithHeaderSidebar>
+            <ManageBlogTable />
             </LayoutWithHeaderSidebar>
           }
         />
