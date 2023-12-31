@@ -2,11 +2,14 @@
 import { GoogleAuthProvider, getAuth, signInWithPopup } from "firebase/auth";
 import { app } from "../../firebase";
 
-import React, { useContext, useState, useEffect } from "react";
+import React, { useContext, useState,useRef, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import styles from "./Login.module.css"; // Import your styles
 import {  AuthContext } from "../../Context/AuthContext";
+
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Login = () => {
   const { setUser } = useContext(AuthContext); // Use the useContext hook to access setUser
@@ -14,7 +17,26 @@ const Login = () => {
   //network err
   const [networkError, setNetworkError] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+    const showToastRef = useRef(false);
 
+  const showToastMessage = () => {
+    toast.success("Please Log In To Add Blog !", {
+      position: toast.POSITION.TOP_RIGHT,
+      hideProgressBar: true,
+      closeOnClick: true,
+      pauseOnHover: true,
+    });
+  };
+
+  // Call showToastMessage when the component mounts
+  useEffect(() => {
+    if (!showToastRef.current) {
+      showToastMessage();
+      showToastRef.current = true;
+    }
+  }, []);
+
+  
   useEffect(() => {
     const handleOffline = () => {
       setNetworkError(true);
@@ -93,6 +115,7 @@ const Login = () => {
       console.log(response);
 
       if (response.data) {
+     
         setUser(response.data); // Assuming user data is nested under response.data
         console.log("role: " + response.data.role);
 
@@ -119,6 +142,7 @@ const Login = () => {
   return (
     <body>
       <div className={styles.container}>
+      <ToastContainer></ToastContainer>
         <div className={styles["login-container"]}>
           <form onSubmit={handleLogin} className={styles["login-form"]}>
             <h2>Login</h2>

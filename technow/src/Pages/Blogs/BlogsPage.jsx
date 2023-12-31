@@ -8,11 +8,17 @@ import { Link, useNavigate, useParams } from "react-router-dom";
 import magnifire from "../../Assets/Images/magnifire.jpeg";
 import BlogDetails from "../BlogsDetails/BlogsDetails";
 import { margin } from "@mui/system";
+// import { ToastContainer, toast } from "react-toastify";
+// import "react-toastify/dist/ReactToastify.css";
 
 const BlogCardLayout = () => {
   const [screenWidth, setScreenWidth] = useState(window.innerWidth);
   const [width, setWidth] = useState(screenWidth < 1024 ? "small" : "big");
-
+// const showToastMessage = () => {
+//   toast.success("Blog Added Successfuly  !", {
+//     position: toast.POSITION.TOP_RIGHT,
+//   });
+// };
   useEffect(() => {
     const handleResize = () => {
       const newWidth = window.innerWidth;
@@ -174,6 +180,7 @@ const BlogCardLayout = () => {
                     text={"Add Blog"}
                     size={width}
                     subscribed={false}
+               
                   />
                 </Link>
               </span>
