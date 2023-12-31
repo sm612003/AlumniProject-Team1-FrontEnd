@@ -6,10 +6,10 @@ import React, { useContext, useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import styles from "./Login.module.css"; // Import your styles
-import { AuthContext } from "../../Context/AuthContext";
+import {  AuthContext } from "../../Context/AuthContext";
 
 const Login = () => {
-  const { user, setUser } = useContext(AuthContext);
+  const { setUser } = useContext(AuthContext); // Use the useContext hook to access setUser
   const navigate = useNavigate();
   //network err
   const [networkError, setNetworkError] = useState(false);
@@ -45,11 +45,14 @@ const Login = () => {
         .then((res) => {
           console.log(res);
           if (res) {
+            setUser(res.data);
+
             navigate("/blogsForm");
           }
         });
     } catch (err) {
-      console.log(err);
+
+      console.log("OAuth: ", err);
     }
   };
 
@@ -89,14 +92,14 @@ const Login = () => {
       console.log(response.data);
       console.log(response);
 
-      if (response) {
-        setUser(response.data);
+      if (response.data) {
+        setUser(response.data); // Assuming user data is nested under response.data
         console.log("role: " + response.data.role);
 
         if (response.data.role === "admin") {
-          navigate("/dashboard"); // Redirect to the dashboard or any other route
+          navigate("/dashboard");
         } else {
-          navigate("/blogsForm"); // Redirect to the dashboard or any other route
+          navigate("/blogsForm");
         }
         setLoading(false);
       }
@@ -105,6 +108,7 @@ const Login = () => {
         setNetworkError(true);
         setIsLoading(false);
       } else {
+        console.log("err", error);
         setError(true);
         setErrorMessage("Invalid email or password");
         setLoading(false);
