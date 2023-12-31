@@ -48,12 +48,6 @@ const AddNewsModal = ({ open, handleClose, handleAddNews, modalAction, initialNe
     }
   }, [open]);
 
-  useEffect(() => {
-    if (modalAction === 'edit' && initialNewsData) {
-      setNewNews(initialNewsData);
-    }
-  }, [modalAction, initialNewsData]);
-
   const handleInputChange = (field, value) => {
     setNewNews((prevNews) => ({
       ...prevNews,
@@ -83,7 +77,25 @@ const AddNewsModal = ({ open, handleClose, handleAddNews, modalAction, initialNe
       });
 
       // After adding, fetch the latest news
-      handleAddNews(newNews);
+      const response = await axios.get('http://localhost:5000/read/news');
+
+      // Pass the new news object to the parent component
+      handleAddNews(response.data);
+
+      // Reset the form fields
+      setNewNews({
+        author: '',
+        title: '',
+        date: '',
+        description: '',
+        subtitle: '',
+        subtitleDescription: '',
+        link: '',
+        categoryId: '',
+        newsletterId: '',
+        image: null,
+      });
+
       handleClose();
     } catch (error) {
       console.error('Error adding news:', error);
@@ -147,12 +159,13 @@ const AddNewsModal = ({ open, handleClose, handleAddNews, modalAction, initialNe
           margin="normal"
         />
        <FormControl fullWidth margin="normal">
-          <InputLabel>Category ID</InputLabel>
-          <Select
-            value={newNews.categoryId}
-            onChange={(e) => handleInputChange('categoryId', e.target.value)}
-            input={<Input />}
-          >
+       <InputLabel htmlFor="category-select">Category ID</InputLabel>
+<Select
+  value={newNews.categoryId}
+  onChange={(e) => handleInputChange('categoryId', e.target.value)}
+  input={<Input id="category-select" />}
+>
+
             {categories.map((category) => (
               <MenuItem key={category.id} value={category.id}>
                 {category.name}
@@ -175,9 +188,13 @@ const AddNewsModal = ({ open, handleClose, handleAddNews, modalAction, initialNe
           </Select>
         </FormControl>
         <input type="file" onChange={handleImageChange} />
-        <Button variant="contained" onClick={handleAddButtonClick} style={{ backgroundColor: '#14B86E', color: 'white', important: 'true' }}>
-          {modalAction === 'edit' ? 'Update News' : 'Add News'}
-        </Button>
+        <Button
+        variant="contained"
+        onClick={handleAddButtonClick}
+        style={{ backgroundColor: '#14B86E', color: 'white', important: 'true' }}
+      >
+        {modalAction === 'edit' ? 'Update News' : 'Add News'}
+      </Button>
       </Box>
     </Dialog>
   );
