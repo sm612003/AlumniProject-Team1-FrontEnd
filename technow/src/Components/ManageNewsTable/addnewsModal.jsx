@@ -121,14 +121,24 @@ const AddNewsModal = ({ open, handleClose, handleAddNews, modalAction, initialNe
           fullWidth
           margin="normal"
         />
+        <InputLabel
+          htmlFor="date"
+          style={{
+            transform: 'translate(0, 1.5px) scale(0.80)',
+            transformOrigin: 'top left',
+            padding: '1px',
+          }}
+        >
+          Date
+        </InputLabel>
         <TextField
-          label="Date"
           type="date"
           value={newNews.date}
           onChange={(e) => handleInputChange('date', e.target.value)}
           fullWidth
-          margin="normal"
+          margin="normale"
           InputLabelProps={{ shrink: Boolean(newNews.date) }}
+
         />
         <TextField
           label="Description"
@@ -158,13 +168,13 @@ const AddNewsModal = ({ open, handleClose, handleAddNews, modalAction, initialNe
           fullWidth
           margin="normal"
         />
-       <FormControl fullWidth margin="normal">
-       <InputLabel htmlFor="category-select">Category ID</InputLabel>
-<Select
-  value={newNews.categoryId}
-  onChange={(e) => handleInputChange('categoryId', e.target.value)}
-  input={<Input id="category-select" />}
->
+        <FormControl fullWidth margin="normal">
+          <InputLabel htmlFor="category-select">Category ID</InputLabel>
+          <Select
+            value={newNews.categoryId}
+            onChange={(e) => handleInputChange('categoryId', e.target.value)}
+            input={<Input id="category-select" />}
+          >
 
             {categories.map((category) => (
               <MenuItem key={category.id} value={category.id}>
@@ -189,12 +199,12 @@ const AddNewsModal = ({ open, handleClose, handleAddNews, modalAction, initialNe
         </FormControl>
         <input type="file" onChange={handleImageChange} />
         <Button
-        variant="contained"
-        onClick={handleAddButtonClick}
-        style={{ backgroundColor: '#14B86E', color: 'white', important: 'true' }}
-      >
-        {modalAction === 'edit' ? 'Update News' : 'Add News'}
-      </Button>
+          variant="contained"
+          onClick={handleAddButtonClick}
+          style={{ backgroundColor: '#14B86E', color: 'white', important: 'true' }}
+        >
+          {modalAction === 'edit' ? 'Update News' : 'Add News'}
+        </Button>
       </Box>
     </Dialog>
   );

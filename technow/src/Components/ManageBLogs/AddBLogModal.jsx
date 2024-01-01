@@ -115,9 +115,6 @@ const AddBlogModal = ({ open, handleClose, handleAddBlog, handleEditBlog, select
                         </MenuItem>
                     ))}
                 </Select>
-
-
-
                 <input type="file" accept="image/*" onChange={handleFileChange} />
                 <Button variant="contained" color="primary" onClick={handleSubmit} style={{ marginTop: '10px' }}>
                     {selectedBlog ? 'Update Blog' : 'Add Blog'}
