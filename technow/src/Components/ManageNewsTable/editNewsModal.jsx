@@ -12,63 +12,134 @@ import InputLabel from '@mui/material/InputLabel';
 import { Input } from '@mui/material';
 import axios from 'axios';
 
-const EditNewsModal = ({ open, handleClose, handleUpdateNews, selectedNews, categories, newsletters }) => {
-    const [editedNews, setEditedNews] = useState({});
-    const [selectedCategoryId, setSelectedCategoryId] = useState('');
-    const [selectedNewsletterId, setSelectedNewsletterId] = useState('');
+const EditNewsModal = ({ open, handleClose, handleUpdateNews, selectedNews }) => {
+  const [editedNews, setEditedNews] = useState({});
+  const [categories, setCategories] = useState([]);
+  const [newsletters, setNewsletters] = useState([]);
+  const [selectedCategoryId, setSelectedCategoryId] = useState('');
+  const [selectedNewsletterId, setSelectedNewsletterId] = useState('');
   
-    useEffect(() => {
-      if (!selectedNews) {
-        return;
-      }
-  
-      setEditedNews((prevNews) => ({
-        ...prevNews,
-        ...selectedNews,
-        date: selectedNews.date ? new Date(selectedNews.date).toISOString().split('T')[0] : '',
-      }));
-  
-      // Set the selected category and newsletter IDs
-      setSelectedCategoryId(selectedNews.categoryId || '');
-      setSelectedNewsletterId(selectedNews.newsletterId || '');
-    }, [selectedNews]);
-  
-    const handleInputChange = (field, value) => {
-      setEditedNews((prevNews) => ({
-        ...prevNews,
-        [field]: field === 'date' ? value.toString() : value,
-      }));
-    };
-  
-    const handleImageChange = (e) => {
-      setEditedNews((prevNews) => ({
-        ...prevNews,
-        image: e.target.files[0],
-      }));
-    };
-  
-    const handleUpdateButtonClick = async () => {
+  useEffect(() => {
+    const fetchCategories = async () => {
       try {
-        const formData = new FormData();
-        Object.entries(editedNews).forEach(([key, value]) => {
-          formData.append(key, value);
-        });
-  
-        // Make a PATCH request to update the news post
-        await axios.patch(`http://localhost:5000/update/news/${editedNews.id}`, formData, {
-          headers: {
-            'Content-Type': 'multipart/form-data',
-          },
-        });
-  
-        // After updating, fetch the latest news
-        handleUpdateNews();
-        handleClose();
+        const response = await axios.get('http://localhost:5000/read/category');
+        setCategories(response.data);
       } catch (error) {
-        console.error('Error updating news:', error);
+        console.error('Error fetching categories:', error);
       }
     };
+
+    const fetchNewsletters = async () => {
+      try {
+        const response = await axios.get('http://localhost:5000/read/newsletter');
+        setNewsletters(response.data);
+      } catch (error) {
+        console.error('Error fetching newsletters:', error);
+      }
+    };
+
+    if (open) {
+      fetchCategories();
+      fetchNewsletters();
+    }
+  }, [open]);
+
+  useEffect(() => {
+    if (!selectedNews || !categories || !newsletters) {
+      return;
+    }
+
+    setEditedNews((prevNews) => ({
+      ...prevNews,
+      ...selectedNews,
+      date: selectedNews.date ? new Date(selectedNews.date).toISOString().split('T')[0] : '',
+    }));
+
+    setSelectedCategoryId(selectedNews.categoryId || '');
+    setSelectedNewsletterId(selectedNews.newsletterId || '');
+  }, [selectedNews, categories, newsletters]);
+
+
+  useEffect(() => {
   
+    if (!selectedNews || !categories || !newsletters) {
+      return;
+    }
+  
+    setEditedNews((prevNews) => ({
+      ...prevNews,
+      ...selectedNews,
+      date: selectedNews.date ? new Date(selectedNews.date).toISOString().split('T')[0] : '',
+    }));
+  
+    // Set the selected category and newsletter IDs
+    setSelectedCategoryId(selectedNews.categoryId || ''); // Ensure selectedCategoryId is a string
+    setSelectedNewsletterId(selectedNews.newsletterId || ''); // Ensure selectedNewsletterId is a string
+  
+  }, [selectedNews, categories, newsletters]);
+  
+  
+  const handleInputChange = (field, value) => {
+  
+    setEditedNews((prevNews) => ({
+      ...prevNews,
+      [field]: field === 'date' ? value.toString() : value,
+    }));
+  
+    // If the field is either category or newsletter, update the corresponding state
+    if (field === 'categoryId') {
+      setSelectedCategoryId(value);
+    } else if (field === 'newsletterId') {
+      setSelectedNewsletterId(value);
+    }
+  };
+  
+  const handleImageChange = (e) => {
+    setEditedNews((prevNews) => ({
+      ...prevNews,
+      image: e.target.files[0],
+    }));
+  };
+  
+
+  const handleUpdateButtonClick = async () => {
+    try {
+      const formData = new FormData();
+  
+      // Append the updated fields to formData (excluding image and categoryId)
+      Object.entries(editedNews).forEach(([key, value]) => {
+        if (key !== 'image' && key !== 'categoryId') {
+          // Format date field to ISO-8601 DateTime format
+          formData.append(key, key === 'date' ? new Date(value).toISOString() : value);
+        }
+      });
+  
+      // Append categoryId as an integer
+      formData.append('categoryId', parseInt(editedNews.categoryId) || 0);
+  
+      // Append the image separately
+      formData.append('image', editedNews.image);
+  
+      // Make a PATCH request to update the specific news post
+      await axios.patch(`http://localhost:5000/update/news/${editedNews.id}`, formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+        },
+        
+      });
+  
+      // After updating, fetch the latest news
+      handleUpdateNews();
+      handleClose();
+// console.log('editedNews:', editedNews);
+
+    } catch (error) {
+      console.error('Error updating news:', error);
+    }
+  };
+  
+  
+
   return (
     <Dialog open={open} onClose={handleClose}>
       <Box sx={{ p: 2, width: 400 }}>
@@ -124,25 +195,27 @@ const EditNewsModal = ({ open, handleClose, handleUpdateNews, selectedNews, cate
           fullWidth
           margin="normal"
         />
-       <FormControl fullWidth margin="normal">
+        <FormControl fullWidth margin="normal">
           <InputLabel htmlFor="category-select">Category ID</InputLabel>
           <Select
-            value={selectedCategoryId}
-            onChange={(e) => setSelectedCategoryId(e.target.value)}
-            input={<Input id="category-select" />}
-          >
-            {categories && categories.map((category) => (
-              <MenuItem key={category.id} value={category.id}>
-                {category.name}
-              </MenuItem>
-            ))}
-          </Select>
+  value={editedNews.categoryId || ''}
+  onChange={(e) => handleInputChange('categoryId', e.target.value)}
+  input={<Input id="category-select" />}
+>
+  {categories && categories.map((category) => (
+    <MenuItem key={category.id} value={String(category.id)}>
+      {category.name}
+    </MenuItem>
+  ))}
+</Select>
+
+
         </FormControl>
         <FormControl fullWidth margin="normal">
           <InputLabel>Newsletter ID</InputLabel>
           <Select
             value={selectedNewsletterId}
-            onChange={(e) => setSelectedNewsletterId(e.target.value)}
+            onChange={(e) => handleInputChange('newsletterId', e.target.value)}
             input={<Input />}
           >
             {newsletters && newsletters.map((newsletter) => (
@@ -152,12 +225,12 @@ const EditNewsModal = ({ open, handleClose, handleUpdateNews, selectedNews, cate
             ))}
           </Select>
         </FormControl>
-        {/* ... other fields ... */}
         <input type="file" onChange={handleImageChange} />
+
         <Button
           variant="contained"
           onClick={handleUpdateButtonClick}
-          style={{ backgroundColor: '#14B86E', color: 'white', important: 'true' }}
+          style={{ backgroundColor: '#14B86E', color: 'white', marginTop: '10px' }}
         >
           Update News
         </Button>

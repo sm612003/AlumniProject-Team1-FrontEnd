@@ -121,9 +121,10 @@ const ManageNewsTable = () => {
   <EditNewsModal
   open={showEditNewsModal}
   handleClose={handleCloseEditNewsModal}
+  handleUpdateNews={fetchAllNews}  
   selectedNews={selectedNewsForEdit}
-  fetchAllNews={fetchAllNews}
 />
+
 
          
     
