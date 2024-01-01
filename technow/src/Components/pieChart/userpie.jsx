@@ -9,7 +9,7 @@ const UserDescriptionsChart = () => {
 
   useEffect(() => {
     // Fetch user descriptions from your backend API
-    axios.get('http://localhost:5000/user/descriptions')
+    axios.get('http://localhost:5000/user/description')
       .then(response => {
         // Ensure response.data is an array before setting the state
         if (Array.isArray(response.data)) {
@@ -40,7 +40,7 @@ const UserDescriptionsChart = () => {
     <div>
       <h2>User Descriptions</h2>
       {userDescriptions.length > 0 && (
-        <ReactApexChart options={options} series={series} type="pie" height={300} />
+        <ReactApexChart options={options} series={series} type="pie" height={200} />
       )}
     </div>
   );

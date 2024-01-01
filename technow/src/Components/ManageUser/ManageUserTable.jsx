@@ -118,15 +118,15 @@ const ManageUserTable = () => {
       flex: 2,
       renderCell: (params) => (
         <div>
-          <button onClick={() => handleDeleteUser(params.row.id)} style={{ backgroundColor: '#94DD8B', color: 'white', important: 'true' }}>Delete</button>
+          <button onClick={() => handleDeleteUser(params.row.id)} style={{ backgroundColor: '#e32751', color: 'white', important: 'true' }}>Delete</button>
         </div>
       ),
     },
   ];
 
   return (
-    <Box sx={{ height: 520, width: '80%', margin: 'auto', backgroundColor: '#14B86E' }}>
-      <button onClick={handleOpenAddUserModal} style={{ backgroundColor: '#94DD8B', color: 'white', important: 'true' }}>Add User</button>
+    <Box sx={{ height: 520, width: '80%', margin: '150PX'  }}>
+      <button onClick={handleOpenAddUserModal} style={{ backgroundColor: '#119C59', color: 'white', important: 'true' }}>Add User</button>
 
       <AddUserModal
         open={openAddUserModal}

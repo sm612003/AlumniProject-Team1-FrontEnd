@@ -59,7 +59,7 @@ const AddUserModal = ({ open, handleClose, handleAddUser, modalAction, initialUs
           onChange={(e) => handleInputChange('firstName', e.target.value)}
           fullWidth
           margin="normal"
-          
+
         />
         <TextField
           label="Last Name"
@@ -97,27 +97,27 @@ const AddUserModal = ({ open, handleClose, handleAddUser, modalAction, initialUs
           fullWidth
           margin="normal"
         />
-      <FormControl fullWidth margin="normal">
-  <InputLabel
-    htmlFor="date-of-birth"
-    style={{
-      transform: 'translate(0, 1.5px) scale(0.80)',
-      transformOrigin: 'top left',
-      padding: '1px',
-    }}
-  >
-    Date of Birth
-  </InputLabel>
-  <TextField
-    id="date-of-birth"
-    type="date"
-    value={newUser.dob}
-    onChange={(e) => handleInputChange('dob', e.target.value)}
-    fullWidth
-    margin="normal"
-    InputLabelProps={{ shrink: Boolean(newUser.dob) }}
-  />
-</FormControl>
+        <FormControl fullWidth margin="normal">
+          <InputLabel
+            htmlFor="date-of-birth"
+            style={{
+              transform: 'translate(0, 1.5px) scale(0.80)',
+              transformOrigin: 'top left',
+              padding: '0.20px',
+            }}
+          >
+            Date of Birth
+          </InputLabel>
+          <TextField
+            id="date-of-birth"
+            type="date"
+            value={newUser.dob}
+            onChange={(e) => handleInputChange('dob', e.target.value)}
+            fullWidth
+            margin="normal"
+            InputLabelProps={{ shrink: Boolean(newUser.dob) }}
+          />
+        </FormControl>
 
         <FormControl fullWidth margin="normal">
           <InputLabel>Role</InputLabel>

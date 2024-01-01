@@ -17,13 +17,14 @@ import LayoutWithHeaderFooter from "./Layout";
 import SignUpForm from "../Pages/SignUp/SignUpForm";
 import Login from "../Pages/Login/Login";
 import ProtectedRoute from "./ProtectedRoute";
-import YourComponent from "../Components/barchart/barchart";
-import RecentNewsGrid from '../Components/tablenews/tabelrecentNews'
-import MostActiveUserChart from "../Components/mostActiveUser/mostActiveuser";
-import UserDescriptionsChart from "../Components/pieChart/userpie";
-import EditProfile from "../Components/editUserProfile/editUserProfile";
 import TableUser from "../Components/ManageUser/ManageUserTable";
 import ManageSubscUserTable from "../Components/ManageSubsUser/subscribeUser";
+import LayoutWithHeaderSidebar from "./Layoutwithsidebar";
+import ManageNewsTable from "../Components/ManageNewsTable/manageNews";
+import ManageBlogTable from "../Components/ManageBLogs/ManageBLogs";
+import Overview from "../Pages/Dashboard/Dashboard";
+import { Navigate } from "react-router-dom";
+
 // const Layout =()=>{
 //   const [screenWidth, setScreenWidth] = useState(window.innerWidth);
 //   const [nav, setNav] = useState(screenWidth < 800 ? true : false)
@@ -208,35 +209,56 @@ const AppRoute = () => {
         />
         <Route path="/signup" element={<SignUpForm />} />
         <Route path="/login" element={<Login />} />
+        
         <Route
-          path="/dashboard"
-          element={
-
-            <ProtectedRoute>
-              <Dashboard />
-            </ProtectedRoute>
-          }
-        />
-        <Route path="/*" element={<NotFound />} />
-        <Route path="/barchart" element={<YourComponent />} />
-        <Route path="/table" element={<RecentNewsGrid />} />
-        <Route path="/active" element={<MostActiveUserChart />} />
-        <Route path="/userpie" element={< UserDescriptionsChart />} />
-        <Route path="/edituser" element={< EditProfile />} />
-        <Route path="/dash" element={< Dashboard />} />
-        <Route
-          path="tableuser"
-          element={
-            <TableUser />
-          }
-        />
-
-        <Route
-          path="subscuser"
-          element={
-            <ManageSubscUserTable />
-          }
-        />
+    path="/dashboard"
+    element={
+      <ProtectedRoute>
+        <Overview/>
+        <Navigate to="overview" replace />
+      </ProtectedRoute>
+    }
+  />
+  <Route
+    path="/dashboard/overview"
+    element={
+      <LayoutWithHeaderSidebar>
+        <Overview/>
+      </LayoutWithHeaderSidebar>
+    }
+  />
+  <Route
+    path="/dashboard/users"
+    element={
+      <LayoutWithHeaderSidebar>
+        <TableUser />
+      </LayoutWithHeaderSidebar>
+    }
+  />
+  <Route
+    path="/dashboard/subscuser"
+    element={
+      <LayoutWithHeaderSidebar>
+        <ManageSubscUserTable />
+      </LayoutWithHeaderSidebar>
+    }
+  />
+  <Route
+    path="/dashboard/news"
+    element={
+      <LayoutWithHeaderSidebar>
+        <ManageNewsTable />
+      </LayoutWithHeaderSidebar>
+    }
+  />
+  <Route
+    path="/dashboard/blogs"
+    element={
+      <LayoutWithHeaderSidebar>
+        <ManageBlogTable />
+      </LayoutWithHeaderSidebar>
+    }
+  />
       </Routes>
     </BrowserRouter>
   );
