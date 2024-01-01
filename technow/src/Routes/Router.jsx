@@ -22,6 +22,8 @@ import ManageSubscUserTable from "../Components/ManageSubsUser/subscribeUser";
 import LayoutWithHeaderSidebar from "./Layoutwithsidebar";
 import ManageNewsTable from "../Components/ManageNewsTable/manageNews";
 import ManageBlogTable from "../Components/ManageBLogs/ManageBLogs";
+import Overview from "../Pages/Dashboard/Dashboard";
+import { Navigate } from "react-router-dom";
 
 // const Layout =()=>{
 //   const [screenWidth, setScreenWidth] = useState(window.innerWidth);
@@ -209,50 +211,54 @@ const AppRoute = () => {
         <Route path="/login" element={<Login />} />
         
         <Route
-          path="/dashboard"
-          element={
-            <ProtectedRoute>
-              <Dashboard />
-            </ProtectedRoute>
-          }
-       />
-        {/* <Route path="/*" element={<NotFound />} /> */}
-        {/* <Route path="/edituser" element={< EditProfile />} /> */}
-        <Route
-          path="/dashboard/users"
-          element={
-            <LayoutWithHeaderSidebar>
-            <TableUser />
-            </LayoutWithHeaderSidebar>
-
-          }
-        />
-
-        <Route
-          path="/dashboard/subscuser"
-          element={
-            <LayoutWithHeaderSidebar>
-            <ManageSubscUserTable />
-            </LayoutWithHeaderSidebar>
-          }
-        />
-         <Route
-          path="/dashboard/news"
-          element={
-            <LayoutWithHeaderSidebar>
-            <ManageNewsTable />
-            </LayoutWithHeaderSidebar>
-          }
-
-        />
-          <Route
-          path="/dashboard/blogs"
-          element={
-            <LayoutWithHeaderSidebar>
-            <ManageBlogTable />
-            </LayoutWithHeaderSidebar>
-          }
-        />
+    path="/dashboard"
+    element={
+      <ProtectedRoute>
+        <Overview/>
+        <Navigate to="overview" replace />
+      </ProtectedRoute>
+    }
+  />
+  <Route
+    path="/dashboard/overview"
+    element={
+      <LayoutWithHeaderSidebar>
+        <Overview/>
+      </LayoutWithHeaderSidebar>
+    }
+  />
+  <Route
+    path="/dashboard/users"
+    element={
+      <LayoutWithHeaderSidebar>
+        <TableUser />
+      </LayoutWithHeaderSidebar>
+    }
+  />
+  <Route
+    path="/dashboard/subscuser"
+    element={
+      <LayoutWithHeaderSidebar>
+        <ManageSubscUserTable />
+      </LayoutWithHeaderSidebar>
+    }
+  />
+  <Route
+    path="/dashboard/news"
+    element={
+      <LayoutWithHeaderSidebar>
+        <ManageNewsTable />
+      </LayoutWithHeaderSidebar>
+    }
+  />
+  <Route
+    path="/dashboard/blogs"
+    element={
+      <LayoutWithHeaderSidebar>
+        <ManageBlogTable />
+      </LayoutWithHeaderSidebar>
+    }
+  />
       </Routes>
     </BrowserRouter>
   );

@@ -6,6 +6,7 @@ import TextField from '@mui/material/TextField';
 import Select from '@mui/material/Select';
 import MenuItem from '@mui/material/MenuItem';
 import { styled } from '@mui/system';
+import './ModalBlogs.css'
 
 const StyledModal = styled(Modal)`
   display: flex;
@@ -28,6 +29,7 @@ const AddBlogModal = ({ open, handleClose, handleAddBlog, handleEditBlog, select
     const [image, setImage] = useState(null);
     const [userId, setUserId] = useState('');
 
+
     useEffect(() => {
         if (selectedBlog) {
             setAuthor(selectedBlog.author || '');  // Make sure to handle the case where the value is undefined
@@ -47,6 +49,7 @@ const AddBlogModal = ({ open, handleClose, handleAddBlog, handleEditBlog, select
         setImage(e.target.files[0]);
     };
 
+
     const handleSubmit = async () => {
         const formData = new FormData();
         formData.append('author', author);
@@ -61,6 +64,7 @@ const AddBlogModal = ({ open, handleClose, handleAddBlog, handleEditBlog, select
         } else {
             // If adding, call handleAddBlog
             handleAddBlog(formData);
+            
         }
 
         handleClose();
@@ -119,9 +123,13 @@ const AddBlogModal = ({ open, handleClose, handleAddBlog, handleEditBlog, select
                 <Button variant="contained" color="primary" onClick={handleSubmit} style={{ marginTop: '10px' }}>
                     {selectedBlog ? 'Update Blog' : 'Add Blog'}
                 </Button>
-                <Button variant="contained" onClick={handleClose} style={{ marginTop: '10px', marginLeft: '10px' }}>
+                <Button variant="contained" color="primary"  onClick={() => handleClose()}
+
+                    style={{ marginTop: '10px', marginLeft: '10px' }}>
                     Cancel
                 </Button>
+
+
 
             </StyledBox>
         </StyledModal>

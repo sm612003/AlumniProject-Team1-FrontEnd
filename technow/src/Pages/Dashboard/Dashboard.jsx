@@ -9,7 +9,7 @@ import UserDescriptionsChart from "../../Components/pieChart/userpie";
 import LineChart from "../../Components/LineChart/LineChart";
 import RecentNewsGrid from "../../Components/tablenews/tabelrecentNews";
 import MostActiveUserChart from "../../Components/mostActiveUser/mostActiveuser";
-const Dashboard = () => {
+const Overview = () => {
 
 
   return (
@@ -38,4 +38,4 @@ const Dashboard = () => {
   );
 };
 
-export default Dashboard;
+export default Overview;

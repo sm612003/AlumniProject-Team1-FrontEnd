@@ -28,8 +28,12 @@ import { AccountPopover } from '../TopNav/AccountPopover';
 import { usePopover } from '../TopNav/usePopover';
 // import { useContext } from 'react';
 import { AuthContext } from "../../Context/AuthContext";
+import { Home } from '@mui/icons-material';
+import { SupervisedUserCircle } from '@mui/icons-material';
+
+
 const drawerWidth = 240;
-const icons = [<Person />, <Newspaper />, <DynamicFeed />, <Settings />];
+const icons = [<Home />, <Person />, <Newspaper />, <DynamicFeed />, <SupervisedUserCircle />];
 const openedMixin = (theme) => ({
     width: drawerWidth,
     transition: theme.transitions.create('width', {
@@ -98,10 +102,10 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
 
 export default function SideBar() {
     //   const {user,checkUser} = useContext(AuthContext)
-       const accountPopover = usePopover();
+    const accountPopover = usePopover();
     const theme = useTheme();
     const [open, setOpen] = React.useState(false);
-   
+
     const [windowWidth, setWindowWidth] = React.useState(window.innerWidth);
     React.useEffect(() => {
         const handleResize = () => {
@@ -122,10 +126,11 @@ export default function SideBar() {
     };
 
     const sidebarItems = [
-        ['Users','/dashboard/users'],
-       [ 'News','/dashboard/news'],
-       ['Blogs','/dashboard/blogs'],
-       [ 'Settings','/dashboard/subscuser']
+        ['Home', '/dashboard/overview'], // Use the Dashboard icon for Overview
+        ['Users', '/dashboard/users'],
+        ['News', '/dashboard/news'],
+        ['Blogs', '/dashboard/blogs'],
+        ['Subscription', '/dashboard/subscuser']
     ]
 
     return (
@@ -222,10 +227,10 @@ export default function SideBar() {
 
                 </Drawer>
                 <AccountPopover
-          anchorEl={accountPopover.anchorRef.current}
-          open={accountPopover.open}
-          onClose={accountPopover.handleClose}
-        />
+                    anchorEl={accountPopover.anchorRef.current}
+                    open={accountPopover.open}
+                    onClose={accountPopover.handleClose}
+                />
             </Box>
             <Outlet />
         </>
