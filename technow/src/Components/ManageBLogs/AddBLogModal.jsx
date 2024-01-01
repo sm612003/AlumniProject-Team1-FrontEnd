@@ -31,7 +31,7 @@ const AddBlogModal = ({ open, handleClose, handleAddBlog, handleEditBlog, select
 
     useEffect(() => {
         if (selectedBlog) {
-            setAuthor(selectedBlog.author || '');
+            setAuthor(selectedBlog.author || '');  // Make sure to handle the case where the value is undefined
             setTitle(selectedBlog.title || '');
             setContent(selectedBlog.content || '');
             setUserId(selectedBlog.userId || ''); // Set the user ID for editing
@@ -44,18 +44,11 @@ const AddBlogModal = ({ open, handleClose, handleAddBlog, handleEditBlog, select
         }
     }, [selectedBlog]);
 
-    useEffect(() => {
-        console.log('Selected userId in useEffect:', userId);
-        // You can trigger the submission here if needed
-    }, [userId]);
-
     const handleFileChange = (e) => {
         setImage(e.target.files[0]);
     };
 
     const handleSubmit = async () => {
-        console.log('Selected userId before submission:', userId);
-
         const formData = new FormData();
         formData.append('author', author);
         formData.append('title', title);
@@ -75,8 +68,6 @@ const AddBlogModal = ({ open, handleClose, handleAddBlog, handleEditBlog, select
     };
 
     useEffect(() => {
-        console.log('Selected userId in useEffect:', userId);
-        // You can trigger the submission here if needed
     }, [userId]);
 
     return (

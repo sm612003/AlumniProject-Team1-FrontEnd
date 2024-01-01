@@ -60,12 +60,10 @@ const ManageBlogTable = () => {
       }, []);
       
       useEffect(() => {
-        console.log(blogList); // Log the data to the console
       }, [blogList]);
       
       const handleAddBlog = async (blogData) => {
         try {
-            console.log('blogData:', blogData); // Add this log statement
             const response = await axios.post('http://localhost:5000/add/blogs', blogData);
     
             if (response.status === 200) {
@@ -79,33 +77,31 @@ const ManageBlogTable = () => {
         }
     };
     
-
     const handleEditBlog = async (blogId, updatedBlogData) => {
-        try {
-            // Create a new FormData object
-            const formData = new FormData();
-    
-            // Append other updated fields to the FormData
-            Object.entries(updatedBlogData).forEach(([key, value]) => {
-                formData.append(key, value);
-            });
-    
-            // Log the formData for debugging
-            console.log('FormData before API call:', formData);
-    
-            const response = await axios.patch(`http://localhost:5000/update/blogs/${blogId}`, formData);
-    
-            if (response.status === 200) {
-                fetchAllBlogs();
-                handleCloseEditBlogModal();
-            } else {
-                console.error('Failed to update blog');
-            }
-        } catch (error) {
-            console.error('Error updating blog:', error);
-        }
-    };
-    
+      try {
+          const formData = new FormData();
+  
+          // Iterate through entries of updatedBlogData and append to formData
+          for (const [key, value] of updatedBlogData.entries()) {
+              formData.append(key, value);
+          }
+  
+          // Log the formData for debugging
+  
+          const response = await axios.patch(`http://localhost:5000/update/blogs/${blogId}`, formData);
+  
+          if (response.status === 200) {
+              fetchAllBlogs();
+              handleCloseEditBlogModal();
+          } else {
+              console.error('Failed to update blog');
+          }
+      } catch (error) {
+          console.error('Error updating blog:', error);
+      }
+  };
+  
+  
     
       
 
