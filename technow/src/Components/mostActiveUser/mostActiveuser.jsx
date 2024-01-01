@@ -54,7 +54,7 @@ const MostActiveUserChart = () => {
             {
               from: 21,
               to: 50,
-              color: '#775DD0', // Color for users with 21-50 blogs
+              color: '#119C59', // Color for users with 21-50 blogs
             },
           ],
         },

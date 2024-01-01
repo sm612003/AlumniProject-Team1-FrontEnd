@@ -24,7 +24,7 @@ const UserDescriptionsChart = () => {
   }, []);
 
   // Specify colors for each section of the pie chart
-  const colors = ['#94DD8B', '#14B86E', '#2C6E49','#119C59', '#775DD0'];
+  const colors = ['#94DD8B', '#14B86E', '#2C6E49','#119C59', '#119C59'];
 
   const options = {
     chart: {
