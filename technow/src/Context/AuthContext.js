@@ -16,7 +16,7 @@ export const authReducer = (state, action) => {
 
 export const AuthProvider = ({ children }) => {
   const [state, dispatch] = useReducer(authReducer, {
-    user: null,
+    user: null,// default value user=null
   });
 
   // Check if user data is available in local storage on mount
@@ -48,7 +48,7 @@ export const AuthProvider = ({ children }) => {
     localStorage.setItem("authUser", JSON.stringify(userData));
   };
 
-  const fetchUserData = async () => {
+  var fetchUserData = async () => {
     try {
       const response = await axiosInstance.get(
         `http://localhost:5000/user/view-one/${state.user.id}`
@@ -58,6 +58,8 @@ export const AuthProvider = ({ children }) => {
       console.error("Error fetching user data:", error);
     }
   };
+
+
 
  const logout = async () => {
     console.log("Logout function called");
