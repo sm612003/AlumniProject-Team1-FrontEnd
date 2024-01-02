@@ -33,9 +33,9 @@ export const HeroSection = () => {
                             <li className={styles.Li}>Forget about newsletters emails and focus only in reading.</li>
                         </ul>                
                     </span>
-                            <span className={styles.Button}>
+                            {/* <span className={styles.Button}>
                                 <Link to='/subscribe' ><Button color={"green"} text="Subscribe" subscribed={true} size={width} /></Link>
-                            </span>  
+                            </span>   */}
                 </div>
                 <div className={styles.Right}>
                     <video id="vid" className={styles.Video} autoPlay loop muted> <source src={video} type='video/mp4'/>Your Browser does not support this video tag.</video>

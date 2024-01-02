@@ -3,6 +3,7 @@ import { Box, Divider, MenuItem, MenuList, Popover, Typography } from '@mui/mate
 // import { toast } from "react-toastify";
 // import { useContext } from 'react';
 // import { AuthContext } from '../../Context/AuthContext';
+import { Link } from 'react-router-dom';
 export const AccountPopover = (props) => {
   const { anchorEl, onClose, open } = props; 
    // const {user, setUser} = useContext(AuthContext)
@@ -42,7 +43,7 @@ export const AccountPopover = (props) => {
         }}
       >
         <Typography variant="overline">
-          Account
+          UserName
         </Typography>
         <Typography
           color="text.secondary"
@@ -62,6 +63,19 @@ export const AccountPopover = (props) => {
           }
         }}
       >
+         <MenuItem >
+         <Link  style={{
+          textDecoration:'none',
+          color:"black",
+        }}to='/profile'>Profile</Link>
+        </MenuItem>
+
+        <MenuItem >
+         <Link  style={{
+          textDecoration:'none',
+          color:"#119c59",
+        }}to='/login'>Log in</Link>
+        </MenuItem>
 
         {/* onClick={handlelogOut} */}
         <MenuItem sx={{
@@ -69,6 +83,7 @@ export const AccountPopover = (props) => {
         }} >
           Sign out
         </MenuItem>
+        
       </MenuList>
     </Popover>
   );

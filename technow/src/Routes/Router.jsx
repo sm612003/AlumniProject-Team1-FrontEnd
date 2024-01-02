@@ -9,7 +9,7 @@ import Contact from "../Pages/Contact/Contact";
 import Dashboard from "../Pages/Dashboard/Dashboard";
 import NewsLetterDetails from "../Pages/NewsletterDetails/NewsletterDetais";
 import SubscribePage from "../Pages/Subscribe/Subscribe";
-import { BrowserRouter , Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Logo } from "../Components/Logo/Logo";
 import NotFound from "../Pages/NotFound/NotFound";
 import NewsCategory from "../Pages/NewsCategory/NewsCategory";
@@ -24,7 +24,7 @@ import ManageNewsTable from "../Components/ManageNewsTable/manageNews";
 import ManageBlogTable from "../Components/ManageBLogs/ManageBLogs";
 import Overview from "../Pages/Dashboard/Dashboard";
 import { Navigate } from "react-router-dom";
-
+import UsersPage from '../Pages/UsersWeb/UsersPage'
 // const Layout =()=>{
 //   const [screenWidth, setScreenWidth] = useState(window.innerWidth);
 //   const [nav, setNav] = useState(screenWidth < 800 ? true : false)
@@ -136,6 +136,7 @@ const AppRoute = () => {
           path="/newsletter"
           element={
             <LayoutWithHeaderFooter>
+              {/* <Category /> */}
               <Newsletter />
             </LayoutWithHeaderFooter>
           }
@@ -153,6 +154,7 @@ const AppRoute = () => {
           path="/newsCategory/:categoryName"
           element={
             <LayoutWithHeaderFooter>
+              {/* <Category /> */}
               <NewsCategory />
             </LayoutWithHeaderFooter>
           }
@@ -190,6 +192,14 @@ const AppRoute = () => {
           }
         />
 
+        <Route
+          path="/users"
+          element={
+            <LayoutWithHeaderFooter>
+              <UsersPage />
+            </LayoutWithHeaderFooter>
+          }
+        />
         <Route
           path="/blogDetails/:id"
           element={

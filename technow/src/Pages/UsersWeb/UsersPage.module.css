@@ -1,0 +1,22 @@
+
+.container{
+  width:80%;
+  margin:40px auto;
+}
+.h1 {
+    font-size: 3rem;
+    width: fit-content;
+    color: var(--color-green);
+    position: relative;
+    margin-bottom: 0;
+  }
+  
+  .h1::before {
+    content: "";
+    position: absolute;
+    width: 50%;
+    height: 5px;
+    bottom: 1px;
+    left: 0;
+    background-color: var(--color-green);
+  }
