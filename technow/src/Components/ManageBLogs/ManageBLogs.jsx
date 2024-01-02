@@ -3,6 +3,7 @@ import Box from '@mui/material/Box';
 import { DataGrid, GridToolbar } from '@mui/x-data-grid';
 import axios from 'axios';
 import AddBlogModal from './AddBLogModal'; // Import the modal for adding/editing blogs
+import { Helmet } from 'react-helmet';
 
 const ManageBlogTable = () => {
   const [blogList, setBlogList] = useState([]);
@@ -150,32 +151,56 @@ const ManageBlogTable = () => {
   ];
 
   return (
-    <Box sx={{ height: 520, width: '80%', margin: '150px' }}>
-      <button onClick={handleOpenAddBlogModal} style={{ backgroundColor: '#119C59', color: 'white', margin: '4px' }}>
-        Add Blog
-      </button>
-
-      <AddBlogModal
-        open={openEditBlogModal || openAddBlogModal}
-        handleClose={handleCloseEditBlogModal}
-        handleAddBlog={handleAddBlog}
-        handleEditBlog={handleEditBlog}
-        selectedBlog={selectedBlog}
-        userList={userList}
-      />
-
-
-
-      <DataGrid
-        rows={blogList}
-        columns={columns}
-        loading={loading}
-        disableRowSelectionOnClick
-        components={{
-          Toolbar: GridToolbar,
-        }}
-      />
-    </Box>
+    <>
+    <Helmet>
+      <title>Manage Blogs</title>
+      <meta name="description" content="Manage blog entries in your application with ease." />
+      <script type="application/ld+json">
+        {`
+          {
+            "@context": "https://schema.org",
+            "@type": "WebPage",
+            "name": "Manage Blogs",
+            "description": "Manage blog entries in your application with ease.",
+            "url": "http://localhost:3000/dashboard/blogs",
+          }
+        `}
+      </script>
+    </Helmet>
+  
+    <main>
+      <section>
+        <Box sx={{ height: 520, width: '80%', margin: '150px' }}>
+          <button
+            onClick={handleOpenAddBlogModal}
+            style={{ backgroundColor: '#119C59', color: 'white', margin: '4px' }}
+          >
+            Add Blog
+          </button>
+  
+          <AddBlogModal
+            open={openEditBlogModal || openAddBlogModal}
+            handleClose={handleCloseEditBlogModal}
+            handleAddBlog={handleAddBlog}
+            handleEditBlog={handleEditBlog}
+            selectedBlog={selectedBlog}
+            userList={userList}
+          />
+  
+          <DataGrid
+            rows={blogList}
+            columns={columns}
+            loading={loading}
+            disableRowSelectionOnClick
+            components={{
+              Toolbar: GridToolbar,
+            }}
+          />
+        </Box>
+      </section>
+    </main>
+  </>
+  
   );
 };
 

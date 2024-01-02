@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import Box from '@mui/material/Box';
+import { Helmet } from 'react-helmet';
 import {
   DataGrid,
   GridToolbar
@@ -81,25 +82,51 @@ const ManageSubscribeUserTable = () => {
   ];
 
   return (
-    
-    <Box sx={{ height: 520, width: '80%', margin: '150px' }}>
-      <button style={{ backgroundColor: '#119C59', color: 'white', important: 'true' }} onClick={handleOpenAddSubscribeUserModal}>Add Subscribe User</button>
+    <>
+      <Helmet>
+        <title>Subscribe User Management</title>
+        <meta name="description"  content="Manage Subscribe users in your application with ease" />
+        <script type="application/ld+json">
+          {`
+            {
+              "@context": "https://schema.org",
+              "@type": "WebPage",
+              "name": "Subscribe User Management",
+              "description": "Manage Subscribe users in your application with ease.",
+              "url": "http://localhost:3000/dashboard/subscuser",
+            }
+          `}
+        </script>
+      </Helmet>
+      <main>
+        <section>
+          <h1>Subscribe User Management</h1>
+          <Box sx={{ height: 520, width: '80%', margin: '150px' }}>
+            <button
+              style={{ backgroundColor: '#119C59', color: 'white', important: 'true' }}
+              onClick={handleOpenAddSubscribeUserModal}
+            >
+              Add Subscribe User
+            </button>
 
-      <AddSubscribeUserModal
-        open={openAddSubscribeUserModal}
-        handleClose={handleCloseAddSubscribeUserModal}
-        handleAddSubscribeUser={handleAddSubscribeUser}
-      />
-      <DataGrid
-        rows={subscribeUserList}
-        columns={columns}
-        loading={loading}
-        disableRowSelectionOnClick
-        components={{
-          Toolbar: GridToolbar,
-        }}
-      />
-    </Box>
+            <AddSubscribeUserModal
+              open={openAddSubscribeUserModal}
+              handleClose={handleCloseAddSubscribeUserModal}
+              handleAddSubscribeUser={handleAddSubscribeUser}
+            />
+            <DataGrid
+              rows={subscribeUserList}
+              columns={columns}
+              loading={loading}
+              disableRowSelectionOnClick
+              components={{
+                Toolbar: GridToolbar,
+              }}
+            />
+          </Box>
+        </section>
+      </main>
+    </>
   );
 };
 
