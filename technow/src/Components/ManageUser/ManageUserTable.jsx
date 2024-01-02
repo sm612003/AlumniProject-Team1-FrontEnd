@@ -3,6 +3,8 @@ import Box from '@mui/material/Box';
 import { DataGrid, GridToolbar } from '@mui/x-data-grid';
 import axios from 'axios';
 import AddUserModal from './addmodel';
+import { Helmet } from 'react-helmet';
+
 
 const ManageUserTable = () => {
   const [userList, setUserList] = useState([]);
@@ -125,26 +127,52 @@ const ManageUserTable = () => {
   ];
 
   return (
-    <Box sx={{ height: 520, width: '80%', margin: '150PX'  }}>
-      <button onClick={handleOpenAddUserModal} style={{ backgroundColor: '#119C59', color: 'white', important: 'true' }}>Add User</button>
+    <>
+    <Helmet>
+      <title>User Management</title>
+      <meta name="description" content="Manage users in your application with ease." />
+      <script type="application/ld+json">
+        {`
+          {
+            "@context": "https://schema.org",
+            "@type": "WebPage",
+            "name": "User Management",
+            "description": "Manage users in your application with ease.",
+            "url": "http://localhost:3000/dashboard/users",
+          }
+        `}
+      </script>
+    </Helmet>
+    <main>
+      <section>
+        <Box sx={{ height: 520, width: '80%', margin: '150px' }}>
+          <button
+            onClick={handleOpenAddUserModal}
+            style={{ backgroundColor: '#119C59', color: 'white', important: 'true' }}
+          >
+            Add User
+          </button>
 
-      <AddUserModal
-        open={openAddUserModal}
-        handleClose={handleCloseAddUserModal}
-        handleAddUser={handleAddUser}
-      />
+          <AddUserModal
+            open={openAddUserModal}
+            handleClose={handleCloseAddUserModal}
+            handleAddUser={handleAddUser}
+          />
 
-      <DataGrid
-        rows={userList}
-        columns={columns}
-        loading={loading}
-        disableRowSelectionOnClick
-        components={{
-          Toolbar: GridToolbar,
-        }}
-      />
-    </Box>
-  );
+          <DataGrid
+            rows={userList}
+            columns={columns}
+            loading={loading}
+            disableRowSelectionOnClick
+            components={{
+              Toolbar: GridToolbar,
+            }}
+          />
+        </Box>
+      </section>
+    </main>
+  </>
+);
 };
 
 export default ManageUserTable;

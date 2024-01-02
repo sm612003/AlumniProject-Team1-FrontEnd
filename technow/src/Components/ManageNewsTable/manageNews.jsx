@@ -4,6 +4,7 @@ import { DataGrid, GridToolbar } from '@mui/x-data-grid';
 import axios from 'axios';
 import AddNewsModal from './addnewsModal';
 import EditNewsModal from './editNewsModal';
+import { Helmet } from 'react-helmet';
 
 const ManageNewsTable = () => {
     const [newsList, setNewsList] = useState([]);
@@ -105,11 +106,33 @@ const ManageNewsTable = () => {
       ];
 
     return (
-        <Box sx={{ height: 520, width: '80%', margin: '150px' }}>
-        <button onClick={handleAddButtonClick} style={{ backgroundColor: '#119C59', color: 'white', important: 'true' }}>
+      <>
+  <Helmet>
+    <title>Manage News</title>
+    <meta name="description" content="Manage news articles in your application with ease." />
+    <script type="application/ld+json">
+      {`
+        {
+          "@context": "https://schema.org",
+          "@type": "WebPage",
+          "name": "Manage News",
+          "description": "Manage news articles in your application with ease.",
+          "url": "http://localhost:3000/dashboard/news",
+        }
+      `}
+    </script>
+  </Helmet>
+
+  <main>
+    <section>
+      <Box sx={{ height: 520, width: '80%', margin: '150px' }}>
+        <button
+          onClick={handleAddButtonClick}
+          style={{ backgroundColor: '#119C59', color: 'white', important: 'true' }}
+        >
           Add News
         </button>
-  
+
         <AddNewsModal
           open={showAddNewsModal}
           handleClose={handleCloseAddNewsModal}
@@ -117,27 +140,28 @@ const ManageNewsTable = () => {
           newNews={newNews}
           setNewNews={setNewNews}
         />
-  
-  <EditNewsModal
-  open={showEditNewsModal}
-  handleClose={handleCloseEditNewsModal}
-  handleUpdateNews={fetchAllNews}  
-  selectedNews={selectedNewsForEdit}
-/>
 
+        <EditNewsModal
+          open={showEditNewsModal}
+          handleClose={handleCloseEditNewsModal}
+          handleUpdateNews={fetchAllNews}
+          selectedNews={selectedNewsForEdit}
+        />
 
-         
-    
-          <DataGrid
-            rows={newsList}
-            columns={columns}
-            loading={loading}
-            disableRowSelectionOnClick
-            components={{
-              Toolbar: GridToolbar,
-            }}
-          />
-        </Box>
+        <DataGrid
+          rows={newsList}
+          columns={columns}
+          loading={loading}
+          disableRowSelectionOnClick
+          components={{
+            Toolbar: GridToolbar,
+          }}
+        />
+      </Box>
+    </section>
+  </main>
+</>
+
       );
     };
     
