@@ -1,14 +1,15 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState ,useContext} from "react";
 import styles from "./Dashboard.module.css";
 import DashboardCard from "../../Components/Dashboard Card/DashboardCard";
 import { ScrollButton } from "../../Components/ScrollButton/ScrollButton";
 import { Button } from "../../Components/Buttons/Buttons";
 import axios from "axios";
 import { Logo } from "../../Components/Logo/Logo";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 // import NewsUpdate from "../NewsUpdate/NewsUpdateForm";
 import NewsForm from "../NewsForm/NewsForm";
 import UpdateNewsPage from "../NewsUpdate/PageNewsUpdate";
+import { AuthContext } from "../../Context/AuthContext";
 
 // material-ui
 import {
@@ -24,6 +25,7 @@ import {
 const Dashboard = () => {
   const [screenWidth, setScreenWidth] = useState(window.innerWidth);
   const [width, setWidth] = useState(screenWidth < 1024 ? "small" : "big");
+const { logout, setUser } = useContext(AuthContext);
 
   useEffect(() => {
     const handleResize = () => {
@@ -120,13 +122,30 @@ const Dashboard = () => {
     alignItems: "center",
     height: "100%",
   };
+const navigate = useNavigate();
+const handleLogout = () => {
+  try {
+    setUser(null);
 
+    logout(); // Call the logout function from AuthContext
+    navigate("/");
+  } catch (error) {
+    console.log("err from handle logout", error);
+  }
+};
   return (
     <div className={styles.Dashboard}>
       {!clicked ? (
         <>
           <nav className={styles.Navbar}>
             <div className={styles.Name}>Dashboard</div>
+            <button
+              type="submit"
+              onClick={handleLogout}
+              className={styles.logoutBtn}
+            >
+              Logout
+            </button>
             <div className={styles.Buttons}>
               <ul className={styles.ul}>
                 <li className={styles.li} onClick={toogleNews}>
@@ -247,7 +266,6 @@ const Dashboard = () => {
       )}
 
       <ScrollButton />
-     
     </div>
   );
 };
