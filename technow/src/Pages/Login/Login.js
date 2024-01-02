@@ -76,17 +76,29 @@ const Login = () => {
 
     try {
       setLoading(true);
-      const response = await axios.post(
-        "http://localhost:5000/user/login",
-        formData
-      );
+
+      const response = await axios.post("http://localhost:5000/user/login", {
+        ...formData,
+      });
+      console.log("Server Response:", response); // Log the entire server response
+
+      console.log("Hashed Password in Database:", user.password); // Log hashed password in the database
 
       if (response.data) {
         setUser(response.data); // Assuming user data is nested under response.data
+        localStorage.setItem("authUser", JSON.stringify(response.data.user));
+
         console.log("role: " + response.data.role);
         console.log("responce and data of login", response.data);
         console.log("responce of login", response);
         console.log("localstorage :", localStorage);
+        const local = localStorage.getItem("state",JSON.parse(response.data.user))
+        
+     
+        if(local){
+console.log("local storage ",local)
+        }
+        
         if (response.data.role === "admin") {
           navigate("/dashboard");
         } else {
@@ -127,6 +139,7 @@ const Login = () => {
           console.log(res);
           if (res) {
             setUser(res.data);
+            console.log("loca data printed")
 
             navigate("/blogsForm");
           }
@@ -153,12 +166,12 @@ const Login = () => {
   }, [user]); // Run this effect whenever the user state changes
 
   // PASSWOED HIDE AND SHOW
-    const [showPassword, setShowPassword] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
 
-    const handleTogglePassword = () => {
-      setShowPassword(!showPassword);
-    };
-    const passwordInputType = showPassword ? "text" : "password";
+  const handleTogglePassword = () => {
+    setShowPassword(!showPassword);
+  };
+  const passwordInputType = showPassword ? "text" : "password";
   return (
     <body>
       <div className={styles.container}>
