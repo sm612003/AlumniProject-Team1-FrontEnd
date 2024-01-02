@@ -4,7 +4,7 @@ import styles from "./Newsletter.module.css";
 import axios from "axios";
 import { ScrollButton } from "../../Components/ScrollButton/ScrollButton";
 import magnifire from "../../Assets/Images/magnifire.jpeg";
-
+import Category from '../../Components/CategoryCard/Category'
 //Page
 const Newsletter = () => {
   useEffect(() => {
@@ -108,6 +108,7 @@ const Newsletter = () => {
     <>
       <div className={styles.Container}>
         <h1 className={styles.H1}>Latest News</h1>
+        <Category/>
         <form className={styles.bookSearch}>
           <input
             id="search"

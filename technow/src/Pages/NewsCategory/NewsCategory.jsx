@@ -5,6 +5,7 @@ import styles from "../../Pages/Newsletter/Newsletter.module.css";
 import axios from "axios";
 import { ScrollButton } from "../../Components/ScrollButton/ScrollButton";
 import { useParams } from "react-router-dom";
+import Category from "../../Components/CategoryCard/Category";
 
 //Page
 const NewsCategory = () => {
@@ -107,6 +108,7 @@ const NewsCategory = () => {
           </div>
         ) : (
           <>
+          <Category/>
             <article className={styles.Newsletter}>
               {newsData.map((key, index) => (
                 <NewsCard

@@ -1,10 +1,10 @@
 .usersContainer{
-    width:80%;
+    width:100%;
     display: flex;
     flex-wrap: wrap;
     justify-content:center;
     align-items: center;
-    margin:0 auto 150px auto;
+    margin:80px auto 150px auto;
     gap:70px;
 }
 

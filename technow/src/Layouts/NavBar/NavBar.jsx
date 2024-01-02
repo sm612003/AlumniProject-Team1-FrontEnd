@@ -43,37 +43,37 @@ const NavBar = () => {
           </label>
         </div>
         <ul class={style.itemList}>
-          <Link to="./newsletter">
+          <Link to="/newsletter">
             <li>
               <p className={style.navLinks}>News</p>
             </li>
           </Link>
-          <Link to='/blog'>
+          <Link to='/blogs'>
             <li>
               <p className={style.navLinks}>Blog</p>
             </li>
           </Link>
-          <Link to="./users">
+          <Link to="/users">
             <li>
               <p className={style.navLinks}>users</p>
             </li>
           </Link>
-          <Link to="./profile">
+          <Link to="/profile">
             <li>
               <p className={style.navLinks}>Profile</p>
             </li>
           </Link>
-          <Link to="./contact">
+          <Link to="/contact">
             <li>
               <p className={style.navLinks}>Contact us</p>
             </li>
           </Link>
-          <Link to="./subscribe">
+          <Link to="/subscribe">
             <li>
               <p className={style.navLinks}>Subscribe</p>
             </li>
           </Link>
-          <Link to="./login">
+          <Link to="/login">
             <li>
               <p className={style.navLinks}>LogIn</p>
             </li>
@@ -85,22 +85,22 @@ const NavBar = () => {
 
          <div className={`${style.navbar}`}>
           <ul className={`${style.navbarLinks} ${isOpen ? style.open : ''}`}>
-            <Link to="./newsletter">
+            <Link to="/newsletter">
               <li>
                 <p className={style.navLinks}>News</p>
               </li>
             </Link>
-            <Link to='/blog'>
+            <Link to='/blogs'>
               <li>
                 <p className={style.navLinks}>Blog</p>
               </li>
             </Link>
-            <Link to="./users">
+            <Link to="/users">
               <li>
                 <p className={style.navLinks}>users</p>
               </li>
             </Link>
-            <Link to="./contact">
+            <Link to="/contact">
               <li>
                 <p className={style.navLinks}>Contact us</p>
               </li>
