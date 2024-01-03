@@ -192,6 +192,35 @@ const Login = () => {
       console.log("OAuth: ", err);
     }
   };
+  // // google from dev
+  //  const handleOAuth = async () => {
+  //    try {
+  //      const provider = new GoogleAuthProvider();
+  //      const auth = getAuth(app);
+
+  //      const result = await signInWithPopup(auth, provider);
+  //      console.log(result);
+
+  //      const res = await axios
+  //        .post("http://localhost:5000/google/auth", {
+  //          firstName: result.user.displayName,
+  //          lastName: result.user.displayName,
+  //          email: result.user.email,
+  //          role: "user",
+  //        })
+
+  //        .then((res) => {
+  //          console.log(res);
+  //          if (res) {
+  //            setUser(res.data);
+
+  //            navigate("/blogsForm");
+  //          }
+  //        });
+  //    } catch (err) {
+  //      console.log("OAuth: ", err);
+  //    }
+  //  };
   //CHECK the user if LOGED IN BEFORE dont ask for another login every time need to add blog
   useEffect(() => {
     const checkLoggedInUser = async () => {
