@@ -90,13 +90,20 @@ const AddUserModal = ({ open, handleClose, handleAddUser, modalAction, initialUs
           fullWidth
           margin="normal"
         />
-        <TextField
-          label="Description"
-          value={newUser.description}
-          onChange={(e) => handleInputChange('description', e.target.value)}
-          fullWidth
-          margin="normal"
-        />
+     <FormControl fullWidth margin="normal">
+  <InputLabel>Description</InputLabel>
+  <Select
+    value={newUser.description}
+    onChange={(e) => handleInputChange('description', e.target.value)}
+    input={<Input />}
+  >
+    <MenuItem value="Software Development">Software Development</MenuItem>
+    <MenuItem value="Data Analytics">Data Analytics</MenuItem>
+    <MenuItem value="User Interface Design">User Interface Design</MenuItem>
+    <MenuItem value="Network Infrastructure">Network Infrastructure</MenuItem>
+    <MenuItem value="DEVOPS">DEVOPS</MenuItem>
+  </Select>
+</FormControl>
         <FormControl fullWidth margin="normal">
           <InputLabel
             htmlFor="date-of-birth"
