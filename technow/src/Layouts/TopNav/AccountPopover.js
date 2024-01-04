@@ -1,11 +1,23 @@
 import { Box, Divider, MenuItem, MenuList, Popover, Typography } from '@mui/material';
-// import { useNavigate } from 'react-router-dom';
 // import { toast } from "react-toastify";
-// import { useContext } from 'react';
-// import { AuthContext } from '../../Context/AuthContext';
-import { Link } from 'react-router-dom';
+import { useContext } from 'react';
+import { AuthContext } from '../../Context/AuthContext';
+import { Link,  useNavigate } from 'react-router-dom';
 export const AccountPopover = (props) => {
-  const { anchorEl, onClose, open } = props; 
+  const { anchorEl, onClose, open } = props;
+    const { logout, setUser } = useContext(AuthContext);
+  const navigate = useNavigate();
+  const handleLogout = () => {
+    try {
+      setUser(null);
+
+      logout(); // Call the logout function from AuthContext
+      navigate("/");
+    } catch (error) {
+      console.log("err from handle logout", error);
+    }
+  };
+ 
    // const {user, setUser} = useContext(AuthContext)
   // const navigate = useNavigate();
 // const handlelogOut = async () =>{
@@ -29,8 +41,8 @@ export const AccountPopover = (props) => {
     <Popover
       anchorEl={anchorEl}
       anchorOrigin={{
-        horizontal: 'left',
-        vertical: 'bottom'
+        horizontal: "left",
+        vertical: "bottom",
       }}
       onClose={onClose}
       open={open}
@@ -39,16 +51,11 @@ export const AccountPopover = (props) => {
       <Box
         sx={{
           py: 1.5,
-          px: 2
+          px: 2,
         }}
       >
-        <Typography variant="overline">
-          UserName
-        </Typography>
-        <Typography
-          color="text.secondary"
-          variant="body2"
-        >
+        <Typography variant="overline">UserName</Typography>
+        <Typography color="text.secondary" variant="body2">
           {/* {user?.userName} */}
         </Typography>
       </Box>
@@ -57,33 +64,47 @@ export const AccountPopover = (props) => {
         disablePadding
         dense
         sx={{
-          p: '8px',
-          '& > *': {
-            borderRadius: 1
-          }
+          p: "8px",
+          "& > *": {
+            borderRadius: 1,
+          },
         }}
       >
-         <MenuItem >
-         <Link  style={{
-          textDecoration:'none',
-          color:"black",
-        }}to='/profile'>Profile</Link>
+        <MenuItem>
+          <Link
+            style={{
+              textDecoration: "none",
+              color: "black",
+            }}
+            to="/profile"
+          >
+            Profile
+          </Link>
         </MenuItem>
 
-        <MenuItem >
-         <Link  style={{
-          textDecoration:'none',
-          color:"#119c59",
-        }}to='/login'>Log in</Link>
+        <MenuItem>
+          <Link
+            style={{
+              textDecoration: "none",
+              color: "#119c59",
+            }}
+            to="/login"
+          >
+            Log in
+          </Link>
         </MenuItem>
 
         {/* onClick={handlelogOut} */}
-        <MenuItem sx={{
-          color:"red",
-        }} >
+        <MenuItem
+          sx={{
+            color: "red",
+          }}
+          type="submit"
+          onClick={handleLogout}
+          
+        >
           Sign out
         </MenuItem>
-        
       </MenuList>
     </Popover>
   );
