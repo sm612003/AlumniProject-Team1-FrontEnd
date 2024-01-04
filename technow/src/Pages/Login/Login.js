@@ -269,6 +269,10 @@ const Login = () => {
             </div>
           </form>
           <button onClick={handleOAuth}>sign in with google</button>
+          <Link to={"/"}>
+            {" "}
+            <button>Go Home</button>
+          </Link>
         </div>
       </div>
     </body>
