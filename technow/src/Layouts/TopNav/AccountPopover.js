@@ -1,8 +1,8 @@
 import { Box, Divider, MenuItem, MenuList, Popover, Typography } from '@mui/material';
 // import { toast } from "react-toastify";
-import { useContext } from 'react';
+import { useContext, useEffect } from "react";
 import { AuthContext } from '../../Context/AuthContext';
-import { Link,  useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from "react-router-dom";
 export const AccountPopover = (props) => {
   const { anchorEl, onClose, open } = props;
     const { logout, setUser } = useContext(AuthContext);
@@ -17,7 +17,18 @@ export const AccountPopover = (props) => {
       console.log("err from handle logout", error);
     }
   };
- 
+   useEffect(() => {
+     const checkLoggedInUser = () => {
+       const storedUser = localStorage.getItem("authUser");
+       if (storedUser) {
+         const parsedUser = JSON.parse(storedUser);
+         setUser(parsedUser);
+       }
+     };
+
+     checkLoggedInUser();
+   }, [setUser]);
+
    // const {user, setUser} = useContext(AuthContext)
   // const navigate = useNavigate();
 // const handlelogOut = async () =>{
@@ -81,19 +92,19 @@ export const AccountPopover = (props) => {
             Profile
           </Link>
         </MenuItem>
-
-        <MenuItem>
-          <Link
-            style={{
-              textDecoration: "none",
-              color: "#119c59",
-            }}
-            to="/login"
-          >
-            Log in
-          </Link>
-        </MenuItem>
-
+        {!localStorage.getItem("authUser") && (
+          <MenuItem>
+            <Link
+              style={{
+                textDecoration: "none",
+                color: "#119c59",
+              }}
+              to="/login"
+            >
+              Log in
+            </Link>
+          </MenuItem>
+        )}
         {/* onClick={handlelogOut} */}
         <MenuItem
           sx={{
@@ -101,7 +112,6 @@ export const AccountPopover = (props) => {
           }}
           type="submit"
           onClick={handleLogout}
-          
         >
           Sign out
         </MenuItem>
