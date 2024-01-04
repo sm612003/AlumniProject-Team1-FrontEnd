@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from 'react'
-import User from './User'
+import React, { useEffect, useState,lazy, Suspense  } from 'react'
 import axios from 'axios'
 import style from './Users.module.css'
+const User = lazy(() => import('./User'));
 function Users() {
   const [users, setUsers] = useState([])
   const [isloading, setIsLoading] = useState(true)
@@ -20,7 +20,11 @@ function Users() {
   return (
     <div>
       {isloading ? <div>Loading....</div>
-        : <div className={style.usersContainer}>{users.map(user => <User user={user} link={user.Link} />)}</div>
+        :    <div className={style.usersContainer}>
+        <Suspense fallback={<div>Loading User...</div>}>
+          {users.map(user => <User key={user.id} user={user} />)}
+        </Suspense>
+      </div>
       }
     </div>
   )

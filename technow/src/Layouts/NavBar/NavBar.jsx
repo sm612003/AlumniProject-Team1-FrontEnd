@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState,lazy,Suspense } from 'react'
 import style from "../../Layouts/NavBar/NavBar.module.css";
 import { Weather } from "../../Components/Weather/Weather.jsx";
 import { Link, NavLink } from "react-router-dom";

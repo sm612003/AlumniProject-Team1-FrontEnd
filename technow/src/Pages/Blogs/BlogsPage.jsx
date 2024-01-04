@@ -1,24 +1,29 @@
 import styles from "./BlogsPage.module.css";
-import BlogCard from "../../Components/BlogCard/BlogCard";
-import { useState, useEffect } from "react";
+import { useState, useEffect, Suspense, lazy } from "react";
 import axios from "axios";
 import { ScrollButton } from "../../Components/ScrollButton/ScrollButton";
 import { Button } from "../../Components/Buttons/Buttons";
-import { Link, useNavigate, useParams } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import magnifire from "../../Assets/Images/magnifire.jpeg";
-import BlogDetails from "../BlogsDetails/BlogsDetails";
-import { margin } from "@mui/system";
-// import { ToastContainer, toast } from "react-toastify";
-// import "react-toastify/dist/ReactToastify.css";
+import { Helmet } from 'react-helmet';
 
+const BlogCard = lazy(() => import('../../Components/BlogCard/BlogCard'));
+const structuredData = {
+  "@context": "http://schema.org",
+  "@type": "Organization",
+  "name": "technow",
+  "url": `${process.env.REACT_APP_API}/blogs`,
+};
 const BlogCardLayout = () => {
   const [screenWidth, setScreenWidth] = useState(window.innerWidth);
   const [width, setWidth] = useState(screenWidth < 1024 ? "small" : "big");
-// const showToastMessage = () => {
-//   toast.success("Blog Added Successfuly  !", {
-//     position: toast.POSITION.TOP_RIGHT,
-//   });
-// };
+  const [blogData, setBlogData] = useState([]);
+  const [networkError, setNetworkError] = useState(false);
+  const [error, setError] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const [searchInput, setSearchInput] = useState("");
+
+
   useEffect(() => {
     const handleResize = () => {
       const newWidth = window.innerWidth;
@@ -31,10 +36,7 @@ const BlogCardLayout = () => {
     };
   }, []);
 
-  const [blogData, setBlogData] = useState([]);
-  const [networkError, setNetworkError] = useState(false);
-  const [error, setError] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
+
   //network err
   useEffect(() => {
     const handleOffline = () => {
@@ -48,11 +50,13 @@ const BlogCardLayout = () => {
     };
   }, []);
 
+
   useEffect(() => {
     const fetchData = async () => {
       try {
-        if (blogData.length ===0) {setIsLoading(true)
-      setError("No blogs")
+        if (blogData.length === 0) {
+          setIsLoading(true)
+          setError("No blogs")
         }
         if (!navigator.onLine) {
           setNetworkError(true);
@@ -108,8 +112,8 @@ const BlogCardLayout = () => {
     alignItems: "center",
     height: "100vh",
   };
+
   // Handles changes in the search input.
-  const [searchInput, setSearchInput] = useState("");
   const handleSearchInputChange = (e) => {
     setSearchInput(e.target.value);
   };
@@ -128,8 +132,6 @@ const BlogCardLayout = () => {
 
   //get blog by ID
   const navigate = useNavigate();
-  const [selectedBlog, setSelectedBlog] = useState(null);
-
   const handleBlogCardClick = (clickedBlogId) => {
     try {
       // Navigate to the single blog page with the correct URL
@@ -142,6 +144,12 @@ const BlogCardLayout = () => {
 
   return (
     <>
+      <Helmet>
+          <title>Blogs</title>
+          <meta name="description" content="tech Blogs added by the user of technow newsLetter" />
+          {/*   JSON-LD Structured Data */}
+          <script type="application/ld+json">{JSON.stringify(structuredData)}</script>
+        </Helmet>
       <div className={styles.main}>
         <header className={styles.header}>
           <h1 className={styles.h1}>Blogs</h1>
@@ -180,7 +188,7 @@ const BlogCardLayout = () => {
                     text={"Add Blog"}
                     size={width}
                     subscribed={false}
-               
+
                   />
                 </Link>
               </span>
@@ -189,16 +197,19 @@ const BlogCardLayout = () => {
                 filteredBlog.map((blog, index) => (
                   // on click go to blogdetail page and pass param id to this page
                   <Link to={`/blogDetails/${blog.id}`} key={blog.id}>
-                    <BlogCard
-                      key={blog.id}
-                      title={blog.title}
-                      author={blog.author}
-                      image={blog.image}
-                      createdAt={blog.createdAt}
-                      reversed={index % 2 === 0}
-                      id={blog.id}
-                      onClick={() => handleBlogCardClick(blog.id)}
-                    />
+                    <Suspense fallback={<div>Loading...</div>}>
+                      {/* Lazy-loaded component */}
+                      <BlogCard
+                        key={blog.id}
+                        title={blog.title}
+                        author={blog.author}
+                        image={blog.image}
+                        createdAt={blog.createdAt}
+                        reversed={index % 2 === 0}
+                        id={blog.id}
+                        onClick={() => handleBlogCardClick(blog.id)}
+                      />
+                    </Suspense>
                   </Link>
                 ))
               ) : (

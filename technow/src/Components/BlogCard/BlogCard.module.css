@@ -27,6 +27,8 @@
     gap :2rem;
     padding: 1%;
     height: 600px;  
+    transition: 0.2s ease-in-out;
+
 }
 
 .blogcontent.blogReverse{
