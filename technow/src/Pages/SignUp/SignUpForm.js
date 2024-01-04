@@ -1,3 +1,164 @@
+// import React, { useState } from "react";
+// import styles from "./SignUpForm.module.css";
+// import axios from "axios";
+// import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
+// import { useNavigate } from "react-router-dom";
+// import { GoogleAuthProvider, getAuth, signInWithPopup } from "firebase/auth";
+// import { app } from "../../firebase";
+// const SignUpForm = () => {
+//   const navigate = useNavigate();
+//   const [formData, setFormData] = useState({
+//     firstName: "",
+//     lastName: "",
+//     dob: "",
+//     email: "",
+//     password: "",
+//     role: "user",
+//     description: "",
+//     Link: "",
+//   });
+//   const [image, setImage] = useState(null); // Adjust as needed
+
+//   const [error, setError] = useState(false);
+//   const [errorMessage, setErrorMessage] = useState("");
+//   const [loading, setLoading] = useState(false);
+//   const passwordRegex =
+//     /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+//   const [showPassword, setShowPassword] = useState(false);
+
+//   const handleTogglePassword = () => {
+//     setShowPassword(!showPassword);
+//   };
+//   const passwordInputType = showPassword ? "text" : "password";
+//   const [logBtn, setLogBtn] = useState(false);
+//   const handleChange = (e) => {
+//     const { name, value } = e.target;
+//     if (name === "password" && !passwordRegex.test(value)) {
+//       setError(true);
+//       setErrorMessage(
+//         "Password must contain at least one lowercase letter, one uppercase letter, one number, one special character, and be at least 8 characters long."
+//       );
+//     } else {
+//       setError(false);
+//       setErrorMessage("");
+//     }
+//     setFormData({
+//       ...formData,
+//       [name]: value,
+//     });
+//   };
+
+//   const handleImageChange = (e) => {
+//     // Assuming you have an input with type="file" for the image
+//     const file = e.target.files[0];
+//     setImage(file);
+//   };
+
+//   const handleSubmit = async (e) => {
+//     e.preventDefault();
+//     if (
+//       !formData.firstName ||
+//       !formData.lastName ||
+//       !formData.role ||
+//       !formData.dob ||
+//       !formData.email ||
+//       !formData.password ||
+//       !formData.description ||
+//       !formData.Link 
+//     ) {
+//       setError(true);
+//       setErrorMessage("All input fields are required");
+//     } else if (error && !passwordRegex.test(formData.password)) {
+//       setError(true);
+//       setErrorMessage(
+//         "Password must contain at least one lowercase letter, one uppercase letter, one number, one special character, and be at least 8 characters long."
+//       );
+//     } else {
+//       const formDataToSubmit = new FormData();
+//       formDataToSubmit.append("firstName", formData.firstName);
+//       formDataToSubmit.append("lastName", formData.lastName);
+//       formDataToSubmit.append("dob", formData.dob);
+//       formDataToSubmit.append("email", formData.email);
+//       formDataToSubmit.append("password", formData.password);
+//       formDataToSubmit.append("role", formData.role);
+//       formDataToSubmit.append("image", image);
+//       formDataToSubmit.append("Link", formData.Link);
+//       formDataToSubmit.append("description", formData.description);
+
+//       try {
+//         setLoading(true);
+//         const addUser = await axios.post(
+//           "http://localhost:5000/user/create",
+//           formDataToSubmit,
+//           {
+//             headers: {
+//               "Content-Type": "multipart/form-data",
+//             },
+//           }
+//         );
+//         console.log(addUser);
+//         setError(false);
+//         setLoading(false);
+//         setFormData({
+//           firstName: "",
+//           lastName: "",
+//           dob: "",
+//           email: "",
+//           password: "",
+//           role: "user",
+//           description: "",
+//           Link: "",
+//         });
+
+//         if (addUser) {
+//           setLogBtn(true);
+//         }
+//       } catch (error) {
+//         setError(true);
+//         setErrorMessage("Something went wrong");
+//         setLoading(false);
+//         console.error("Error in API call", errorMessage, error);
+//       }
+//     }
+//   }
+
+//   const handleLogin = () => {
+//     // Navigate to the login page or perform any other desired action
+//     navigate("/login");
+//   };
+
+//   const handleOAuth = async () => {
+//     try {
+//       const provider = new GoogleAuthProvider();
+//       const auth = getAuth(app);
+
+//       const result = await signInWithPopup(auth, provider);
+//       console.log(result);
+
+//       const displayNameParts = result.user.displayName.split(" ");
+//       const firstName = displayNameParts[0];
+//       const lastName = displayNameParts.slice(1).join(" ");
+
+//       const res = await axios.post("http://localhost:5000/google/auth", {
+//         firstName: firstName,
+//         lastName: lastName,
+//         email: result.user.email,
+//         role: "user",
+//         dob: Date.now(),
+//         Link: "",
+//         description: "",
+//       });
+
+//       console.log(res);
+//       if (res) {
+//         setLogBtn(true);
+//         navigate("/login"); // navigate to login as user
+//       }
+//     } catch (err) {
+//       console.log(err);
+//     }
+//   };
+
 import React, { useState } from "react";
 import styles from "./SignUpForm.module.css";
 import axios from "axios";
@@ -5,8 +166,10 @@ import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
 import { useNavigate } from "react-router-dom";
 import { GoogleAuthProvider, getAuth, signInWithPopup } from "firebase/auth";
 import { app } from "../../firebase";
+
 const SignUpForm = () => {
   const navigate = useNavigate();
+
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
@@ -14,11 +177,11 @@ const SignUpForm = () => {
     email: "",
     password: "",
     role: "user",
-    description: "",
+    description: "Data Analytics",
     Link: "",
   });
-  const [image, setImage] = useState(null); // Adjust as needed
 
+  const [image, setImage] = useState(null);
   const [error, setError] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
   const [loading, setLoading] = useState(false);
@@ -31,17 +194,26 @@ const SignUpForm = () => {
   };
   const passwordInputType = showPassword ? "text" : "password";
   const [logBtn, setLogBtn] = useState(false);
+
+  const [descriptionOptions, setDescriptionOptions] = useState([
+    "SOFTWARE_DEVELOPMENT",
+    "DATA_ANALYTICS",
+    "USER_INTERFACE_DESIGN",
+    "NETWORK_INFRASTRUCTURE",
+    "DEVOPS",
+  ]);
+
   const handleChange = (e) => {
     const { name, value } = e.target;
-    if (name === "password" && !passwordRegex.test(value)) {
+
+    if (name === "description" && !descriptionOptions.includes(value)) {
       setError(true);
-      setErrorMessage(
-        "Password must contain at least one lowercase letter, one uppercase letter, one number, one special character, and be at least 8 characters long."
-      );
+      setErrorMessage("Invalid description selected");
     } else {
       setError(false);
       setErrorMessage("");
     }
+
     setFormData({
       ...formData,
       [name]: value,
@@ -49,13 +221,13 @@ const SignUpForm = () => {
   };
 
   const handleImageChange = (e) => {
-    // Assuming you have an input with type="file" for the image
     const file = e.target.files[0];
     setImage(file);
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
     if (
       !formData.firstName ||
       !formData.lastName ||
@@ -64,7 +236,7 @@ const SignUpForm = () => {
       !formData.email ||
       !formData.password ||
       !formData.description ||
-      !formData.Link 
+      !formData.Link
     ) {
       setError(true);
       setErrorMessage("All input fields are required");
@@ -106,7 +278,7 @@ const SignUpForm = () => {
           email: "",
           password: "",
           role: "user",
-          description: "",
+          description: "Data Analytics",
           Link: "",
         });
 
@@ -120,10 +292,9 @@ const SignUpForm = () => {
         console.error("Error in API call", errorMessage, error);
       }
     }
-  }
+  };
 
   const handleLogin = () => {
-    // Navigate to the login page or perform any other desired action
     navigate("/login");
   };
 
@@ -146,19 +317,18 @@ const SignUpForm = () => {
         role: "user",
         dob: Date.now(),
         Link: "",
-        description: "",
+        description: "Data Analytics",
       });
 
       console.log(res);
       if (res) {
         setLogBtn(true);
-        navigate("/login"); // navigate to login as user
+        navigate("/login");
       }
     } catch (err) {
       console.log(err);
     }
   };
-
 
   return (
     <div className={styles["sign-up-container"]}>
@@ -189,7 +359,7 @@ const SignUpForm = () => {
                   required
                 />
               </div>
-              <div className={styles["form-group"]}>
+              {/* <div className={styles["form-group"]}>
                 <label htmlFor="description">Description</label>
                 <textarea
                   type="text"
@@ -199,6 +369,25 @@ const SignUpForm = () => {
                   onChange={handleChange}
                   required
                 />
+              </div> */}
+              <div className={styles["form-group"]}>
+                <label htmlFor="description">Description</label>
+                <select
+                  id="description"
+                  name="description"
+                  value={formData.description}
+                  onChange={handleChange}
+                  required
+                >
+                  <option value="" disabled>
+                    Select a description
+                  </option>
+                  {descriptionOptions.map((option) => (
+                    <option key={option} value={option}>
+                      {option}
+                    </option>
+                  ))}
+                </select>
               </div>
               <div className={styles["form-group"]}>
                 <label htmlFor="Link">GitHub Link</label>

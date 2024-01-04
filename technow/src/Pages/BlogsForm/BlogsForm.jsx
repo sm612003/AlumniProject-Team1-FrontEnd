@@ -47,15 +47,16 @@ const [errors, setErrors] = useState({});
   }, []);
 
   const addBlog = (e) => {
-    setLoading(true)
+ 
     e.preventDefault();
+       setLoading(true);
     const formData = new FormData(e.target);
 
     axios
       .post(`http://localhost:5000/add/blogs`, formData)
       .then((response) => {
         showToastMessage();
-        // setSuccessMessage("Blog added successfully!"); // Set success message
+        setSuccessMessage("Blog added successfully!"); // Set success message
 
         console.log("Request sent successfully", response.data);
         if (response.status === 200) {
@@ -66,7 +67,7 @@ const [errors, setErrors] = useState({});
       .catch((error) => {
          setLoading(false);
         console.log(error);
-        console.log("Server error details:", error.response.data);
+        console.log("Server error details from add blog:", error);
       });
   };
   // const addBlog = async (e) => {
@@ -221,7 +222,7 @@ const [errors, setErrors] = useState({});
                     size={width}
                   />
                 </Link>
-                {loading && <p>Loading...</p>}
+                {loading && <p>Adding Blog...</p>}
                 {successMessage && (
                   <p style={{ color: "green", fontSize: "bold" }}>
                     {successMessage}

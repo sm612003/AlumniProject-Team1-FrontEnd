@@ -64,103 +64,102 @@ const Login = () => {
       [name]: value,
     });
   };
-//   // login process
-//   const handleLogin = async (e) => {
-//     e.preventDefault();
-//     if (!navigator.onLine) {
-//       setNetworkError(true);
-//       setError(false);
-//       setIsLoading(false);
-//       return;
-//     }
+  //   // login process
+  //   const handleLogin = async (e) => {
+  //     e.preventDefault();
+  //     if (!navigator.onLine) {
+  //       setNetworkError(true);
+  //       setError(false);
+  //       setIsLoading(false);
+  //       return;
+  //     }
 
-//     try {
-//       setLoading(true);
+  //     try {
+  //       setLoading(true);
 
-//       const response = await axios.post("http://localhost:5000/user/login", {
-//         ...formData,
-//       });
-//       console.log("Server Response:", response); // Log the entire server response
+  //       const response = await axios.post("http://localhost:5000/user/login", {
+  //         ...formData,
+  //       });
+  //       console.log("Server Response:", response); // Log the entire server response
 
-//       console.log("Hashed Password in Database:", user.password); // Log hashed password in the database
+  //       console.log("Hashed Password in Database:", user.password); // Log hashed password in the database
 
-//       if (response.data) {
-//         setUser(response.data); // Assuming user data is nested under response.data
-//         localStorage.setItem("authUser", JSON.stringify(response.data.user));
+  //       if (response.data) {
+  //         setUser(response.data); // Assuming user data is nested under response.data
+  //         localStorage.setItem("authUser", JSON.stringify(response.data.user));
 
-//         console.log("role: " + response.data.role);
-//         console.log("responce and data of login", response.data);
-//         console.log("responce of login", response);
-//         console.log("localstorage :", localStorage);
-//         const local = localStorage.getItem("state",JSON.parse(response.data.user))
-        
-     
-//         if(local){
-// console.log("local storage ",local)
-//         }
-        
-//         if (response.data.role === "admin") {
-//           navigate("/dashboard");
-//         } else {
-//           navigate("/blogsForm");
-//         }
-//         setLoading(false);
-//       }
-//     } catch (error) {
-//       if (error.message === "Network request failed") {
-//         setNetworkError(true);
-//         setIsLoading(false);
-//       } else {
-//         console.log("err", error);
-//         setError(true);
-//         setErrorMessage("Invalid email or password");
-//         setLoading(false);
-//       }
-//     }
-//   };
-// login from dev 
- const handleLogin = async (e) => {
-   e.preventDefault();
-   if (!navigator.onLine) {
-     setNetworkError(true);
-     setError(false);
-     setIsLoading(false);
-     return;
-   }
+  //         console.log("role: " + response.data.role);
+  //         console.log("responce and data of login", response.data);
+  //         console.log("responce of login", response);
+  //         console.log("localstorage :", localStorage);
+  //         const local = localStorage.getItem("state",JSON.parse(response.data.user))
 
-   try {
-     setLoading(true);
-     const response = await axios.post(
-       "http://localhost:5000/user/login",
-       formData
-     );
+  //         if(local){
+  // console.log("local storage ",local)
+  //         }
 
-     console.log(response.data);
-     console.log(response);
+  //         if (response.data.role === "admin") {
+  //           navigate("/dashboard");
+  //         } else {
+  //           navigate("/blogsForm");
+  //         }
+  //         setLoading(false);
+  //       }
+  //     } catch (error) {
+  //       if (error.message === "Network request failed") {
+  //         setNetworkError(true);
+  //         setIsLoading(false);
+  //       } else {
+  //         console.log("err", error);
+  //         setError(true);
+  //         setErrorMessage("Invalid email or password");
+  //         setLoading(false);
+  //       }
+  //     }
+  //   };
+  // login from dev
+  const handleLogin = async (e) => {
+    e.preventDefault();
+    if (!navigator.onLine) {
+      setNetworkError(true);
+      setError(false);
+      setIsLoading(false);
+      return;
+    }
 
-     if (response.data) {
-       setUser(response.data); // Assuming user data is nested under response.data
-       console.log("role: " + response.data.role);
+    try {
+      setLoading(true);
+      const response = await axios.post(
+        "http://localhost:5000/user/login",
+        formData
+      );
 
-       if (response.data.role === "admin") {
-         navigate("/dashboard");
-       } else {
-         navigate("/blogsForm");
-       }
-       setLoading(false);
-     }
-   } catch (error) {
-     if (error.message === "Network request failed") {
-       setNetworkError(true);
-       setIsLoading(false);
-     } else {
-       console.log("err", error);
-       setError(true);
-       setErrorMessage("Invalid email or password");
-       setLoading(false);
-     }
-   }
- };
+      console.log(response.data);
+      console.log(response);
+
+      if (response.data) {
+        setUser(response.data); // Assuming user data is nested under response.data
+        console.log("role: " + response.data.role);
+
+        if (response.data.role === "admin") {
+          navigate("/dashboard");
+        } else {
+          navigate("/blogsForm");
+        }
+        setLoading(false);
+      }
+    } catch (error) {
+      if (error.message === "Network request failed") {
+        setNetworkError(true);
+        setIsLoading(false);
+      } else {
+        console.log("err", error);
+        setError(true);
+        setErrorMessage("Invalid email or password");
+        setLoading(false);
+      }
+    }
+  };
 
   // Google login process
   const handleOAuth = async () => {
@@ -192,35 +191,8 @@ const Login = () => {
       console.log("OAuth: ", err);
     }
   };
-  // // google from dev
-  //  const handleOAuth = async () => {
-  //    try {
-  //      const provider = new GoogleAuthProvider();
-  //      const auth = getAuth(app);
 
-  //      const result = await signInWithPopup(auth, provider);
-  //      console.log(result);
 
-  //      const res = await axios
-  //        .post("http://localhost:5000/google/auth", {
-  //          firstName: result.user.displayName,
-  //          lastName: result.user.displayName,
-  //          email: result.user.email,
-  //          role: "user",
-  //        })
-
-  //        .then((res) => {
-  //          console.log(res);
-  //          if (res) {
-  //            setUser(res.data);
-
-  //            navigate("/blogsForm");
-  //          }
-  //        });
-  //    } catch (err) {
-  //      console.log("OAuth: ", err);
-  //    }
-  //  };
   //CHECK the user if LOGED IN BEFORE dont ask for another login every time need to add blog
   useEffect(() => {
     const checkLoggedInUser = async () => {
