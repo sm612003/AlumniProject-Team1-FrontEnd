@@ -177,12 +177,15 @@ const BlogForm = () => {
   }, []);
 
   const addBlog = (e) => {
+ 
     e.preventDefault();
+       setLoading(true);
     const formData = new FormData(e.target);
 
     axios
       .post(`http://localhost:5000/add/blogs`, formData)
       .then((response) => {
+        showToastMessage();
         setSuccessMessage("Blog added successfully!"); // Set success message
 
         console.log("Request sent successfully", response.data);
@@ -192,7 +195,7 @@ const BlogForm = () => {
       })
       .catch((error) => {
         console.log(error);
-        console.log("Server error details:", error.response.data);
+        console.log("Server error details from add blog:", error);
       });
   };
 
@@ -260,7 +263,7 @@ const BlogForm = () => {
                     size={width}
                   />
                 </Link>
-
+                {loading && <p>Adding Blog...</p>}
                 {successMessage && (
                   <p style={{ color: "green", fontSize: "bold" }}>
                     {successMessage}
