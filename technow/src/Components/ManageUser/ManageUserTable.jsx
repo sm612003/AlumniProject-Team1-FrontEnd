@@ -157,6 +157,7 @@ const ManageUserTable = () => {
             open={openAddUserModal}
             handleClose={handleCloseAddUserModal}
             handleAddUser={handleAddUser}
+            
           />
 
           <DataGrid

@@ -20,7 +20,7 @@ const AddUserModal = ({ open, handleClose, handleAddUser, modalAction, initialUs
     password: '',
     role: 'user',
     Link: '',
-    description: '',
+    description: "Data Analytics",
     image: null,
   });
 
@@ -43,6 +43,13 @@ const AddUserModal = ({ open, handleClose, handleAddUser, modalAction, initialUs
       image: e.target.files[0],
     }));
   };
+  const [descriptionOptions, setDescriptionOptions] = useState([
+    "SOFTWARE_DEVELOPMENT",
+    "DATA_ANALYTICS",
+    "USER_INTERFACE_DESIGN",
+    "NETWORK_INFRASTRUCTURE",
+    "DEVOPS",
+  ]);
 
   const handleAddButtonClick = () => {
     handleAddUser(newUser);
@@ -90,13 +97,29 @@ const AddUserModal = ({ open, handleClose, handleAddUser, modalAction, initialUs
           fullWidth
           margin="normal"
         />
-        <TextField
+        {/* <TextField
           label="Description"
           value={newUser.description}
           onChange={(e) => handleInputChange('description', e.target.value)}
           fullWidth
           margin="normal"
-        />
+        /> */}
+        <label htmlFor="description">Description</label>
+        <select
+          id="description"
+          name="description"
+          value={newUser.description}
+          onChange={(e) => handleInputChange('description', e.target.value)}
+        >
+          <option value="" disabled>
+            Select a description
+          </option>
+          {descriptionOptions.map((option) => (
+            <option key={option} value={option}>
+              {option}
+            </option>
+          ))}
+        </select>
         <FormControl fullWidth margin="normal">
           <InputLabel
             htmlFor="date-of-birth"
