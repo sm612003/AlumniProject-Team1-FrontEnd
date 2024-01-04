@@ -2,46 +2,39 @@
 import { GoogleAuthProvider, getAuth, signInWithPopup } from "firebase/auth";
 import { app } from "../../firebase";
 
-import React, { useContext, useRef, useState, useEffect } from "react";
+import React, { useContext, useState, useRef, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import styles from "./Login.module.css"; // Import your styles
 import { AuthContext } from "../../Context/AuthContext";
-import { FaEye, FaEyeSlash } from "react-icons/fa"; // Import eye icons
+import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 const Login = () => {
-  const { setUser } = useContext(AuthContext); // Use the useContext hook to access setUser
+  const { setUser, user } = useContext(AuthContext); // Use the useContext hook to access setUser and state
   const navigate = useNavigate();
-  //network err
-  const [networkError, setNetworkError] = useState(false);
+  const [networkError, setNetworkError] = useState(false); //network err
   const [isLoading, setIsLoading] = useState(false);
-  const [showPassword, setShowPassword] = useState(false);
-    const showToastRef = useRef(false);
+  const showToastRef = useRef(false);
 
-const handleTogglePassword = () => {
-  setShowPassword((prevShowPassword) => !prevShowPassword);
-};
-
-
-const showToastMessage = () => {
-  toast.success("Please Log In To Add Blog !", {
-    position: toast.POSITION.TOP_RIGHT,
-    hideProgressBar: true,
-    closeOnClick: true,
-    pauseOnHover: true,
-  });
-};
-
-// Call showToastMessage when the component mounts
-useEffect(() => {
-  if (!showToastRef.current) {
-    showToastMessage();
-    showToastRef.current = true;
-  }
-}, []);
-
+  //toast message for login page
+  const showToastMessage = () => {
+    toast.success("Please Log In To Add Blog !", {
+      position: toast.POSITION.TOP_RIGHT,
+      hideProgressBar: true,
+      closeOnClick: true,
+      pauseOnHover: true,
+    });
+  };
+  // Call showToastMessage when the component mounts (on the open of login page the toast will appear)
+  useEffect(() => {
+    if (!showToastRef.current) {
+      showToastMessage();
+      showToastRef.current = true;
+    }
+  }, []);
+  // handle Network err
   useEffect(() => {
     const handleOffline = () => {
       setNetworkError(true);
@@ -54,35 +47,7 @@ useEffect(() => {
     };
   }, []);
 
-  const handleOAuth = async () => {
-    try {
-      const provider = new GoogleAuthProvider();
-      const auth = getAuth(app);
-
-      const result = await signInWithPopup(auth, provider);
-      console.log(result);
-
-      const res = await axios
-        .post("http://localhost:5000/google/auth", {
-          firstName: result.user.displayName,
-          lastName: result.user.displayName,
-          email: result.user.email,
-          role: "user",
-        })
-
-        .then((res) => {
-          console.log(res);
-          if (res) {
-            setUser(res.data);
-
-            navigate("/blogsForm");
-          }
-        });
-    } catch (err) {
-      console.log("OAuth: ", err);
-    }
-  };
-
+  // LOGIN form handle input change
   const [formData, setFormData] = useState({
     email: "",
     password: "",
@@ -196,37 +161,36 @@ useEffect(() => {
     }
   };
 
-  // // Google login process
-  // const handleOAuth = async () => {
-  //   try {
-  //     const provider = new GoogleAuthProvider();
-  //     const auth = getAuth(app);
+  // Google login process
+  const handleOAuth = async () => {
+    try {
+      const provider = new GoogleAuthProvider();
+      const auth = getAuth(app);
 
-  //     const result = await signInWithPopup(auth, provider);
-  //     console.log(result);
+      const result = await signInWithPopup(auth, provider);
+      console.log(result);
 
-  //     const res = await axios
-  //       .post("http://localhost:5000/google/auth", {
-  //         firstName: result.user.displayName,
-  //         lastName: result.user.displayName,
-  //         email: result.user.email,
-  //         role: "user",
-  //       })
+      const res = await axios
+        .post("http://localhost:5000/google/auth", {
+          firstName: result.user.displayName,
+          lastName: result.user.displayName,
+          email: result.user.email,
+          role: "user",
+        })
 
-  //       .then((res) => {
-  //         console.log(res);
-  //         if (res) {
-  //           setUser(res.data);
-  //           console.log("loca data printed")
+        .then((res) => {
+          console.log(res);
+          if (res) {
+            setUser(res.data);
+            console.log("loca data printed");
 
-  //           navigate("/blogsForm");
-  //         }
-  //       });
-  //   } catch (err) {
-  //     console.log("OAuth: ", err);
-  //   }
-  // };
-
+            navigate("/blogsForm");
+          }
+        });
+    } catch (err) {
+      console.log("OAuth: ", err);
+    }
+  };
 
   //CHECK the user if LOGED IN BEFORE dont ask for another login every time need to add blog
   useEffect(() => {
@@ -271,26 +235,25 @@ useEffect(() => {
               />
             </div>
             <div className={styles["form-group"]}>
-              <label>Password</label>
-              <div className={styles["password-input"]}>
+              <div className={styles["passwordInputContainer"]}>
+                <label>Password</label>
                 <input
-                  type={showPassword ? "text" : "password"}
+                  type={passwordInputType}
                   id="password"
                   name="password"
                   value={formData.password}
                   onChange={handleChange}
                   required
+                  disabled={loading}
                 />
-                <button
-                  type="button"
+                <div
+                  className={styles["password-toggle"]}
                   onClick={handleTogglePassword}
-                  className={styles["toggle-password-button"]}
                 >
-                  {showPassword ? <FaEyeSlash /> : <FaEye />}
-                </button>
+                  {showPassword ? <AiFillEyeInvisible /> : <AiFillEye />}
+                </div>
               </div>
             </div>
-
             <button className={styles.logbtn} type="submit">
               Log in
             </button>
