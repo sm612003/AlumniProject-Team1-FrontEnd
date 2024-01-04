@@ -5,6 +5,15 @@ import axios from "axios";
 import { ScrollButton } from "../../Components/ScrollButton/ScrollButton";
 import magnifire from "../../Assets/Images/magnifire.jpeg";
 import Category from '../../Components/CategoryCard/Category'
+import { Helmet } from 'react-helmet'
+
+const structuredData = {
+  "@context": "http://schema.org",
+  "@type": "Organization",
+  "name": "technow",
+  "url": `${process.env.REACT_APP_API}/newsletter`,
+};
+
 //Page
 const Newsletter = () => {
   useEffect(() => {
@@ -88,17 +97,17 @@ const Newsletter = () => {
   };
   const filterNewsByTitle = (newsToFilter, searchInput) => {
     if (searchInput) {
-      
+
       return newsToFilter.filter(
         (ray) =>
-       
+
           ray.title.toLowerCase().includes(searchInput.toLowerCase()) ||
-          ray.author.toLowerCase().includes(searchInput.toLowerCase()) 
-          // ray.first[0].toLowerCase().includes(searchInput.toLowerCase())
+          ray.author.toLowerCase().includes(searchInput.toLowerCase())
+        // ray.first[0].toLowerCase().includes(searchInput.toLowerCase())
       );
-      
+
     }
-    
+
     return newsToFilter;
   };
   const filterNews = filterNewsByTitle(newsData, searchInput);
@@ -107,8 +116,14 @@ const Newsletter = () => {
   return (
     <>
       <div className={styles.Container}>
+        <Helmet>
+          <title>News</title>
+          <meta name="description" content="Latest tech news of techNow newsletter" />
+          {/*   JSON-LD Structured Data */}
+          <script type="application/ld+json">{JSON.stringify(structuredData)}</script>
+        </Helmet>
         <h1 className={styles.H1}>Latest News</h1>
-        <Category/>
+        <Category />
         <form className={styles.bookSearch}>
           <input
             id="search"
@@ -140,13 +155,13 @@ const Newsletter = () => {
               {filterNews.length > 0 ? (
                 filterNews.map((key, index) => (
                   <NewsCard
-                    key={key._id}
+                    key={key.id}
                     first={index === 0}
                     title={key.title}
                     image={key.image}
                     author={key.author}
                     date={key.date}
-                    id={key._id}
+                    id={key.id}
                   ></NewsCard>
                 ))
               ) : (

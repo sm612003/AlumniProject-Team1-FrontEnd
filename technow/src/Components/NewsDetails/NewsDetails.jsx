@@ -1,11 +1,15 @@
 import { ScrollButton } from '../ScrollButton/ScrollButton'
 import styles from './NewsDetails.module.css'
-
+import {Helmet} from 'react-helmet'
 // Component
-const NewsDetails = ({title , author , date , image , desc , sub , subDesc , links}) => {
+const NewsDetails = ({title , author , date , image , desc , sub , subDesc , link}) => {
     const time = new Date(date).toLocaleDateString('en-us', { weekday:"long", year:"numeric", month:"short", day:"numeric", timeZone: "GMT"}) 
     return(
         <div className={styles.Container}>
+             <Helmet>
+                <title>{title}</title>
+                <meta name="description" content="News about tech added by the admin of technow newsLetter" />
+            </Helmet>
             <div className={styles.Title}>
                 <h1 className={styles.H1}>
                     {title}
@@ -32,7 +36,7 @@ const NewsDetails = ({title , author , date , image , desc , sub , subDesc , lin
                 <h2 className={styles.H2} >
                     Additional Links
                 </h2>
-                <p className={styles.P}>{links}</p>
+                <a className={styles.P} href={`${link}`}>visit</a>
                     <ScrollButton />
             </div>
         </div>

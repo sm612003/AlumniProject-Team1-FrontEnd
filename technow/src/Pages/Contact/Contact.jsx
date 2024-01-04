@@ -120,7 +120,7 @@ const Contact = () => {
             </form>
           </div>
           <div className={styles.Right}>
-            <img src={image} alt="" className={styles.Img}></img>
+            <img src={image} alt="" className={styles.Img} loading="lazy"></img>
           </div>
         </div>
       </div>

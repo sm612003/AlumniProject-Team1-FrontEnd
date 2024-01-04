@@ -35,10 +35,7 @@ const NewsletterDetails = () => {
           return;
         }console.log('hellooooo',id)
         const response = await axios.get(
-          `${process.env.REACT_APP_API}/read/newsById`,
-          {data:{
-            id:parseInt(id)
-          }}
+          `${process.env.REACT_APP_API}/read/newsById/${id}`
         );
         
         if (!response.ok) {
@@ -110,7 +107,7 @@ const NewsletterDetails = () => {
             desc={newsData.description}
             sub={newsData.subtitle}
             subDesc={newsData.subtitleDescription}
-            links={newsData.links}
+            link={newsData.link}
           />
         </>
       )}

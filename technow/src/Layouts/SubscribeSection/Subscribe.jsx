@@ -105,7 +105,7 @@ export const Subscribe = ({ page }) => {
                     </span>
                 </div>
                 <div className={styles.Right}>
-                    <img className={styles.Image} src={img} alt="email" />
+                    <img className={styles.Image} src={img} alt="email" loading="lazy" />
                 </div>
             </div>
         </div>

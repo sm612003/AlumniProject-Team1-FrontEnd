@@ -1,6 +1,5 @@
 import React from "react";
 import Sidebar from "../Layouts/sideBar/SideBar";
-
 function LayoutWithHeaderSidebar({ children }) {
   return (
     <div >

@@ -10,7 +10,7 @@ export const FeaturesSection = () => {
                 </h2>
             <div className={styles.Content}>
                 <div className={styles.Center}>
-                    <img src={img} alt="" className={styles.Img}/>
+                    <img src={img} alt="" className={styles.Img} loading="lazy"/>
                 </div>
                 <div className={styles.Left}>
                     <FeatureCard title={"Kill The Spam "} content={"Use Newsletter email to subscribe to newsletters. Earn more time for a joyful reading."}/>

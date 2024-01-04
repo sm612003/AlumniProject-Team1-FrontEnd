@@ -54,7 +54,7 @@ export const Weather = () => {
 
     return (
         <div className={styles.container}>
-            <img src={icons(id)} alt="weather icon" className={styles.icon}/>
+            <img src={icons(id)} alt="weather icon" className={styles.icon} loading="lazy"/>
             <div className={styles.desc}>
                 <p className={styles.p}>{Math.floor(temp)}&deg;C </p>
                 <p className={styles.p}><span>{desc}</span></p>
