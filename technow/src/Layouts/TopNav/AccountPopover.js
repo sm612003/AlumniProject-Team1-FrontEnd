@@ -5,11 +5,11 @@ import { AuthContext } from '../../Context/AuthContext';
 import { Link, useNavigate } from "react-router-dom";
 export const AccountPopover = (props) => {
   const { anchorEl, onClose, open } = props;
-    const { logout, setUser } = useContext(AuthContext);
+    const { logout, setUser,user } = useContext(AuthContext);
   const navigate = useNavigate();
   const handleLogout = () => {
     try {
-      setUser(null);
+      // setUser(null);
 
       logout(); // Call the logout function from AuthContext
       navigate("/");
@@ -92,7 +92,7 @@ export const AccountPopover = (props) => {
             Profile
           </Link>
         </MenuItem>
-        {!localStorage.getItem("authUser") && (
+        {!user && (
           <MenuItem>
             <Link
               style={{

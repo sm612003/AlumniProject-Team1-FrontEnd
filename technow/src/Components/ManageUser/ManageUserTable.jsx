@@ -66,14 +66,14 @@ const ManageUserTable = () => {
         fetchAllUsers();
         setShowUserForm(false);
         setNewUser({
-          firstName: '',
-          lastName: '',
+          firstName: "",
+          lastName: "",
           dob: new Date(),
-          email: '',
-          password: '',
-          role: 'user',
-          Link: '',
-          description: '',
+          email: "",
+          password: "",
+          role: "user",
+          Link: "",
+          description: "Data Analytics",
           image: null,
         });
       } else {
