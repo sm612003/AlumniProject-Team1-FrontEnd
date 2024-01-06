@@ -20,7 +20,7 @@ const AddUserModal = ({ open, handleClose, handleAddUser, modalAction, initialUs
     password: '',
     role: 'user',
     Link: '',
-    description: "Data Analytics",
+    description: "SOFTWARE_DEVELOPMENT",
     image: null,
   });
 
@@ -38,9 +38,10 @@ const AddUserModal = ({ open, handleClose, handleAddUser, modalAction, initialUs
   };
 
   const handleImageChange = (e) => {
+    const file = e.target.files[0];
     setNewUser((prevUser) => ({
       ...prevUser,
-      image: e.target.files[0],
+      image: file,
     }));
   };
   const [descriptionOptions, setDescriptionOptions] = useState([
@@ -52,7 +53,20 @@ const AddUserModal = ({ open, handleClose, handleAddUser, modalAction, initialUs
   ]);
 
   const handleAddButtonClick = () => {
+    console.log(newUser);
+    setNewUser(newUser)
     handleAddUser(newUser);
+    setNewUser({
+      firstName: '',
+      lastName: '',
+      dob: '',
+      email: '',
+      password: '',
+      role: 'user',
+      Link: '',
+      description: "SOFTWARE_DEVELOPMENT",
+      image: null,
+    })
     handleClose();
   };
 
@@ -153,7 +167,7 @@ const AddUserModal = ({ open, handleClose, handleAddUser, modalAction, initialUs
             <MenuItem value="admin">Admin</MenuItem>
           </Select>
         </FormControl>
-        <input type="file" onChange={handleImageChange} />
+        <input type="file"  onChange={handleImageChange} />
         <Button variant="contained" onClick={handleAddButtonClick} style={{ backgroundColor: '#14B86E', color: 'white', important: 'true' }}>
           {modalAction === 'edit' ? 'Update User' : 'Add User'}
         </Button>

@@ -65,9 +65,13 @@ const ManageBlogTable = () => {
 
   const handleAddBlog = async (blogData) => {
     try {
+console.log('homeee',blogData)
+
       const response = await axios.post('http://localhost:5000/add/blogs', blogData);
 
       if (response.status === 200) {
+console.log('hellooo')
+
         fetchAllBlogs();
         handleCloseAddBlogModal();
       } else {

@@ -9,17 +9,7 @@ import { Helmet } from "react-helmet";
 const ManageUserTable = () => {
   const [userList, setUserList] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [newUser, setNewUser] = useState({
-    firstName: "",
-    lastName: "",
-    dob: new Date(),
-    email: "",
-    password: "",
-    role: "user",
-    Link: "",
-    description: "",
-    image: null,
-  });
+  const [showUserForm, setShowUserForm] = useState(false);
   const [openAddUserModal, setOpenAddUserModal] = useState(false);
   const [selectedUserId, setSelectedUserId] = useState(null);
 
@@ -46,31 +36,18 @@ const ManageUserTable = () => {
     fetchAllUsers();
   }, []);
 
-  const handleAddUser = async () => {
+
+  const handleAddUser = async (newUser) => {
     try {
       const formData = new FormData();
       Object.entries(newUser).forEach(([key, value]) => {
         formData.append(key, value);
       });
-
-      const response = await axios.post(
-        "http://localhost:5000/user/create",
-        formData
-      );
+      const response = await axios.post('http://localhost:5000/user/create', formData);
 
       if (response.status === 200) {
         fetchAllUsers();
-        setNewUser({
-          firstName: "",
-          lastName: "",
-          dob: new Date(),
-          email: "",
-          password: "",
-          role: "user",
-          Link: "",
-          description: "Data Analytics",
-          image: null,
-        });
+        setShowUserForm(false);
       } else {
         console.error("Failed to add user");
       }

@@ -1,7 +1,7 @@
 import styles from "./Dashboard.module.css";
 import { ScrollButton } from "../../Components/ScrollButton/ScrollButton";
 import { Helmet } from "react-helmet";
-import LazyLoad from 'react-lazyload';
+import LazyLoad from 'react-lazy-load';
 import SideBar from '../../Layouts/sideBar/SideBar'
 import UserDescriptionsChart from "../../Components/pieChart/userpie";
 import LineChart from "../../Components/LineChart/LineChart";
