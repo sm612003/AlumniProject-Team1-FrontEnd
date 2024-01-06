@@ -105,14 +105,17 @@ export const AuthProvider = ({ children }) => {
     if (!user && user === null) {
       fetchUserData();
     } else {
-      console.log("loggedin");
+      console.log("user:",user);
     }
   }, [user]);
 
   const fetchUserData = async () => {
+    
     try {
       setCheckUser(true);
-      const response = await axiosInstance.get("/api/auth/user");
+      const response = await axiosInstance.get(
+        `http://localhost:5000/user/view-all`
+      );
       setUser(response.data.user);
     } catch (err) {
       setUser(null);
