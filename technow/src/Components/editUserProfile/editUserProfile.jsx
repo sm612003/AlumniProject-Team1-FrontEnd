@@ -231,7 +231,7 @@ console.log("res data for one id", response.data.User.id);
               name="newPassword"
               value={formData.newPassword}
               onChange={handleChange}
-              required
+              // required
               disabled={loading}
             />
             <div
@@ -257,7 +257,7 @@ console.log("res data for one id", response.data.User.id);
               name="verifyPassword"
               value={formData.verifyPassword}
               onChange={handleChange}
-              required
+              // required
               disabled={loading}
             />
             <div
@@ -279,7 +279,7 @@ console.log("res data for one id", response.data.User.id);
             name="description"
             value={formData.description}
             onChange={handleChange}
-            required
+            // required
           >
             <option value="" disabled>
               Select a description

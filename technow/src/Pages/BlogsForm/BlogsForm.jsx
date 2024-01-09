@@ -193,7 +193,7 @@ const BlogForm = () => {
                 </div>
 
                 <div
-                  style={{ display: "flex", justifyContent: "space-between" }}
+                  style={{ display: "flex", justifyContent: "space-between" ,marginBottom:"30px"}}
                 >
                   <Button
                     color={"green"}
@@ -208,22 +208,22 @@ const BlogForm = () => {
                   >
                     Post now
                   </button> */}
-                  <button
+                  {/* <button
                     type="submit"
                     onClick={handleLogout}
                     className={styles.logoutBtn}
                   >
                     Logout
-                  </button>
+                  </button> */}
+                  <Link to="/blogs">
+                    <Button
+                      color={"green"}
+                      text={"Go back to Blogs"}
+                      size={width}
+                    />
+                  </Link>
                 </div>
 
-                <Link to="/blogs">
-                  <Button
-                    color={"green"}
-                    text={"Go back to Blogs"}
-                    size={width}
-                  />
-                </Link>
                 {loading && <p>Adding Blog...</p>}
                 {successMessage && (
                   <p style={{ color: "green", fontSize: "bold" }}>

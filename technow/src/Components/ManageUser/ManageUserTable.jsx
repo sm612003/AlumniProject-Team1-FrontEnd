@@ -149,7 +149,7 @@ const handleRowSelection = (selectionModel) => {
       </Helmet>
       <main>
         <section>
-          <Box sx={{ height: 520, width: "80%", margin: "150px" }}>
+          <Box sx={{ height: 520, width: "80%",     margin:" 10% 12%"}}>
             <button
               onClick={handleOpenAddUserModal}
               style={{

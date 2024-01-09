@@ -107,11 +107,14 @@ const ManageNewsTable = () => {
 
     return (
       <>
-  <Helmet>
-    <title>Manage News</title>
-    <meta name="description" content="Manage news articles in your application with ease." />
-    <script type="application/ld+json">
-      {`
+        <Helmet>
+          <title>Manage News</title>
+          <meta
+            name="description"
+            content="Manage news articles in your application with ease."
+          />
+          <script type="application/ld+json">
+            {`
         {
           "@context": "https://schema.org",
           "@type": "WebPage",
@@ -120,49 +123,52 @@ const ManageNewsTable = () => {
           "url": "http://localhost:3000/dashboard/news",
         }
       `}
-    </script>
-  </Helmet>
+          </script>
+        </Helmet>
 
-  <main>
-    <section>
-      <Box sx={{ height: 520, width: '80%', margin: '150px' }}>
-        <button
-          onClick={handleAddButtonClick}
-          style={{ backgroundColor: '#119C59', color: 'white', important: 'true' }}
-        >
-          Add News
-        </button>
+        <main>
+          <section>
+            <Box sx={{ height: 520, width: "80%", margin: " 10% 12%" }}>
+              <button
+                onClick={handleAddButtonClick}
+                style={{
+                  backgroundColor: "#119C59",
+                  color: "white",
+                  important: "true",
+                }}
+              >
+                Add News
+              </button>
 
-        <AddNewsModal
-          open={showAddNewsModal}
-          handleClose={handleCloseAddNewsModal}
-          handleAddNews={fetchAllNews}
-          newNews={newNews}
-          setNewNews={setNewNews}
-        />
+              <AddNewsModal
+                open={showAddNewsModal}
+                handleClose={handleCloseAddNewsModal}
+                handleAddNews={fetchAllNews}
+                newNews={newNews}
+                setNewNews={setNewNews}
+              />
 
-        <EditNewsModal
-          open={showEditNewsModal}
-          handleClose={handleCloseEditNewsModal}
-          handleUpdateNews={fetchAllNews}
-          selectedNews={selectedNewsForEdit}
-        />
+              <EditNewsModal
+                open={showEditNewsModal}
+                handleClose={handleCloseEditNewsModal}
+                handleUpdateNews={fetchAllNews}
+                selectedNews={selectedNewsForEdit}
+              />
 
-        <DataGrid
-          rows={newsList}
-          columns={columns}
-          loading={loading}
-          disableRowSelectionOnClick
-          components={{
-            Toolbar: GridToolbar,
-          }}
-        />
-      </Box>
-    </section>
-  </main>
-</>
-
-      );
+              <DataGrid
+                rows={newsList}
+                columns={columns}
+                loading={loading}
+                disableRowSelectionOnClick
+                components={{
+                  Toolbar: GridToolbar,
+                }}
+              />
+            </Box>
+          </section>
+        </main>
+      </>
+    );
     };
     
     export default ManageNewsTable;

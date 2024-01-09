@@ -31,14 +31,9 @@ const Overview = () => {
         </script>
       </Helmet>
 
-      <h1>Dashboard Overview</h1>
+      <h1>Overview</h1>
 
-      <section className={styles.LineChart}>
-      <LazyLoad height={200} offset={100}>
-      <LineChart />
-      </LazyLoad>
-        
-      </section>
+     
 
       <section className={styles.chartContainer}>
         <div className={styles.MostActiveUserChart} aria-label="Most Active User Chart">

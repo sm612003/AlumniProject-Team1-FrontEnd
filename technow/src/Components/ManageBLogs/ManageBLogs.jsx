@@ -156,11 +156,14 @@ console.log('hellooo')
 
   return (
     <>
-    <Helmet>
-      <title>Manage Blogs</title>
-      <meta name="description" content="Manage blog entries in your application with ease." />
-      <script type="application/ld+json">
-        {`
+      <Helmet>
+        <title>Manage Blogs</title>
+        <meta
+          name="description"
+          content="Manage blog entries in your application with ease."
+        />
+        <script type="application/ld+json">
+          {`
           {
             "@context": "https://schema.org",
             "@type": "WebPage",
@@ -169,42 +172,45 @@ console.log('hellooo')
             "url": "http://localhost:3000/dashboard/blogs",
           }
         `}
-      </script>
-    </Helmet>
-  
-    <main>
-      <section>
-        <Box sx={{ height: 520, width: '80%', margin: '150px' }}>
-          <button
-            onClick={handleOpenAddBlogModal}
-            style={{ backgroundColor: '#119C59', color: 'white', margin: '4px' }}
-          >
-            Add Blog
-          </button>
-  
-          <AddBlogModal
-            open={openEditBlogModal || openAddBlogModal}
-            handleClose={handleCloseEditBlogModal}
-            handleAddBlog={handleAddBlog}
-            handleEditBlog={handleEditBlog}
-            selectedBlog={selectedBlog}
-            userList={userList}
-          />
-  
-          <DataGrid
-            rows={blogList}
-            columns={columns}
-            loading={loading}
-            disableRowSelectionOnClick
-            components={{
-              Toolbar: GridToolbar,
-            }}
-          />
-        </Box>
-      </section>
-    </main>
-  </>
-  
+        </script>
+      </Helmet>
+
+      <main>
+        <section>
+          <Box sx={{ height: 520, width: "80%", margin: " 10% 12%" }}>
+            <button
+              onClick={handleOpenAddBlogModal}
+              style={{
+                backgroundColor: "#119C59",
+                color: "white",
+                margin: "4px",
+              }}
+            >
+              Add Blog
+            </button>
+
+            <AddBlogModal
+              open={openEditBlogModal || openAddBlogModal}
+              handleClose={handleCloseEditBlogModal}
+              handleAddBlog={handleAddBlog}
+              handleEditBlog={handleEditBlog}
+              selectedBlog={selectedBlog}
+              userList={userList}
+            />
+
+            <DataGrid
+              rows={blogList}
+              columns={columns}
+              loading={loading}
+              disableRowSelectionOnClick
+              components={{
+                Toolbar: GridToolbar,
+              }}
+            />
+          </Box>
+        </section>
+      </main>
+    </>
   );
 };
 

@@ -38,13 +38,13 @@ const MostActiveUserChart = () => {
             },
             {
               from: 3,
-              to: 5,
+              to: 4,
               color: '#14B86E', // Color for users with 3-5 blogs
             },
             {
-              from: 6,
+              from: 5,
               to: 10,
-              color: '#119C59', // Color for users with 6-10 blogs
+              color: '#119C59', // Color for users with 5-10 blogs
             },
             {
               from: 11,

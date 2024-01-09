@@ -1,4 +1,4 @@
-import styles from "./News.module.css"
+import styles from "../NewsCard/News.module.css"
 import { Link } from "react-router-dom";
 
 const NewsCard = ({title , image , author , date , first , id}) => {

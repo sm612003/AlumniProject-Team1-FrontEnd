@@ -85,7 +85,10 @@ const ManageSubscribeUserTable = () => {
     <>
       <Helmet>
         <title>Subscribe User Management</title>
-        <meta name="description"  content="Manage Subscribe users in your application with ease" />
+        <meta
+          name="description"
+          content="Manage Subscribe users in your application with ease"
+        />
         <script type="application/ld+json">
           {`
             {
@@ -101,9 +104,13 @@ const ManageSubscribeUserTable = () => {
       <main>
         <section>
           <h1>Subscribe User Management</h1>
-          <Box sx={{ height: 520, width: '80%', margin: '150px' }}>
+          <Box sx={{ height: 520, width: "80%", margin: " 10% 12%" }}>
             <button
-              style={{ backgroundColor: '#119C59', color: 'white', important: 'true' }}
+              style={{
+                backgroundColor: "#119C59",
+                color: "white",
+                important: "true",
+              }}
               onClick={handleOpenAddSubscribeUserModal}
             >
               Add Subscribe User

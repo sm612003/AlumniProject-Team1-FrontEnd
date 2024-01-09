@@ -56,7 +56,7 @@ const LineChart = () => {
                             categories: monthNames.splice(prevSixMonth + 1, currentMonth + 1)
                         },
                         title: {
-                            text: 'Number of users during the last 6 months',
+                            text: '',
                             style: {
                                 align: 'center',
                                 fontSize: '24px',
